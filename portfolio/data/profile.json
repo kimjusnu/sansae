@@ -1,0 +1,66 @@
+{
+  "_comment": "source/ 원자료 기반. 사실의 기준은 source/. 일부 수치(예: Componique 다운로드)는 사용자 확인 대기.",
+  "name": "김준수",
+  "nameEn": "Junsu Kim",
+  "tagline": "기획부터 운영까지, 문제를 제품으로 만드는 FE / AI Engineer",
+  "location": "인천 · 서울, 대한민국",
+  "openToWork": true,
+  "contact": {
+    "email": "junsu4621@naver.com",
+    "github": "https://github.com/kimjusnu",
+    "portfolio": "https://junsudev4.vercel.app/",
+    "blog": "https://dietisdie.tistory.com/"
+  },
+  "strengths": [
+    "기획 → 디자인 → 구현 → 배포 → 운영까지 제품 전 과정 오너십",
+    "프론트/백엔드/인프라를 아우르는 풀스택 실행력",
+    "현장 리서치 기반 문제 정의 (예: 농가 직접 방문)",
+    "설득력 있는 커뮤니케이션, 논리적 사고"
+  ],
+  "skills": {
+    "frontend": ["React", "Next.js (App Router, RSC)", "TypeScript", "Tailwind CSS"],
+    "ai": ["LLM 통합", "SAM2", "FastAPI"],
+    "devops": ["GitHub Actions", "Docker", "PM2", "CI/CD"],
+    "data": ["GA4 (인증)", "Microsoft Clarity"],
+    "etc": ["RBAC", "i18n", "Zustand", "Tiptap", "MUI", "Storybook"]
+  },
+  "experience": [
+    {
+      "company": "AimBe Lab",
+      "role": "Associate (정규직)",
+      "period": "2025-07 ~ 2026-06",
+      "highlights": [
+        "My Feed: 농가 주문 시스템 디지털화, AI 분류 오류율 10%→3%, GA4 최적화로 주간 방문 2~3→4회",
+        "웹사이트 리뉴얼: 투자자 사이트를 B2B 플랫폼으로, Next.js RSC 기반 SEO·자체 i18n",
+        "3단계 RBAC 대시보드 설계, GitHub Actions CI/CD 구축"
+      ]
+    },
+    {
+      "company": "The Innovators",
+      "role": "Intern",
+      "period": "2025-03 ~ 2025-06",
+      "highlights": [
+        "StartupQT: 퀴즈 저작 SaaS, 모듈형 에디터+검수 워크플로우, Docker, 무중단 CI/CD"
+      ]
+    }
+  ],
+  "education": {
+    "school": "한국공학대학교 (TUK)",
+    "major": "컴퓨터공학부 소프트웨어전공",
+    "period": "2020-03 ~ 2026-02",
+    "gpa": "3.45 / 4.5 (전공 3.54)"
+  },
+  "projects": [
+    { "name": "Componique", "desc": "오픈소스 디자인 시스템 UI 라이브러리 (30+ 컴포넌트)", "stack": ["React", "TypeScript", "Tailwind", "Storybook", "Rollup"], "link": "https://componique.vercel.app/" },
+    { "name": "Kirok", "desc": "Big Five 성격검사 + AI 해석 및 실시간 학술 인용", "stack": ["Next.js", "TypeScript", "Tailwind", "LLM", "OpenAlex"], "link": "https://kirok-six.vercel.app/" },
+    { "name": "StartupQT", "desc": "퀴즈 저작·검수·관리 SaaS", "stack": ["Next.js", "TypeScript", "Zustand", "Tiptap", "MUI"], "link": "https://startupqt.com/start" },
+    { "name": "Eat Fit", "desc": "AI 음식 사진 분석 식단관리 PWA (캡스톤 우수상)", "stack": ["Next.js", "FastAPI", "AWS", "PWA"], "link": "https://expo.tukorea.ac.kr/2025/work/87" },
+    { "name": "Wairi", "desc": "SEO 개선 위한 Vue→Next.js 마이그레이션", "stack": ["Next.js", "TypeScript", "Tailwind", "SEO"], "link": "https://www.wairi.co.kr/webapp" }
+  ],
+  "awards": [
+    { "title": "SW 캡스톤 디자인 우수상 (Eat Fit)", "year": "2025" },
+    { "title": "Sniper Factory 프론트엔드 부트캠프 우수상 (팀 리더)", "year": "2024" },
+    { "title": "웅진씽크빅 × Udemy Next.js 부트캠프 2위", "year": "2024" }
+  ],
+  "certifications": ["ADsP (2026-06)", "GA4 인증 (2025-09)", "OPIc IM1 (2025-02)"]
+}
