@@ -183,21 +183,43 @@
   #motiBubble.show{opacity:1;transform:none}
   .bubbleDot{position:fixed;bottom:0;border-radius:50%;background:rgba(148,220,255,.4);pointer-events:none;z-index:19}
 
-  /* ---------- depth creatures ---------- */
-  #creatures{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden}
-  .creature{position:absolute;left:0;top:0;will-change:transform;opacity:0;animation:swimAcross linear forwards}
+  /* ---------- depth creatures (catchable) ---------- */
+  #creatures{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+  .creature{position:absolute;left:0;top:0;will-change:transform;opacity:0;pointer-events:auto;animation:swimAcross linear forwards}
   .creature.rtl{animation-name:swimAcrossR}
   @keyframes swimAcross{0%{transform:translateX(-22vw)}3%{opacity:var(--op,.5)}96%{opacity:var(--op,.5)}100%{transform:translateX(122vw);opacity:0}}
   @keyframes swimAcrossR{0%{transform:translateX(122vw) scaleX(-1)}3%{opacity:var(--op,.5)}96%{opacity:var(--op,.5)}100%{transform:translateX(-22vw) scaleX(-1)}}
   .cbob{animation:cbob ease-in-out infinite}
   @keyframes cbob{50%{transform:translateY(12px)}}
   .cscale{transform-origin:center}
-  .cwig{transform-box:fill-box;transform-origin:0% 50%;animation:cwig 1.4s ease-in-out infinite}
-  @keyframes cwig{50%{transform:rotate(6deg)}}
+  .cscale.caught{animation:caught .45s cubic-bezier(.3,.8,.3,1) forwards}
+  @keyframes caught{40%{transform:scale(1.3)}100%{transform:scale(.15);opacity:0}}
+  .cwig{transform-box:fill-box;transform-origin:100% 50%;animation:cwig 1.3s ease-in-out infinite}
+  @keyframes cwig{50%{transform:rotate(7deg)}}
+  .cfin{transform-box:fill-box;transform-origin:center;animation:cfin 1.1s ease-in-out infinite}
+  @keyframes cfin{50%{transform:rotate(-6deg)}}
   .cpulse{transform-box:fill-box;transform-origin:center;animation:cpulse 2s ease-in-out infinite}
   @keyframes cpulse{50%{transform:scaleY(.8) translateY(3px)}}
   .lure{animation:lure 1.7s ease-in-out infinite;filter:drop-shadow(0 0 7px #bffff0)}
   @keyframes lure{50%{opacity:.4}}
+
+  /* ---------- net cursor + catch game ---------- */
+  #net{position:fixed;left:0;top:0;z-index:8;pointer-events:none;opacity:0;display:none;
+    transition:opacity .4s;filter:drop-shadow(0 6px 10px rgba(0,10,20,.5))}
+  body:not(.preboot) #net{opacity:1}
+  #net .netdip{transform-box:fill-box;transform-origin:34px 40px}
+  #net.dip .netdip{animation:netdip .28s ease}
+  @keyframes netdip{45%{transform:translateY(8px) rotate(-8deg) scale(.9)}}
+  @media (hover:hover){body:not(.preboot){cursor:none} #net{display:block}}
+  #score{position:fixed;top:clamp(60px,9vh,78px);right:clamp(14px,4vw,40px);z-index:9;font-family:var(--mono);
+    font-size:13px;letter-spacing:.1em;color:var(--ink);background:rgba(9,20,36,.6);border:1px solid var(--line);
+    border-radius:999px;padding:9px 16px;opacity:0;transition:opacity .6s,transform .18s;backdrop-filter:blur(8px)}
+  body:not(.preboot) #score{opacity:1}
+  #score b{color:var(--cyan);font-size:15px;font-variant-numeric:tabular-nums}
+  #score.bump{transform:scale(1.18)}
+  .plus{position:fixed;z-index:9;font-family:var(--mono);font-size:15px;font-weight:700;color:var(--cyan);
+    pointer-events:none;transform:translate(-50%,-50%);text-shadow:0 0 8px rgba(95,230,208,.6);animation:plusUp .7s ease-out forwards}
+  @keyframes plusUp{to{transform:translate(-50%,-170%);opacity:0}}
 
   /* ---------- MOTI swim propulsion ---------- */
   #moti .bell,#moti .bhi{transform-box:fill-box;transform-origin:center;animation:motiPulse 2.6s ease-in-out infinite}
@@ -233,6 +255,19 @@
 <div class="vignette" id="vignette"></div>
 <div id="creatures"></div>
 <div class="cursor-glow" id="glow"></div>
+<svg id="net" width="90" height="120" viewBox="0 0 90 120" aria-hidden="true">
+  <g class="netdip">
+    <line x1="41" y1="66" x2="74" y2="114" stroke="#b98a52" stroke-width="7" stroke-linecap="round"/>
+    <line x1="41" y1="66" x2="74" y2="114" stroke="#e6c48f" stroke-width="2.4" stroke-linecap="round"/>
+    <ellipse cx="34" cy="40" rx="30" ry="33" fill="rgba(150,220,255,.08)" stroke="#e9f4ff" stroke-width="3"/>
+    <g stroke="rgba(223,238,252,.4)" stroke-width="1" fill="none">
+      <path d="M10 40 H58"/><path d="M34 8 V72"/>
+      <path d="M14 24 Q34 34 54 24"/><path d="M14 56 Q34 46 54 56"/>
+      <path d="M11 32 Q34 43 57 32"/><path d="M11 48 Q34 37 57 48"/>
+    </g>
+  </g>
+</svg>
+<div id="score">🐟 CATCH <b>0</b></div>
 
 <div class="top">
   <div class="brand"><b>◈</b> JUNSU&nbsp;KIM</div>
@@ -385,7 +420,7 @@
     intro.classList.add('enter');
     setTimeout(function(){intro.classList.add('gone');body.classList.remove('preboot');
       setTimeout(function(){intro.style.display='none';},1100);
-      motiSay('환영해요! 아래로 스크롤하면 심해로 내려가요 🌊',4500);
+      motiSay('환영해요! 🎣 그물(커서)로 물고기를 잡으면 점수가 올라요. 아래로 스크롤해 심해로!',5200);
       spawnBurst();
     }, reduce?0:120);
   }
@@ -426,11 +461,12 @@
   if(reduce){progress=.2;draw(0);}else requestAnimationFrame(draw);
 
   /* ---------- pointer ---------- */
-  var glow=document.getElementById('glow'),heroInner=document.getElementById('heroInner');
+  var glow=document.getElementById('glow'),heroInner=document.getElementById('heroInner'),net=document.getElementById('net');
   var eyes=document.querySelectorAll('#moti .eye');
   addEventListener('pointermove',function(e){
     mouse.x=e.clientX;mouse.y=e.clientY;mouse.active=true;
     glow.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)';
+    if(net)net.style.transform='translate('+(e.clientX-34)+'px,'+(e.clientY-40)+'px)';
     if(!reduce&&heroInner){var cx=(e.clientX/innerWidth-.5),cy=(e.clientY/innerHeight-.5);
       heroInner.style.transform='translate('+(cx*12)+'px,'+(cy*8)+'px)';}
     document.querySelectorAll('.mag').forEach(function(bn){
@@ -472,6 +508,8 @@
     '프로젝트 카드에 마우스를 올려보세요 ✨',
     'Componique는 주간 127K 다운로드! 대단하죠?',
     '연락은 Contact 섹션에서 — 준수님은 지금 구직중이에요 😊',
+    '수심마다 다른 물고기가 나와요. 깊이 내려가면 아귀도 등장! 🎣',
+    '그물로 물고기를 잡아 최고 점수에 도전해봐요 🐟',
     '마우스를 움직이면 제 눈이 따라가요 👀'];
   var ti=0;
   function motiSay(txt,dur){var r=moti.getBoundingClientRect();bubble.textContent=txt;
@@ -513,12 +551,39 @@
     requestAnimationFrame(step);
   },900);}
 
-  /* ---------- depth-based creatures ---------- */
+  /* ---------- depth-based creatures + catch game ---------- */
   var clayer=document.getElementById('creatures');
-  function fish(c){return '<svg width="64" height="34" viewBox="0 0 64 34"><g class="cwig"><path d="M2 17 Q22 3 46 17 Q22 31 2 17Z" fill="'+c+'"/><path d="M44 17 l18 -11 v22z" fill="'+c+'"/></g><circle cx="16" cy="14" r="2" fill="#04121f"/></svg>';}
+  var scoreEl=document.getElementById('score'),scoreN=scoreEl.querySelector('b'),score=0;
+  function netDip(){if(!net)return;net.classList.add('dip');setTimeout(function(){net.classList.remove('dip');},300);}
+  function floatPlus(x,y){var d=document.createElement('div');d.className='plus';d.textContent='+1';
+    d.style.left=x+'px';d.style.top=y+'px';document.body.appendChild(d);setTimeout(function(){d.remove();},760);}
+  clayer.addEventListener('click',function(e){
+    var el=e.target.closest('.creature');if(!el||el.__caught)return;
+    el.__caught=true;el.style.pointerEvents='none';
+    score++;scoreN.textContent=score;
+    scoreEl.classList.add('bump');setTimeout(function(){scoreEl.classList.remove('bump');},180);
+    var inner=el.querySelector('.cscale');if(inner)inner.classList.add('caught');
+    floatPlus(e.clientX,e.clientY);netDip();
+    setTimeout(function(){el.remove();},470);
+  });
+  addEventListener('pointerdown',function(){if(!body.classList.contains('preboot'))netDip();});
+  function fish(c,id){return '<svg width="72" height="42" viewBox="0 0 72 42"><defs><linearGradient id="fg'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+c+'"/><stop offset="1" stop-color="#eafcff"/></linearGradient></defs>'
+    +'<g class="cwig"><path d="M20 21 L4 9 Q11 21 4 33 Z" fill="'+c+'" opacity=".85"/></g>'
+    +'<path d="M32 8 Q44 2 50 11 Q41 11 33 13 Z" fill="'+c+'" opacity=".7"/>'
+    +'<path d="M34 32 Q40 39 47 33 Q40 33 34 30 Z" fill="'+c+'" opacity=".55"/>'
+    +'<path d="M16 21 Q36 5 62 21 Q36 37 16 21 Z" fill="url(#fg'+id+')"/>'
+    +'<path class="cfin" d="M40 22 Q47 31 36 30 Q39 25 40 22 Z" fill="'+c+'" opacity=".5"/>'
+    +'<path d="M52 13 Q49 21 52 29" stroke="rgba(2,10,20,.28)" stroke-width="1.4" fill="none"/>'
+    +'<circle cx="56" cy="18" r="3.1" fill="#fff"/><circle cx="57" cy="18" r="1.6" fill="#04121f"/></svg>';}
   function jelly(c){return '<svg width="42" height="56" viewBox="0 0 42 56"><g class="cpulse"><ellipse cx="21" cy="18" rx="17" ry="14" fill="'+c+'" opacity=".9"/><ellipse cx="21" cy="13" rx="10" ry="6" fill="#eafff9" opacity=".3"/></g><g stroke="'+c+'" stroke-width="2.4" fill="none" opacity=".7"><path d="M9 29 q-2 13 2 24"/><path d="M16 31 q-1 13 0 24"/><path d="M26 31 q1 13 0 24"/><path d="M33 29 q2 13 -2 24"/></g></svg>';}
   function squid(c){return '<svg width="36" height="62" viewBox="0 0 36 62"><g class="cpulse"><path d="M18 2 Q31 6 29 30 L7 30 Q5 6 18 2Z" fill="'+c+'" opacity=".9"/></g><g stroke="'+c+'" stroke-width="2.3" fill="none" opacity=".7"><path d="M10 30 q-3 15 1 28"/><path d="M15 31 q-1 15 0 28"/><path d="M21 31 q1 15 0 28"/><path d="M26 30 q3 15 -1 28"/></g><circle cx="14" cy="17" r="1.9" fill="#04121f"/><circle cx="22" cy="17" r="1.9" fill="#04121f"/></svg>';}
-  function angler(c){return '<svg width="74" height="48" viewBox="0 0 74 48"><g class="cwig"><ellipse cx="36" cy="27" rx="25" ry="18" fill="'+c+'"/><path d="M59 27 l15 -9 v18z" fill="'+c+'"/></g><path d="M14 31 q11 8 25 4" stroke="#04121f" stroke-width="1.8" fill="none"/><g fill="#eafff9"><path d="M16 31 l2 4 2 -4z"/><path d="M22 33 l2 4 2 -4z"/><path d="M28 34 l2 4 2 -4z"/></g><circle cx="20" cy="19" r="2.4" fill="#04121f"/><path d="M22 11 q-7 -9 -16 -6" stroke="'+c+'" stroke-width="2" fill="none"/><circle class="lure" cx="6" cy="4" r="4.2" fill="#eafff9"/></svg>';}
+  function angler(c,id){return '<svg width="82" height="52" viewBox="0 0 82 52"><defs><radialGradient id="ag'+id+'" cx=".62" cy=".4" r=".7"><stop offset="0" stop-color="#dffcf6"/><stop offset="1" stop-color="'+c+'"/></radialGradient></defs>'
+    +'<g class="cwig"><path d="M24 27 L8 15 Q15 27 8 39 Z" fill="'+c+'" opacity=".85"/></g>'
+    +'<path d="M20 27 Q34 8 58 20 Q72 27 58 34 Q42 46 20 27 Z" fill="url(#ag'+id+')"/>'
+    +'<path d="M40 34 Q52 41 66 31" stroke="rgba(2,8,16,.45)" stroke-width="1.8" fill="none"/>'
+    +'<g fill="#eafff9"><path d="M44 34 l2 4 2 -4z"/><path d="M50 36 l2 4 2 -4z"/><path d="M56 35 l2 4 2 -4z"/></g>'
+    +'<path d="M52 15 Q64 3 74 9" stroke="'+c+'" stroke-width="2" fill="none"/><circle class="lure" cx="75" cy="9" r="4.5" fill="#eafff9"/>'
+    +'<circle cx="49" cy="21" r="3" fill="#fff"/><circle cx="50" cy="21" r="1.6" fill="#04121f"/></svg>';}
   var builders={fish:fish,jelly:jelly,squid:squid,angler:angler};
   var speciesZone={SURFACE:['fish','jelly','fish'],CURRENTS:['fish','squid','fish'],REEF:['fish','squid','jelly'],DEEP:['angler','jelly','squid'],ABYSS:['angler','squid','angler']};
   var seed=1;
@@ -533,7 +598,7 @@
     wrap.style.setProperty('--op',(z[0]>0.7?0.4:0.55).toString());
     wrap.style.animationDuration=(16+((seed*29)%15))+'s';
     var bob=document.createElement('div');bob.className='cbob';bob.style.animationDuration=(2.4+((seed*13)%22)/10)+'s';
-    bob.innerHTML='<div class="cscale" style="transform:scale('+scale.toFixed(2)+')">'+builders[sp](col)+'</div>';
+    bob.innerHTML='<div class="cscale" style="transform:scale('+scale.toFixed(2)+')">'+builders[sp](col,seed)+'</div>';
     wrap.appendChild(bob);
     wrap.addEventListener('animationend',function(){wrap.remove();});
     clayer.appendChild(wrap);
