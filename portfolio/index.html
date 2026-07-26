@@ -165,9 +165,10 @@
   .reveal.in{opacity:1;transform:none}
 
   /* ---------- mascot MOTI ---------- */
-  #moti{position:fixed;right:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,36px);z-index:20;width:96px;height:120px;
-    cursor:pointer;opacity:0;transition:opacity .8s .4s;filter:drop-shadow(0 0 18px rgba(95,230,208,.5))}
-  body:not(.preboot) #moti{opacity:1}
+  #moti{position:fixed;left:0;top:0;z-index:3;width:96px;height:120px;
+    cursor:pointer;opacity:0;transition:opacity 1s .4s;filter:drop-shadow(0 0 22px rgba(95,230,208,.55));
+    will-change:transform}
+  body:not(.preboot) #moti{opacity:.94}
   #moti .body-sway{transform-origin:50% 30%;animation:sway 4s ease-in-out infinite}
   #moti .bell{transition:fill .6s}
   #moti .tent{animation:tent 3s ease-in-out infinite;transform-origin:top}
@@ -175,7 +176,7 @@
   #moti .tent:nth-child(4){animation-delay:.6s}#moti .tent:nth-child(5){animation-delay:.8s}
   @keyframes sway{50%{transform:translateY(-8px) rotate(2deg)}}
   @keyframes tent{50%{transform:translateX(2px) scaleY(1.06)}}
-  #motiBubble{position:fixed;right:clamp(16px,3vw,40px);bottom:clamp(140px,16vw,168px);z-index:21;max-width:230px;
+  #motiBubble{position:fixed;left:0;top:0;z-index:21;max-width:230px;
     background:rgba(9,20,36,.92);border:1px solid rgba(95,230,208,.4);border-radius:16px 16px 16px 4px;
     padding:12px 16px;font-size:13px;color:var(--ink);line-height:1.5;opacity:0;transform:translateY(10px) scale(.96);
     transition:.3s;pointer-events:none;backdrop-filter:blur(10px)}
@@ -240,7 +241,7 @@
     <div class="statgrid reveal">
       <div class="stat"><div class="n"><em>127K</em></div><div class="l">Componique<br>주간 다운로드 (npm)</div></div>
       <div class="stat"><div class="n"><em>30</em>+</div><div class="l">오픈소스<br>UI 컴포넌트</div></div>
-      <div class="stat"><div class="n"><em>5</em></div><div class="l">프로덕션<br>배포 프로젝트</div></div>
+      <div class="stat"><div class="n"><em>4</em></div><div class="l">프로덕션<br>배포 프로젝트</div></div>
       <div class="stat"><div class="n"><em>3</em></div><div class="l">수상 · 공모전<br>(캡스톤 우수상 등)</div></div>
     </div>
   </section>
@@ -271,28 +272,21 @@
       </article>
       <article class="proj reveal">
         <div class="media" data-ph="IMG · 16:10"><div class="glow"></div></div>
-        <div class="body"><div class="idx">02 / AI</div><h3>Kirok</h3>
-          <p>Big Five 성격검사 결과를 LLM으로 해석하고, OpenAlex 기반 실시간 학술 인용을 연결하는 서비스.</p>
-          <div class="stack"><span>Next.js</span><span>TypeScript</span><span>LLM</span><span>OpenAlex</span></div>
-          <a class="link" href="https://kirok-six.vercel.app/" target="_blank" rel="noopener">kirok-six.vercel.app ↗</a></div>
-      </article>
-      <article class="proj reveal">
-        <div class="media" data-ph="IMG · 16:10"><div class="glow"></div></div>
-        <div class="body"><div class="idx">03 / SaaS</div><h3>StartupQT</h3>
+        <div class="body"><div class="idx">02 / SaaS</div><h3>StartupQT</h3>
           <p>퀴즈 저작·검수·관리 SaaS. 모듈형 에디터와 검수 워크플로우, Docker 무중단 CI/CD.</p>
           <div class="stack"><span>Next.js</span><span>Zustand</span><span>Tiptap</span><span>MUI</span><span>Docker</span></div>
           <a class="link" href="https://startupqt.com/start" target="_blank" rel="noopener">startupqt.com ↗</a></div>
       </article>
       <article class="proj reveal">
         <div class="media" data-ph="IMG · 16:10"><div class="glow"></div></div>
-        <div class="body"><div class="idx">04 / CAPSTONE · 우수상</div><h3>Eat Fit</h3>
+        <div class="body"><div class="idx">03 / CAPSTONE · 우수상</div><h3>Eat Fit</h3>
           <p>AI 음식 사진 분석 기반 식단관리 PWA. SW 캡스톤 디자인 우수상.</p>
           <div class="stack"><span>Next.js</span><span>FastAPI</span><span>AWS</span><span>PWA</span></div>
           <a class="link" href="https://expo.tukorea.ac.kr/2025/work/87" target="_blank" rel="noopener">캡스톤 전시 ↗</a></div>
       </article>
       <article class="proj reveal">
         <div class="media" data-ph="IMG · 16:10"><div class="glow"></div></div>
-        <div class="body"><div class="idx">05 / MIGRATION</div><h3>Wairi</h3>
+        <div class="body"><div class="idx">04 / MIGRATION</div><h3>Wairi</h3>
           <p>SEO 취약점 해결을 위한 Vue → Next.js 마이그레이션.</p>
           <div class="stack"><span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>SEO</span></div>
           <a class="link" href="https://www.wairi.co.kr/webapp" target="_blank" rel="noopener">wairi.co.kr ↗</a></div>
@@ -453,11 +447,29 @@
     '연락은 Contact 섹션에서 — 준수님은 지금 구직중이에요 😊',
     '마우스를 움직이면 제 눈이 따라가요 👀'];
   var ti=0;
-  function motiSay(txt,dur){bubble.textContent=txt;bubble.classList.add('show');
+  function motiSay(txt,dur){var r=moti.getBoundingClientRect();bubble.textContent=txt;
+    bubble.style.left=Math.min(innerWidth-244,Math.max(12,r.left+r.width/2-110))+'px';
+    bubble.style.top=Math.max(12,r.top-72)+'px';
+    bubble.classList.add('show');
     clearTimeout(bubbleTimer);bubbleTimer=setTimeout(function(){bubble.classList.remove('show');},dur||4000);}
   moti.addEventListener('click',function(){motiSay(tips[ti%tips.length]);ti++;
     if(!reduce){moti.style.transition='transform .2s';moti.style.transform='scale(1.12)';
       setTimeout(function(){moti.style.transform='';},200);}});
+
+  /* free swim: slowly follow the cursor through the water */
+  var mp={x:innerWidth*0.72,y:innerHeight*0.55},wander=0,rot=0;
+  if(reduce){moti.style.transform='translate('+(innerWidth-118)+'px,'+(innerHeight-150)+'px)';}
+  else{(function swim(){
+    wander+=0.006;
+    var tx,ty;
+    if(mouse.active){tx=mouse.x+Math.cos(wander*3)*80;ty=mouse.y+Math.sin(wander*3)*52+34;}
+    else{tx=innerWidth*0.5+Math.cos(wander)*innerWidth*0.34;ty=innerHeight*0.5+Math.sin(wander*1.3)*innerHeight*0.28;}
+    var dx=(tx-mp.x)*0.02,dy=(ty-mp.y)*0.02;
+    mp.x+=dx;mp.y+=dy;
+    rot+=(Math.max(-12,Math.min(12,dx*3))-rot)*0.1;
+    moti.style.transform='translate('+(mp.x-48)+'px,'+(mp.y-60)+'px) rotate('+rot.toFixed(2)+'deg)';
+    requestAnimationFrame(swim);
+  })();}
 
   /* rising bubbles from mascot */
   if(!reduce){setInterval(function(){
