@@ -17,10 +17,12 @@ portfolio/                 ← 이 폴더만 배포됩니다
   assets/css/sequence.css  히어로 고정 구간 · 캔버스 · 배경 위 텍스트 대비
   assets/css/intro.css     인트로 게이트
   assets/css/cursor.css    커스텀 커서
+  assets/css/contact-dock.css  우측 하단 연락처 독
   assets/js/main.js        헤더 · 모바일 메뉴 · 스크롤 리빌 · 아이콘 fallback
   assets/js/sequence.js    프레임 로더 · 스크롤 매핑 · 캔버스 렌더
   assets/js/intro.js       게이트 정책 · FLIP 전환
   assets/js/cursor.js      커스텀 커서
+  assets/js/contact-dock.js    우측 하단 연락처 독
   sequence/                스크럽 프레임 (hd/ sd/ poster manifest.json)
   icons/                   3D 아이콘 WebP (정규화된 배포용, 총 311 KB)
   favicon.svg              브랜드 마크 (원본)
@@ -38,7 +40,7 @@ design/                    ← 배포되지 않는 원본과 빌드 스크립트
   build-brand-assets.py    favicon · 앱 아이콘 · OG 이미지 생성
 ```
 
-CSS는 `base → layout → sections → sequence → intro → cursor` 순서로 로드해야 합니다.
+CSS는 `base → layout → sections → sequence → intro → cursor → contact-dock` 순서로 로드해야 합니다.
 
 `main.js` · `sequence.js` · `intro.js`는 서로를 직접 호출하지 않습니다. 인트로는 끝날 때
 `intro:done` 커스텀 이벤트만 던지고, 어느 하나를 빼도 나머지가 그대로 동작합니다.
@@ -82,6 +84,20 @@ python design/build-sequence.py
 영상 촬영 조건은 `docs/superpowers/specs/`의 설계 문서 §3에 있습니다. 핵심은 세 가지입니다 —
 카메라 완전 고정, 화면 70퍼센트 이상 흰색, 처음부터 끝까지 일정한 속도. 어둡거나 중간에 멈추는
 영상은 각각 본문 가독성과 스크롤 체감을 망칩니다.
+
+### 카카오톡 채널 연결
+
+`business.kakao.com`(카카오톡 채널 관리자센터)에서 채널을 만들면 `http://pf.kakao.com/_abcdEF` 형태의
+URL이 생깁니다. `portfolio/assets/js/contact-dock.js` 상단의 한 줄만 채우면 됩니다.
+
+```js
+var KAKAO_CHANNEL_ID = '_abcdEF';
+```
+
+비워두면 카카오톡 항목이 DOM에서 제거되므로 죽은 링크가 배포되지 않습니다.
+
+채널 개설과 문의 수신은 무료입니다. 유료는 알림톡·친구톡 같은 **발송** 기능과 상담톡입니다.
+SDK나 API 키, 도메인 등록은 필요 없습니다 — 채널 URL로 직접 링크하기 때문입니다.
 
 ### 파비콘 · OG 이미지
 

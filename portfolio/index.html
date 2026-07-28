@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="assets/css/sequence.css">
 <link rel="stylesheet" href="assets/css/intro.css">
 <link rel="stylesheet" href="assets/css/cursor.css">
+<link rel="stylesheet" href="assets/css/contact-dock.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -499,6 +500,39 @@
 
 </main>
 
+<!-- 소통망: 카카오톡 행은 contact-dock.js의 KAKAO_CHANNEL_ID가 채워질 때만 나타납니다 -->
+<div class="contact-dock" id="contact-dock">
+  <div class="contact-panel" id="contact-panel" hidden>
+    <p class="contact-panel-title">편하게 연락 주세요</p>
+    <p class="contact-panel-note">보통 하루 안에 답장드립니다.</p>
+    <ul>
+      <li>
+        <a href="mailto:junsu4621@naver.com">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M2.5 5.5 9 10l6.5-4.5"/></svg>
+          <span class="contact-label">junsu4621@naver.com</span>
+        </a>
+      </li>
+      <li>
+        <a class="contact-kakao" href="https://pf.kakao.com/" target="_blank" rel="noopener" hidden>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3c3.6 0 6.5 2.2 6.5 5s-2.9 5-6.5 5c-.5 0-1-.05-1.5-.13L4.5 15l.5-2.6C3.4 11.5 2.5 10.3 2.5 8c0-2.8 2.9-5 6.5-5Z"/></svg>
+          <span class="contact-label">카카오톡으로 문의</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/kimjusnu" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 15.5v-2.3c-2.3.4-2.9-1-2.9-1-.3-.8-.8-1.1-.8-1.1-.7-.5 0-.5 0-.5.8.05 1.2.8 1.2.8.7 1.2 1.8.9 2.4.6.05-.5.3-.9.5-1.1-1.8-.2-3.4-.9-3.4-3.9 0-.9.3-1.6.8-2.1-.1-.2-.35-1 .08-2.1 0 0 .7-.2 2.3.8a5.6 5.6 0 0 1 3 0c1.6-1 2.3-.8 2.3-.8.43 1.1.16 1.9.08 2.1.5.5.8 1.2.8 2.1 0 3-1.6 3.7-3.4 3.9.3.3.6.85.6 1.7v2.5"/></svg>
+          <span class="contact-label">GitHub</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <button class="contact-toggle" type="button" aria-expanded="false" aria-controls="contact-panel" aria-label="연락처 열기">
+    <svg class="icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.6c4.6 0 8.4 2.9 8.4 6.5s-3.8 6.5-8.4 6.5c-.7 0-1.4-.07-2-.2L5.4 20.4l.7-3.6C4.4 15.6 3.6 13.9 3.6 10.1c0-3.6 3.8-6.5 8.4-6.5Z"/></svg>
+    <svg class="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l10 10M16 6L6 16"/></svg>
+  </button>
+</div>
+
 <footer class="site-footer">
   <div class="site-container">
     <div class="footer-inner">
@@ -540,5 +574,6 @@
 <script src="assets/js/sequence.js" defer></script>
 <script src="assets/js/intro.js" defer></script>
 <script src="assets/js/cursor.js" defer></script>
+<script src="assets/js/contact-dock.js" defer></script>
 </body>
 </html>

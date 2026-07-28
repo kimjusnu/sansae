@@ -1,0 +1,153 @@
+/* =========================================================
+   Contact dock — floating panel, bottom right
+   Requires base.css
+   ========================================================= */
+
+.contact-dock {
+  position: fixed;
+  right: clamp(16px, 3vw, 28px);
+  bottom: clamp(16px, 3vw, 28px);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+
+/* The intro gate owns the screen while it is up. */
+body.intro-active .contact-dock {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: var(--text-inverse);
+  background: linear-gradient(135deg, #1d4ed8 0%, #3182f6 55%, #22d3ee 100%);
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.32);
+  transition:
+    transform 200ms var(--ease),
+    box-shadow 200ms var(--ease);
+}
+
+.contact-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 42px rgba(37, 99, 235, 0.4);
+}
+
+.contact-toggle:active {
+  transform: translateY(0);
+}
+
+.contact-toggle .icon-close {
+  display: none;
+}
+
+.contact-toggle[aria-expanded="true"] .icon-open {
+  display: none;
+}
+
+.contact-toggle[aria-expanded="true"] .icon-close {
+  display: block;
+}
+
+/* ---------------------------------------------------------
+   Panel
+   --------------------------------------------------------- */
+.contact-panel {
+  width: min(272px, calc(100vw - 32px));
+  padding: var(--space-5);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+}
+
+.contact-panel[hidden] {
+  display: none;
+}
+
+.js .contact-panel {
+  transform-origin: 100% 100%;
+  animation: contact-panel-in 220ms var(--ease);
+}
+
+@keyframes contact-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+}
+
+.contact-panel-title {
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.contact-panel-note {
+  margin-bottom: var(--space-4);
+  color: var(--text-tertiary);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.contact-panel ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.contact-panel a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 550;
+  transition: background 160ms var(--ease), color 160ms var(--ease);
+}
+
+.contact-panel a:hover {
+  color: var(--primary-700);
+  background: var(--primary-50);
+}
+
+.contact-panel a svg {
+  flex: none;
+  color: var(--primary-500);
+}
+
+.contact-panel a .contact-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-panel a[hidden] {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .contact-toggle {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .contact-panel {
+    animation: none;
+  }
+}
