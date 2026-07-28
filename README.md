@@ -18,11 +18,13 @@ portfolio/                 ← 이 폴더만 배포됩니다
   assets/css/intro.css     인트로 게이트
   assets/css/cursor.css    커스텀 커서
   assets/css/contact-dock.css  우측 하단 연락처 독
+  assets/css/chat.css      AI 안내 도우미 패널
   assets/js/main.js        헤더 · 모바일 메뉴 · 스크롤 리빌 · 아이콘 fallback
   assets/js/sequence.js    프레임 로더 · 스크롤 매핑 · 캔버스 렌더
   assets/js/intro.js       게이트 정책 · FLIP 전환
   assets/js/cursor.js      커스텀 커서
   assets/js/contact-dock.js    우측 하단 연락처 독
+  assets/js/chat.js        AI 안내 도우미 (WORKER_URL 필요)
   sequence/                스크럽 프레임 (hd/ sd/ poster manifest.json)
   icons/                   3D 아이콘 WebP (정규화된 배포용, 총 311 KB)
   favicon.svg              브랜드 마크 (원본)
@@ -30,6 +32,12 @@ portfolio/                 ← 이 폴더만 배포됩니다
                            favicon.svg · og-template.html에서 생성됨
   site.webmanifest         PWA 매니페스트
   data/profile.json        콘텐츠 원본 데이터
+
+worker/                    ← 배포되지 않음. wrangler로 Cloudflare에 따로 올립니다
+  src/index.js             Origin 검사 · 레이트 리밋 · 스트리밍
+  src/persona.js           시스템 프롬프트 + 이력 데이터
+  wrangler.toml            Workers AI 바인딩
+  README.md                배포 순서
 
 design/                    ← 배포되지 않는 원본과 빌드 스크립트
   icons-source/            3D 아이콘 원본 렌더 (1024~1536px, 17MB)
@@ -40,7 +48,7 @@ design/                    ← 배포되지 않는 원본과 빌드 스크립트
   build-brand-assets.py    favicon · 앱 아이콘 · OG 이미지 생성
 ```
 
-CSS는 `base → layout → sections → sequence → intro → cursor → contact-dock` 순서로 로드해야 합니다.
+CSS는 `base → layout → sections → sequence → intro → cursor → contact-dock → chat` 순서로 로드해야 합니다.
 
 `main.js` · `sequence.js` · `intro.js`는 서로를 직접 호출하지 않습니다. 인트로는 끝날 때
 `intro:done` 커스텀 이벤트만 던지고, 어느 하나를 빼도 나머지가 그대로 동작합니다.
@@ -84,6 +92,23 @@ python design/build-sequence.py
 영상 촬영 조건은 `docs/superpowers/specs/`의 설계 문서 §3에 있습니다. 핵심은 세 가지입니다 —
 카메라 완전 고정, 화면 70퍼센트 이상 흰색, 처음부터 끝까지 일정한 속도. 어둡거나 중간에 멈추는
 영상은 각각 본문 가독성과 스크롤 체감을 망칩니다.
+
+### AI 안내 도우미
+
+이력·프로젝트 질문에 답하는 챗봇입니다. `worker/README.md`의 순서대로 워커를 배포한 뒤,
+출력된 주소를 `portfolio/assets/js/chat.js` 상단에 넣으면 됩니다.
+
+```js
+var WORKER_URL = 'https://junsu-portfolio-assistant.<계정>.workers.dev';
+```
+
+비워두면 챗 버튼과 패널이 DOM에서 **제거**됩니다. 워커 없이 배포해도 죽은 버튼이 남지 않습니다.
+
+키가 필요 없는 구조입니다 — 브라우저는 워커만 부르고, 워커는 Workers AI를 바인딩으로
+호출하므로 저장소 어디에도 시크릿이 없습니다.
+
+환각을 막는 장치는 `worker/src/persona.js`에 있습니다. 이력이 바뀌면 이 파일과
+`portfolio/data/profile.json`을 **함께** 고치고 워커를 다시 배포하세요.
 
 ### 카카오톡 채널 연결
 

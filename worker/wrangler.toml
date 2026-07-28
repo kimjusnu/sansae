@@ -1,0 +1,19 @@
+name = "junsu-portfolio-assistant"
+main = "src/index.js"
+compatibility_date = "2026-07-28"
+
+# Workers AI is reached through this binding, so no API key exists to leak.
+[ai]
+binding = "AI"
+
+# Per-IP rate limiting. Create the namespace and paste its id below:
+#   npx wrangler kv namespace create RATE_LIMIT_KV
+#
+# The limiter fails open when this binding is missing, so the assistant still
+# works before you set it up — but do set it up before sharing the site.
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "여기에_네임스페이스_id"
+
+[observability]
+enabled = true

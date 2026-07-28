@@ -25,10 +25,10 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC_DIR = ROOT / "design" / "sequence-source"
 OUT_DIR = ROOT / "portfolio" / "sequence"
 
-SOURCE = "3.mp4"
+SOURCE = "hero-glass-panels.mp4"
 
 # ---------------------------------------------------------------------------
-# 3.mp4 is the one that matches the brief: brightness stays at 218-242 and blue
+# This take is the one that matches the brief: brightness stays at 218-242 and blue
 # coverage at 14-22% for the whole clip, with no studio rig in frame. Motion is
 # even throughout (per-frame change 1.3-2.7, no static tail), so the whole
 # 8 seconds is usable and nothing needs cropping.
