@@ -36,7 +36,7 @@ portfolio/                 ← 이 폴더만 배포됩니다
 worker/                    ← 배포되지 않음. wrangler로 Cloudflare에 따로 올립니다
   src/index.js             Origin 검사 · 레이트 리밋 · 스트리밍
   src/persona.js           시스템 프롬프트 + 이력 데이터
-  wrangler.toml            Workers AI 바인딩
+  wrangler.jsonc           Workers AI 바인딩
   README.md                배포 순서
 
 design/                    ← 배포되지 않는 원본과 빌드 스크립트

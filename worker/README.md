@@ -12,6 +12,18 @@ Workers AI는 **바인딩(`env.AI`)으로 호출**하므로 이 저장소에 키
 
 ## 배포
 
+### 0. workers.dev 서브도메인 등록 (계정당 한 번, 대시보드에서만 가능)
+
+이걸 안 하면 `wrangler deploy`도 `wrangler dev`도 막힙니다. Workers AI는 항상 원격에서
+돌기 때문에 로컬 개발조차 서브도메인이 필요합니다.
+
+https://dash.cloudflare.com/95c3263fd1c744f64506af0bfcaa5459/workers/onboarding
+
+원하는 서브도메인 이름을 고르면 됩니다. 워커 주소가
+`https://junsu-portfolio-assistant.<고른이름>.workers.dev` 형태가 됩니다.
+
+### 1. 배포
+
 ```bash
 cd worker
 npm install -D wrangler
@@ -42,11 +54,19 @@ npx wrangler kv namespace create RATE_LIMIT_KV
 `src/index.js`의 `MODEL` 한 줄입니다.
 
 ```js
-const MODEL = '@cf/meta/llama-3.1-8b-instruct';
+const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
 ```
 
-Workers AI의 모델 카탈로그는 수시로 바뀝니다. **배포 전에 대시보드에서 이 모델이 아직
-제공되는지 확인하세요.** 다른 모델로 바꿔도 나머지 코드는 그대로입니다.
+카탈로그는 수시로 바뀌므로 **추측하지 말고 조회하세요.**
+
+```bash
+npx wrangler ai models
+```
+
+실제로 조회해 보니 `@cf/meta/llama-3.1-8b-instruct`는 **존재하지 않습니다** (`-fp8`
+변형만 있음). 답변이 한국어라 70B를 골랐습니다 — 작은 모델은 한국어 문장이 어색합니다.
+한국어가 마음에 안 들면 `@cf/qwen/qwen3-30b-a3b-fp8`(CJK 강함, 더 저렴)을 먼저 시도해
+보세요. 바꿔도 나머지 코드는 그대로입니다.
 
 ## 이력 수정
 
@@ -56,6 +76,13 @@ Workers AI의 모델 카탈로그는 수시로 바뀝니다. **배포 전에 대
 이 크기에서는 과설계입니다.
 
 `portfolio/data/profile.json`과 내용이 어긋나지 않게 같이 고쳐주세요.
+
+## 비용
+
+Workers AI에는 무료 할당량이 있지만 **무제한은 아닙니다.** 할당량을 넘으면 과금되고,
+`wrangler dev`로 로컬 테스트할 때도 추론은 원격에서 돌기 때문에 사용량에 잡힙니다.
+
+대시보드의 Workers AI 사용량을 한 번 확인해 두세요. 아래 레이트 리밋이 비용 방어선입니다.
 
 ## 안전장치
 

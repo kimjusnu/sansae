@@ -18,7 +18,16 @@ const ALLOWED_ORIGINS = [
   'http://localhost:3000',
 ];
 
-const MODEL = '@cf/meta/llama-3.1-8b-instruct';
+// Verified against `npx wrangler ai models` on 2026-07-28. Note that plain
+// `@cf/meta/llama-3.1-8b-instruct` does NOT exist — only the -fp8 variant — so
+// check the catalogue rather than guessing when swapping this.
+//
+// 70B is deliberate: the answers are Korean, and small models write it poorly.
+// Alternatives worth trying if Korean phrasing disappoints:
+//   @cf/qwen/qwen3-30b-a3b-fp8              MoE, strong at CJK, cheaper
+//   @cf/google/gemma-4-26b-a4b-it
+//   @cf/mistralai/mistral-small-3.1-24b-instruct
+const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
 
 const MAX_QUESTION_CHARS = 500;
 const MAX_HISTORY_TURNS = 6;   // user+assistant messages kept from earlier turns
