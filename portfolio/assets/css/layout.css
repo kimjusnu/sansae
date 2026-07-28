@@ -1,0 +1,361 @@
+/* =========================================================
+   Page frame — header, navigation, hero, footer
+   Requires base.css
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Header
+   --------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 40;
+  background: rgba(247, 250, 255, 0.72);
+  border-bottom: 1px solid transparent;
+  transition: background 220ms var(--ease), border-color 220ms var(--ease);
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--border-default);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  height: var(--header-h);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.wordmark .wordmark-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #3182f6 55%, #22d3ee 100%);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+}
+
+.wordmark .wordmark-sub {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---------------------------------------------------------
+   Navigation
+   --------------------------------------------------------- */
+.nav-desktop ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nav-desktop a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  font-weight: 550;
+  transition: color 180ms var(--ease), background 180ms var(--ease);
+}
+
+.nav-desktop a:hover,
+.nav-desktop a.is-active {
+  color: var(--primary-700);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-default);
+  border-radius: 12px;
+  color: var(--primary-700);
+  background: var(--surface-soft);
+}
+
+.nav-toggle .icon-close {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon-open {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon-close {
+  display: block;
+}
+
+.mobile-nav {
+  border-top: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.mobile-nav[hidden] {
+  display: none;
+}
+
+.mobile-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-block: var(--space-5);
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 13px 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.mobile-nav a:hover {
+  background: var(--primary-50);
+}
+
+.mobile-nav .mobile-nav-cta {
+  display: flex;
+  gap: var(--space-3);
+  padding-bottom: var(--space-6);
+}
+
+.mobile-nav .mobile-nav-cta .button {
+  flex: 1;
+}
+
+/* ---------------------------------------------------------
+   Hero
+   --------------------------------------------------------- */
+.hero {
+  padding-top: calc(var(--header-h) + clamp(40px, 7vw, 88px));
+  padding-bottom: clamp(40px, 5vw, 64px);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5.5fr) minmax(0, 6.5fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.hero-copy h1 {
+  margin-top: var(--space-6);
+  font-size: clamp(38px, 5.4vw, 56px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+/* 제목용 그라디언트는 배경 대비 3:1을 유지하도록 시안 끝단을 쓰지 않는다 */
+.hero-copy h1 em {
+  font-style: normal;
+  background: linear-gradient(120deg, #1d4ed8 0%, #2563eb 55%, #3182f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-lede {
+  max-width: 46ch;
+  margin-top: var(--space-6);
+  color: var(--text-secondary);
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-default);
+  color: var(--text-tertiary);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.hero-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-meta li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--primary-300);
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+}
+
+.hero-visual .hero-orbit {
+  position: absolute;
+  inset: 8% 4%;
+  border: 1px solid rgba(37, 99, 235, 0.09);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-visual .hero-orbit:nth-of-type(2) {
+  inset: 20% 16%;
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+.site-footer {
+  padding-block: var(--space-10) var(--space-8);
+  border-top: 1px solid var(--border-default);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.footer-brand p {
+  max-width: 34ch;
+  margin-top: var(--space-3);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.footer-links h3 {
+  margin-bottom: var(--space-3);
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* 터치 영역을 24px 이상으로 확보한다 (WCAG 2.5.8) */
+.footer-links a {
+  display: inline-block;
+  padding-block: 4px;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  transition: color 180ms var(--ease);
+}
+
+.footer-links a:hover {
+  color: var(--primary-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-bottom {
+  margin-top: var(--space-9);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-default);
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 1023px) {
+  :root {
+    --header-h: 68px;
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 모바일에서는 텍스트가 먼저 읽히도록 비주얼을 위로 올리되 크기를 줄인다 */
+  .hero-visual {
+    order: -1;
+    min-height: 0;
+  }
+
+  .hero-copy h1 {
+    margin-top: var(--space-5);
+  }
+}
+
+@media (max-width: 767px) {
+  .wordmark .wordmark-sub {
+    display: none;
+  }
+
+  .hero-actions .button {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 639px) {
+  .footer-links {
+    gap: var(--space-6);
+  }
+}

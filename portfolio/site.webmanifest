@@ -1,0 +1,16 @@
+{
+  "name": "김준수 · 프론트엔드 · AI 엔지니어 포트폴리오",
+  "short_name": "김준수",
+  "description": "기획부터 디자인, 구현, 배포, 운영까지 직접 맡아 온 프론트엔드 · AI 엔지니어 김준수의 포트폴리오입니다.",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7faff",
+  "theme_color": "#f7faff",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

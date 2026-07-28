@@ -1,0 +1,170 @@
+/* =========================================================
+   Scroll-scrub sequence — pinned hero with a canvas backdrop
+   Requires base.css and layout.css
+
+   Nothing here applies until sequence.js adds .is-ready / .is-pinned,
+   so the no-JS and failed-load paths keep the plain hero layout.
+   ========================================================= */
+
+.scrollstage {
+  position: relative;
+}
+
+.scrollstage-pin {
+  position: relative;
+}
+
+.scrollstage-canvas {
+  display: none;
+}
+
+/* ---------------------------------------------------------
+   Ready — frames are drawable, but the page still scrolls normally.
+   This is also the reduced-motion / save-data resting state.
+   --------------------------------------------------------- */
+.scrollstage.is-ready .scrollstage-canvas {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Veil: lifts text contrast at the top and dissolves into the page below. */
+.scrollstage.is-ready .scrollstage-pin::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 250, 255, 0.55) 0%,
+    rgba(247, 250, 255, 0.18) 26%,
+    rgba(247, 250, 255, 0.18) 58%,
+    var(--page-bg) 100%
+  );
+}
+
+/* Scrim: the veil alone leaves body copy at 2.4:1 where a bright shard drifts
+   behind it. This covers only the column the text occupies, so the backdrop
+   keeps its impact on the side where the cube sits. */
+.scrollstage.is-ready .scrollstage-pin::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(247, 250, 255, 0.92) 0%,
+    rgba(247, 250, 255, 0.86) 26%,
+    rgba(247, 250, 255, 0.42) 46%,
+    rgba(247, 250, 255, 0) 64%
+  );
+}
+
+.scrollstage.is-ready .hero {
+  position: relative;
+  z-index: 2;
+}
+
+/* Secondary greys were chosen against a flat page, not against moving glass. */
+.scrollstage.is-ready .hero-lede {
+  color: #1e2c42;
+}
+
+/* Small text needs 4.5:1, and this row sits lowest where the scrim is
+   weakest, so it takes the biggest step down. */
+.scrollstage.is-ready .hero-meta {
+  color: #2a374d;
+}
+
+/* The badge is translucent by default, which lets a panel bleed through and
+   drops its label below 4.5:1. Over the backdrop it goes fully opaque. */
+.scrollstage.is-ready .eyebrow-badge {
+  border-color: rgba(37, 99, 235, 0.2);
+  background: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   Pinned — the hero sticks while the sequence scrubs.
+   Height drives how much scroll the scrub gets: 260vh of stage
+   minus the 100vh that is stuck leaves 160vh of travel.
+   --------------------------------------------------------- */
+.scrollstage.is-pinned {
+  height: 260vh;
+}
+
+.scrollstage.is-pinned .scrollstage-pin {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scrollstage.is-pinned .hero {
+  width: 100%;
+  padding-block: var(--header-h) 0;
+}
+
+/* Values are written by sequence.js as custom properties, so the browser
+   only ever animates transform and opacity. */
+.scrollstage.is-pinned .hero-copy {
+  opacity: var(--hero-text-opacity, 1);
+  transform: translate3d(0, var(--hero-text-y, 0px), 0);
+  will-change: transform, opacity;
+}
+
+/* Applied to the wrapper, not .icon3d — the float keyframes own that
+   element's transform and would override anything set here. */
+.scrollstage.is-pinned .hero-visual {
+  opacity: var(--cube-opacity, 1);
+  transform: scale(var(--cube-scale, 1));
+  will-change: transform, opacity;
+}
+
+/* Stop compositing the backdrop once the stage is fully out of view. */
+.scrollstage.is-offscreen .scrollstage-canvas {
+  visibility: hidden;
+}
+
+@media (max-width: 1023px) {
+  .scrollstage.is-pinned {
+    height: 230vh;
+  }
+
+  /* Stacked layout puts the copy under the visual, so the scrim runs
+     bottom-up instead of left-in. */
+  .scrollstage.is-ready .scrollstage-pin::before {
+    background: linear-gradient(
+      180deg,
+      rgba(247, 250, 255, 0) 0%,
+      rgba(247, 250, 255, 0.35) 26%,
+      rgba(247, 250, 255, 0.88) 44%,
+      rgba(247, 250, 255, 0.94) 100%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollstage.is-pinned {
+    height: auto;
+  }
+
+  .scrollstage.is-pinned .scrollstage-pin {
+    position: relative;
+    height: auto;
+  }
+
+  .scrollstage.is-pinned .hero-copy,
+  .scrollstage.is-pinned .hero-visual {
+    opacity: 1;
+    transform: none;
+  }
+}
