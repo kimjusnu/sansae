@@ -27,8 +27,8 @@ COMMON = ["AimBe Lab", "Componique", "StartupQT", "Eat Fit", "Wairi", "My Feed",
           "junsu4621@naver.com", "3.45", "RBAC", "FastAPI", "ADsP", "GA4",
           "2025.07", "2020.03", "2026.02"]
 EXPECT = {
-    "ko": COMMON + ["김준수", "캡스톤", "현재", "한국공학대학교"],
-    "en": COMMON + ["Junsu Kim", "Capstone", "Present", "Tech University of Korea"],
+    "ko": COMMON + ["김준수", "한국공학대전", "스나이퍼팩토리", "현재", "한국공학대학교"],
+    "en": COMMON + ["Junsu Kim", "Korea Engineering Exhibition", "Sniper Factory", "Present", "Tech University of Korea"],
 }
 PHOTOS = {"ko": 1, "en": 0}
 
@@ -48,7 +48,10 @@ def main() -> int:
             continue
 
         reader = PdfReader(path)
-        text = "\n".join(p.extract_text() or "" for p in reader.pages)
+        raw = "\n".join(p.extract_text() or "" for p in reader.pages)
+        # A phrase that wraps mid-line extracts with a newline inside it. An ATS
+        # tokenises on whitespace and does not care, so neither should this.
+        text = " ".join(raw.split())
         box = reader.pages[0].mediabox
         images = sum(len(p.images) for p in reader.pages)
 
@@ -63,8 +66,8 @@ def main() -> int:
         broken = PUA.findall(text)
         if broken:
             problems.append(f"깨진 글리프 {len(broken)}자")
-        if len(text) < 800:
-            problems.append(f"텍스트 {len(text)}자 — 이미지로 렌더된 듯")
+        if len(raw) < 800:
+            problems.append(f"텍스트 {len(raw)}자 — 이미지로 렌더된 듯")
         if images != PHOTOS[lang]:
             problems.append(f"이미지 {images}개 (기대 {PHOTOS[lang]}개)")
 
@@ -72,7 +75,7 @@ def main() -> int:
             failures += 1
             print(f"FAIL  [{lang}] " + " · ".join(problems))
         else:
-            print(f"PASS  [{lang}] 1페이지 · A4 · 텍스트 {len(text)}자 · 이미지 {images}개")
+            print(f"PASS  [{lang}] 1페이지 · A4 · 텍스트 {len(raw)}자 · 이미지 {images}개")
 
     print("\nALL CHECKS PASSED" if not failures else f"\n{failures}건 실패")
     return 1 if failures else 0

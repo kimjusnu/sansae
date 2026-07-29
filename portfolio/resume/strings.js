@@ -21,32 +21,30 @@ window.i18nStrings = {
 
     'r.summary.title': 'Summary',
     'r.summary.body':
-      'A frontend and AI engineer who has owned products end to end — planning through operation. I define problems by watching where the product is actually used, solve them with the web and LLMs, and check in the numbers that it helped.',
+      'A frontend and AI engineer who has owned products from planning through operation. I define problems by watching where the product is actually used, and check in the numbers that the change helped.',
 
     'r.exp.title': 'Experience',
     'r.exp.1.company': 'AimBe Lab',
     'r.exp.1.role': 'Associate, full-time · SaaS planning · Frontend · AI integration',
     'r.exp.1.when': '2025.07 — Present',
     'r.exp.1.a':
-      '<strong>My Feed</strong> — digitised a farm ordering system and cut the AI classification error rate from 10% to 3%.',
-    'r.exp.1.b':
-      'Raised weekly visit frequency from 2–3 to 4 through GA4-driven improvements.',
+      '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and brought in SAM2, cutting AI classification error from 10% to 3%.',
+    'r.exp.1.b': 'Raised weekly visits from 2–3 to 4 through GA4-driven improvements.',
     'r.exp.1.c':
-      'Rebuilt the investor site into a B2B platform: SEO on Next.js RSC, with i18n written in-house.',
-    'r.exp.1.d':
-      'Designed a three-tier RBAC dashboard and built the GitHub Actions CI/CD pipeline.',
+      '<strong>Website rebuild</strong> — turned an investor site into a B2B one, taking enquiries from zero to 4 calls and 5 online a month and helping close a contract.',
+    'r.exp.1.d': 'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',
     'r.exp.2.company': 'The Innovators',
     'r.exp.2.role': 'Intern · Technical research',
     'r.exp.2.when': '2025.03 — 2025.06',
     'r.exp.2.a':
-      '<strong>StartupQT</strong> — implemented the modular editor and review workflow for a quiz-authoring SaaS.',
-    'r.exp.2.b': 'Containerised with Docker and built a zero-downtime CI/CD pipeline.',
+      '<strong>StartupQT</strong> — built the modular editor and review workflow for a quiz-authoring SaaS.',
+    'r.exp.2.b': 'Built the GitHub Actions / Docker / PM2 pipeline alone, with Nginx reverse proxy and HTTPS.',
 
     'r.proj.title': 'Projects',
-    'r.proj.1.desc': 'Open-source design-system UI library, 30+ components, with Storybook docs and a Rollup build.',
-    'r.proj.2.desc': 'SaaS for authoring, reviewing and managing quizzes, deployed on Docker with zero downtime.',
-    'r.proj.3.desc': 'Diet-tracking PWA built on food-photo analysis. SW Capstone Design Excellence Award.',
-    'r.proj.4.desc': 'Migrated a Vue service to Next.js to fix search visibility, redesigning SSR and metadata.',
+    'r.proj.1.desc': 'Open-source design system of 30+ components, published to npm. Team of four; his part was the UI components.',
+    'r.proj.2.desc': 'SaaS for authoring, reviewing and managing quizzes, on Docker with zero-downtime deploys.',
+    'r.proj.3.desc': 'Nutrition PWA driven by AI food-photo analysis. Team of three; planning, frontend and presenting.',
+    'r.proj.4.desc': 'Moved a real company\'s Vue site to Next.js to fix search visibility. Led the team on schedule and UI.',
 
     'r.skills.title': 'Skills',
     'r.skills.frontend': 'Frontend',
@@ -62,9 +60,9 @@ window.i18nStrings = {
     'r.edu.gpa': 'GPA 3.45 / 4.5 (major 3.54)',
 
     'r.awards.title': 'Awards · Certifications',
-    'r.awards.1': 'SW Capstone Design, Excellence Award (Eat Fit)',
-    'r.awards.2': 'Sniper Factory Frontend Bootcamp, Excellence Award — team lead',
-    'r.awards.3': 'Woongjin ThinkBig × Udemy Next.js Bootcamp, 2nd place',
+    'r.awards.1': 'Korea Engineering Exhibition — Eat Fit',
+    'r.awards.2': 'Sniper Factory Bootcamp — Wairi (team lead)',
+    'r.awards.3': 'Woongjin × Udemy Bootcamp, 2nd — Componique',
     'r.certs.label': 'Certified',
     'r.certs.list': 'ADsP (2026.06) · GA4 (2025.09) · OPIc IM1 (2025.02)',
   },

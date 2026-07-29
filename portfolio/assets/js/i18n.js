@@ -100,19 +100,19 @@
       'work.title': 'Things I built and <em>shipped</em>',
       'work.lede': 'Real, running projects — every demo link is live.',
       'work.open': 'Open site',
-      'work.1.tag': 'Open source',
+      'work.1.tag': 'Open source · team of 4',
       'work.1.p':
-        'An open-source design-system UI library with 30+ components, shipped with Storybook documentation and a Rollup build pipeline.',
+        'An open-source design system of 30+ components published to npm. Built by a team of four, where his part was designing and building the UI components, alongside Storybook docs and a Rollup build. 2nd place at the Woongjin ThinkBig x Udemy bootcamp.',
       'work.2.tag': 'SaaS',
       'work.2.p':
         'A SaaS for authoring, reviewing and managing quizzes. I designed the modular editor and the review workflow, and built zero-downtime deployment on Docker.',
-      'work.3.tag': 'Capstone award',
+      'work.3.tag': 'Capstone · team of 3',
       'work.3.p':
-        'A PWA that logs meals by analysing food photos. I built the AI image pipeline together with the offline-capable screens.',
+        'A PWA that logs meals by analysing food photos with AI. A team of three, where his part was planning, the frontend and presenting; built as a PWA rather than a native app, with web push for a native-feeling experience. Excellence Award at the Korea Engineering Exhibition.',
       'work.3.link': 'Exhibition page',
-      'work.4.tag': 'Migration',
+      'work.4.tag': 'Migration · team lead',
       'work.4.p':
-        'Moved a Vue service that search engines struggled with onto Next.js, redesigning server rendering and the metadata structure.',
+        'Moved a real company\'s Vue service, which search engines struggled with, onto Next.js, redesigning server rendering and the metadata structure. He led the team on schedule and UI, and it won an Excellence Award at the Sniper Factory bootcamp.',
 
       /* ---------------- process ---------------- */
       'process.title': 'How I <em>work</em>',
@@ -135,17 +135,17 @@
       'exp.1.when': '2025.07 — Present',
       'exp.1.role': 'Associate (full-time) · SaaS planning · Frontend · AI integration',
       'exp.1.a':
-        'My Feed: digitised a farm ordering system and cut the AI classification error rate from 10% to 3%.',
+        'My Feed: digitised farm orders scattered across paper ledgers and KakaoTalk, and brought in SAM2 to cut the AI classification error rate from 10% to 3%.',
       'exp.1.b':
         'GA4-driven improvements raised weekly visit frequency from 2–3 to 4.',
       'exp.1.c':
-        'Rebuilt the investor site into a B2B platform — SEO on Next.js RSC, with i18n written in-house.',
+        'Website rebuild: took enquiries from none at all to 4 calls and 5 online a month, and helped close a real contract.',
       'exp.1.d':
         'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',
       'exp.2.role': 'Intern · Technical research',
       'exp.2.a':
         'Implemented the modular editor and review workflow for the StartupQT quiz-authoring SaaS.',
-      'exp.2.b': 'Containerised with Docker and built a zero-downtime CI/CD pipeline.',
+      'exp.2.b': 'Built the GitHub Actions, Docker and PM2 pipeline single-handedly, with an Nginx reverse proxy and HTTPS.',
       'exp.3.school': 'Tech University of Korea',
       'exp.3.role':
         'B.S. Computer Engineering, Software major · GPA 3.45 / 4.5 (major 3.54)',
@@ -153,9 +153,9 @@
       'skills.llm': 'LLM integration',
       'skills.data': 'Data · Other',
       'cred.title': 'Awards · Certifications',
-      'cred.1': 'SW Capstone Design, Excellence Award (Eat Fit)',
-      'cred.2': 'Sniper Factory Frontend Bootcamp, Excellence Award (team lead)',
-      'cred.3': 'Woongjin ThinkBig × Udemy Next.js Bootcamp, 2nd place',
+      'cred.1': 'Korea Engineering Exhibition, Excellence Award — Eat Fit',
+      'cred.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi, team lead',
+      'cred.3': 'Woongjin ThinkBig × Udemy Bootcamp, 2nd place — Componique',
       'cred.ga4': 'GA4 Certification',
 
       /* ---------------- final CTA ---------------- */
