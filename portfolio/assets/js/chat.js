@@ -12,7 +12,7 @@
   'use strict';
 
   // From `npx wrangler deploy` — e.g. 'https://junsu-portfolio-assistant.<계정>.workers.dev'
-  var WORKER_URL = '';
+  var WORKER_URL = 'https://junsu-portfolio-assistant.junsu4621.workers.dev';
 
   var EMAIL = 'junsu4621@naver.com';
   var MAX_CHARS = 500;

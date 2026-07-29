@@ -8,14 +8,11 @@
   // It always runs against Cloudflare's edge — even `wrangler dev` bills usage.
   "ai": { "binding": "AI" },
 
-  // Per-IP rate limiting. Create the namespace, then paste its id here:
-  //   npx wrangler kv namespace create RATE_LIMIT_KV
-  //
-  // The limiter fails open while this is missing, so the assistant still works
-  // before you set it up — but do set it up before sharing the site.
-  // "kv_namespaces": [
-  //   { "binding": "RATE_LIMIT_KV", "id": "여기에_네임스페이스_id" }
-  // ],
+  // Per-IP rate limiting. Without this the limiter fails open, which would
+  // leave a public LLM endpoint with no ceiling.
+  "kv_namespaces": [
+    { "binding": "RATE_LIMIT_KV", "id": "c043dcdc1b944b26b3c0016bf786d8fa" }
+  ],
 
   "observability": { "enabled": true }
 }
