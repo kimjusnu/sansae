@@ -113,9 +113,13 @@ export default {
       return json({ error: 'bad_messages' }, 400, origin);
     }
 
+    // Which resume the model gets. The prompt itself still tells it to answer in
+    // whatever language the question used, so this only decides the default.
+    const lang = payload.lang === 'en' ? 'en' : 'ko';
+
     try {
       const stream = await env.AI.run(MODEL, {
-        messages: [{ role: 'system', content: systemPrompt() }, ...messages],
+        messages: [{ role: 'system', content: systemPrompt(lang) }, ...messages],
         max_tokens: MAX_OUTPUT_TOKENS,
         temperature: 0.2, // low: this should recite the resume, not riff on it
         stream: true,

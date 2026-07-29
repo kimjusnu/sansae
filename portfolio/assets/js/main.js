@@ -62,9 +62,17 @@
       return toggle.getAttribute('aria-expanded') === 'true';
     }
 
+    /** Derived from state rather than set inline, so a language switch while
+        the menu is open cannot leave the label describing the wrong action. */
+    function syncLabel() {
+      var key = isOpen() ? 'nav.close' : 'nav.open';
+      toggle.setAttribute('aria-label', window.i18n ? window.i18n.t(key) : toggle.getAttribute('aria-label'));
+    }
+    if (window.i18n) window.i18n.onChange(syncLabel);
+
     function open() {
       toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', '메뉴 닫기');
+      syncLabel();
       panel.hidden = false;
       document.body.classList.add('is-locked');
       var first = panel.querySelector('a, button');
@@ -73,7 +81,7 @@
 
     function close(returnFocus) {
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', '메뉴 열기');
+      syncLabel();
       panel.hidden = true;
       document.body.classList.remove('is-locked');
       if (returnFocus) toggle.focus();

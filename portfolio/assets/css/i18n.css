@@ -1,0 +1,79 @@
+/* =========================================================
+   Language switch — EN / KO
+   Requires base.css
+   ========================================================= */
+
+/* English is the default view, so the first paint is normally a swap. Hiding
+   the body keeps that swap off-screen. Scoped to .js because a visitor without
+   JS gets the Korean markup as-is and must never see a blank page; the inline
+   head script also clears this on a timer in case i18n.js fails to load. */
+.js.i18n-pending body {
+  visibility: hidden;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.06);
+}
+
+.lang-switch button {
+  min-width: 36px;
+  height: 30px;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-tertiary);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    color 180ms var(--ease),
+    background 180ms var(--ease);
+}
+
+.lang-switch button:hover {
+  color: var(--primary-700);
+}
+
+.lang-switch button[aria-pressed='true'] {
+  color: var(--text-inverse);
+  background: var(--primary-500);
+  box-shadow: 0 4px 12px rgba(49, 130, 246, 0.32);
+}
+
+.lang-switch button:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+/* The header runs out of room well before the hamburger appears, so below the
+   desktop breakpoint the switch moves into the mobile menu instead. */
+.mobile-nav .lang-switch {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .header-actions .lang-switch {
+    display: none;
+  }
+
+  .mobile-nav .lang-switch {
+    display: inline-flex;
+    margin-bottom: var(--space-5);
+  }
+
+  .mobile-nav .lang-switch button {
+    min-width: 52px;
+    height: 36px;
+    font-size: 13px;
+  }
+}

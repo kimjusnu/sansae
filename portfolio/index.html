@@ -8,6 +8,9 @@
 <meta name="theme-color" content="#f7faff">
 <meta name="author" content="김준수">
 <link rel="canonical" href="https://kimjusnu.github.io/sansae/">
+<link rel="alternate" hreflang="ko" href="https://kimjusnu.github.io/sansae/?lang=ko">
+<link rel="alternate" hreflang="en" href="https://kimjusnu.github.io/sansae/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://kimjusnu.github.io/sansae/">
 
 <!-- icons -->
 <link rel="icon" href="favicon.ico" sizes="32x32">
@@ -15,9 +18,11 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
-<!-- 공유 미리보기: 카카오톡 등 크롤러는 상대 경로를 읽지 못하므로 절대 URL을 쓴다 -->
+<!-- 공유 미리보기: 카카오톡 등 크롤러는 상대 경로를 읽지 못하므로 절대 URL을 쓴다.
+     크롤러는 JS도 실행하지 않으므로 이 값들은 마크업의 언어인 한국어로 고정된다. -->
 <meta property="og:type" content="profile">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:site_name" content="김준수 포트폴리오">
 <meta property="og:url" content="https://kimjusnu.github.io/sansae/">
 <meta property="og:title" content="김준수 · 프론트엔드 · AI 엔지니어 포트폴리오">
@@ -31,14 +36,36 @@
 <meta name="twitter:title" content="김준수 · 프론트엔드 · AI 엔지니어 포트폴리오">
 <meta name="twitter:description" content="기획부터 디자인, 구현, 배포, 운영까지 직접 맡아 온 프론트엔드 · AI 엔지니어 김준수의 포트폴리오입니다.">
 <meta name="twitter:image" content="https://kimjusnu.github.io/sansae/og-image.jpg">
-<script>document.documentElement.classList.add('js');</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('js');
+  // The markup is Korean but English is the default view, so most loads repaint
+  // into another language. i18n.css hides the body while that is pending; the
+  // timer makes sure a failed i18n.js can never leave a blank page behind.
+  var lang = 'en';
+  try {
+    var fromUrl = location.search.match(/[?&]lang=(en|ko)/);
+    var stored = fromUrl ? fromUrl[1] : localStorage.getItem('lang');
+    if (stored === 'ko' || stored === 'en') lang = stored;
+  } catch (e) {
+    /* storage blocked — the default stands */
+  }
+  if (lang !== 'ko') {
+    root.classList.add('i18n-pending');
+    setTimeout(function () {
+      root.classList.remove('i18n-pending');
+    }, 1500);
+  }
+})();
+</script>
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/layout.css">
 <link rel="stylesheet" href="assets/css/sections.css">
 <link rel="stylesheet" href="assets/css/sequence.css">
 <link rel="stylesheet" href="assets/css/intro.css">
 <link rel="stylesheet" href="assets/css/cursor.css">
-<link rel="stylesheet" href="assets/css/contact-dock.css">
+<link rel="stylesheet" href="assets/css/i18n.css">
 <link rel="stylesheet" href="assets/css/chat.css">
 <script type="application/ld+json">
 {
@@ -53,6 +80,7 @@
     "https://github.com/kimjusnu",
     "https://dietisdie.tistory.com/"
   ],
+  "knowsLanguage": ["ko", "en"],
   "alumniOf": {
     "@type": "CollegeOrUniversity",
     "name": "한국공학대학교"
@@ -62,12 +90,12 @@
 </head>
 <body>
 
-<a class="skip-link" href="#main">본문 바로가기</a>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">본문 바로가기</a>
 <div class="page-wash" aria-hidden="true"></div>
 
 <!-- 인트로 게이트: intro.js가 표시 조건을 만족할 때만 hidden을 벗긴다.
      JS가 없으면 이 레이어는 아예 나타나지 않는다. -->
-<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="사이트 입장" hidden>
+<div class="intro" id="intro" role="dialog" aria-modal="true" data-i18n-attr="aria-label:intro.label" aria-label="사이트 입장" hidden>
   <div class="intro-grid" aria-hidden="true"></div>
   <span class="intro-burst" aria-hidden="true"></span>
   <div class="intro-inner">
@@ -76,13 +104,13 @@
       <span class="intro-orbit" aria-hidden="true"></span>
       <img src="icons/icon-hero-product-build.webp" alt="" aria-hidden="true" width="420" height="420" decoding="async">
     </div>
-    <p class="intro-name">김준수</p>
-    <p class="intro-role">프론트엔드 · AI 엔지니어</p>
+    <p class="intro-name" data-i18n="intro.name">김준수</p>
+    <p class="intro-role" data-i18n="intro.role">프론트엔드 · AI 엔지니어</p>
     <button class="button button-primary intro-enter" type="button">
       Deep Dive
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5h9M8.5 4l3.5 3.5-3.5 3.5"/></svg>
     </button>
-    <p class="intro-hint">버튼을 누르거나 ESC로 건너뛰기</p>
+    <p class="intro-hint" data-i18n="intro.hint">버튼을 누르거나 ESC로 건너뛰기</p>
   </div>
 </div>
 
@@ -90,22 +118,26 @@
   <div class="site-container header-inner">
     <a class="wordmark" href="#top">
       <span class="wordmark-mark" aria-hidden="true"></span>
-      김준수 <span class="wordmark-sub">FE · AI Engineer</span>
+      <span data-i18n="brand.name">김준수</span> <span class="wordmark-sub">FE · AI Engineer</span>
     </a>
 
-    <nav class="nav-desktop" aria-label="주요 메뉴">
+    <nav class="nav-desktop" data-i18n-attr="aria-label:nav.label" aria-label="주요 메뉴">
       <ul>
-        <li><a href="#about">강점</a></li>
-        <li><a href="#work">프로젝트</a></li>
-        <li><a href="#process">일하는 방식</a></li>
-        <li><a href="#experience">경력</a></li>
+        <li><a href="#about" data-i18n="nav.about">강점</a></li>
+        <li><a href="#work" data-i18n="nav.work">프로젝트</a></li>
+        <li><a href="#process" data-i18n="nav.process">일하는 방식</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">경력</a></li>
       </ul>
     </nav>
 
     <div class="header-actions">
+      <div class="lang-switch" role="group" data-i18n-attr="aria-label:a11y.langGroup" aria-label="언어 선택">
+        <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-set="ko" aria-pressed="false">KO</button>
+      </div>
       <a class="button button-secondary button--sm hide-md" href="https://github.com/kimjusnu" target="_blank" rel="noopener">GitHub</a>
-      <a class="button button-primary button--sm" href="#contact">연락하기</a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="메뉴 열기">
+      <a class="button button-primary button--sm" href="#contact" data-i18n="nav.contact">연락하기</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-i18n-attr="aria-label:nav.open" aria-label="메뉴 열기">
         <svg class="icon-open" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
           <path d="M3 6h14M3 10h14M3 14h14"/>
         </svg>
@@ -118,16 +150,20 @@
 
   <div class="mobile-nav" id="mobile-nav" hidden>
     <div class="site-container">
+      <div class="lang-switch" role="group" data-i18n-attr="aria-label:a11y.langGroup" aria-label="언어 선택">
+        <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-set="ko" aria-pressed="false">KO</button>
+      </div>
       <ul>
-        <li><a href="#about">강점</a></li>
-        <li><a href="#work">프로젝트</a></li>
-        <li><a href="#process">일하는 방식</a></li>
-        <li><a href="#experience">경력</a></li>
-        <li><a href="#contact">연락하기</a></li>
+        <li><a href="#about" data-i18n="nav.about">강점</a></li>
+        <li><a href="#work" data-i18n="nav.work">프로젝트</a></li>
+        <li><a href="#process" data-i18n="nav.process">일하는 방식</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">경력</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">연락하기</a></li>
       </ul>
       <div class="mobile-nav-cta">
         <a class="button button-secondary" href="https://github.com/kimjusnu" target="_blank" rel="noopener">GitHub</a>
-        <a class="button button-primary" href="mailto:junsu4621@naver.com">이메일 보내기</a>
+        <a class="button button-primary" href="mailto:junsu4621@naver.com" data-i18n="cta.email">이메일 보내기</a>
       </div>
     </div>
   </div>
@@ -146,19 +182,19 @@
       <div class="hero-copy">
         <span class="eyebrow-badge">
           <span class="status-dot" aria-hidden="true"></span>
-          새로운 팀과의 합류를 찾고 있습니다
+          <span data-i18n="hero.badge">새로운 팀과의 합류를 찾고 있습니다</span>
         </span>
-        <h1>문제를 관찰하고,<br><em>배포되는 제품</em>까지 만듭니다</h1>
-        <p class="hero-lede">
+        <h1 data-i18n-html="hero.title">문제를 관찰하고,<br><em>배포되는 제품</em>까지 만듭니다</h1>
+        <p class="hero-lede" data-i18n="hero.lede">
           기획 · 디자인 · 구현 · 배포 · 운영을 직접 맡아 온 프론트엔드 · AI 엔지니어 김준수입니다.
           사용자가 실제로 겪는 문제를 찾아 웹과 LLM으로 풀어냅니다.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#work">프로젝트 살펴보기</a>
-          <a class="button button-secondary" href="#contact">연락하기</a>
+          <a class="button button-primary" href="#work" data-i18n="hero.cta1">프로젝트 살펴보기</a>
+          <a class="button button-secondary" href="#contact" data-i18n="hero.cta2">연락하기</a>
         </div>
         <ul class="hero-meta">
-          <li>인천 · 서울</li>
+          <li data-i18n="hero.meta1">인천 · 서울</li>
           <li>React · Next.js · TypeScript</li>
           <li>LLM · FastAPI · CI/CD</li>
         </ul>
@@ -180,22 +216,22 @@
   <!-- ======================= Working principles ======================= -->
   <section class="section section--tight" aria-labelledby="principles-title">
     <div class="site-container">
-      <h2 class="visually-hidden" id="principles-title">일하는 원칙</h2>
+      <h2 class="visually-hidden" id="principles-title" data-i18n="principles.title">일하는 원칙</h2>
       <ul class="principles reveal">
         <li class="principle">
           <span class="principle-mark">01</span>
-          <h3>끝까지 이어서 책임집니다</h3>
-          <p>기획에서 시작해 배포와 운영까지 한 사람이 맡습니다. 인수인계 없이 개선이 이어집니다.</p>
+          <h3 data-i18n="principles.1.h">끝까지 이어서 책임집니다</h3>
+          <p data-i18n="principles.1.p">기획에서 시작해 배포와 운영까지 한 사람이 맡습니다. 인수인계 없이 개선이 이어집니다.</p>
         </li>
         <li class="principle">
           <span class="principle-mark">02</span>
-          <h3>현장에서 문제를 찾습니다</h3>
-          <p>실제 사용 환경을 직접 보고 문제를 정의합니다. 농가를 방문해 주문 흐름을 관찰한 뒤 화면을 설계했습니다.</p>
+          <h3 data-i18n="principles.2.h">현장에서 문제를 찾습니다</h3>
+          <p data-i18n="principles.2.p">실제 사용 환경을 직접 보고 문제를 정의합니다. 농가를 방문해 주문 흐름을 관찰한 뒤 화면을 설계했습니다.</p>
         </li>
         <li class="principle">
           <span class="principle-mark">03</span>
-          <h3>개선 결과를 확인합니다</h3>
-          <p>GA4와 Clarity로 사용자 행동을 읽고, 바꾼 것이 실제로 나아졌는지 지표로 확인합니다.</p>
+          <h3 data-i18n="principles.3.h">개선 결과를 확인합니다</h3>
+          <p data-i18n="principles.3.p">GA4와 Clarity로 사용자 행동을 읽고, 바꾼 것이 실제로 나아졌는지 지표로 확인합니다.</p>
         </li>
       </ul>
     </div>
@@ -206,8 +242,8 @@
     <div class="site-container">
       <div class="section-header reveal">
         <span class="eyebrow">About</span>
-        <h2>제품의 <em>처음부터 끝까지</em>를 혼자서도 끌고 갑니다</h2>
-        <p>한 화면을 만드는 일보다, 그 화면이 실제로 쓰이게 만드는 일에 시간을 씁니다.</p>
+        <h2 data-i18n-html="about.title">제품의 <em>처음부터 끝까지</em>를 혼자서도 끌고 갑니다</h2>
+        <p data-i18n="about.lede">한 화면을 만드는 일보다, 그 화면이 실제로 쓰이게 만드는 일에 시간을 씁니다.</p>
       </div>
 
       <div class="feature-grid">
@@ -216,8 +252,8 @@
             <span class="icon3d-fallback" aria-hidden="true"></span>
             <img src="icons/icon-feature-ownership.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
-          <h3>End-to-End 오너십</h3>
-          <p>기획 → 디자인 → 구현 → 배포 → 운영. 아이디어가 사용자에게 닿을 때까지의 모든 단계를 직접 맡습니다.</p>
+          <h3 data-i18n="about.1.h">End-to-End 오너십</h3>
+          <p data-i18n="about.1.p">기획 → 디자인 → 구현 → 배포 → 운영. 아이디어가 사용자에게 닿을 때까지의 모든 단계를 직접 맡습니다.</p>
         </article>
 
         <article class="feature-card reveal" data-delay="1">
@@ -225,8 +261,8 @@
             <span class="icon3d-fallback" aria-hidden="true"></span>
             <img src="icons/icon-feature-fullstack.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
-          <h3>풀스택 실행력</h3>
-          <p>프론트엔드부터 FastAPI 백엔드, Docker와 CI/CD 인프라까지 이어서 다룹니다. 막히는 지점을 남에게 넘기지 않습니다.</p>
+          <h3 data-i18n="about.2.h">풀스택 실행력</h3>
+          <p data-i18n="about.2.p">프론트엔드부터 FastAPI 백엔드, Docker와 CI/CD 인프라까지 이어서 다룹니다. 막히는 지점을 남에게 넘기지 않습니다.</p>
         </article>
 
         <article class="feature-card reveal" data-delay="2">
@@ -234,8 +270,8 @@
             <span class="icon3d-fallback" aria-hidden="true"></span>
             <img src="icons/icon-feature-research.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
-          <h3>현장 기반 문제 정의</h3>
-          <p>사용 현장을 직접 관찰하고 행동 데이터를 읽어, 요구사항 뒤에 있는 진짜 문제를 정의합니다.</p>
+          <h3 data-i18n="about.3.h">현장 기반 문제 정의</h3>
+          <p data-i18n="about.3.p">사용 현장을 직접 관찰하고 행동 데이터를 읽어, 요구사항 뒤에 있는 진짜 문제를 정의합니다.</p>
         </article>
 
         <article class="feature-card reveal" data-delay="3">
@@ -243,8 +279,8 @@
             <span class="icon3d-fallback" aria-hidden="true"></span>
             <img src="icons/icon-feature-ai.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
-          <h3>AI를 제품에 녹이기</h3>
-          <p>LLM과 SAM2를 실제 화면 흐름에 통합합니다. My Feed에서는 AI 분류 오류율을 10%에서 3%로 낮췄습니다.</p>
+          <h3 data-i18n="about.4.h">AI를 제품에 녹이기</h3>
+          <p data-i18n="about.4.p">LLM과 SAM2를 실제 화면 흐름에 통합합니다. My Feed에서는 AI 분류 오류율을 10%에서 3%로 낮췄습니다.</p>
         </article>
       </div>
     </div>
@@ -255,25 +291,25 @@
     <div class="site-container">
       <div class="section-header reveal">
         <span class="eyebrow">Selected Work</span>
-        <h2>만들어서 <em>배포한</em> 것들</h2>
-        <p>데모 링크가 살아 있는, 실제로 운영되는 프로젝트입니다.</p>
+        <h2 data-i18n-html="work.title">만들어서 <em>배포한</em> 것들</h2>
+        <p data-i18n="work.lede">데모 링크가 살아 있는, 실제로 운영되는 프로젝트입니다.</p>
       </div>
 
       <div class="work-list">
         <article class="work-card reveal">
           <div class="work-index">
             <span class="work-num">01</span>
-            <span class="work-tag">오픈소스</span>
+            <span class="work-tag" data-i18n="work.1.tag">오픈소스</span>
           </div>
           <div class="work-body">
             <h3>Componique</h3>
-            <p>30개 이상의 컴포넌트를 담은 오픈소스 디자인 시스템 UI 라이브러리. Storybook 문서와 Rollup 빌드 파이프라인을 함께 구성했습니다.</p>
+            <p data-i18n="work.1.p">30개 이상의 컴포넌트를 담은 오픈소스 디자인 시스템 UI 라이브러리. Storybook 문서와 Rollup 빌드 파이프라인을 함께 구성했습니다.</p>
             <ul class="stack">
               <li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>Storybook</li><li>Rollup</li>
             </ul>
           </div>
           <a class="work-link" href="https://componique.vercel.app/" target="_blank" rel="noopener">
-            사이트 열기
+            <span data-i18n="work.open">사이트 열기</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
           </a>
         </article>
@@ -281,17 +317,17 @@
         <article class="work-card reveal">
           <div class="work-index">
             <span class="work-num">02</span>
-            <span class="work-tag">SaaS</span>
+            <span class="work-tag" data-i18n="work.2.tag">SaaS</span>
           </div>
           <div class="work-body">
             <h3>StartupQT</h3>
-            <p>퀴즈 저작 · 검수 · 관리 SaaS. 모듈형 에디터와 검수 워크플로우를 설계하고 Docker 기반 무중단 배포까지 구축했습니다.</p>
+            <p data-i18n="work.2.p">퀴즈 저작 · 검수 · 관리 SaaS. 모듈형 에디터와 검수 워크플로우를 설계하고 Docker 기반 무중단 배포까지 구축했습니다.</p>
             <ul class="stack">
               <li>Next.js</li><li>TypeScript</li><li>Zustand</li><li>Tiptap</li><li>MUI</li><li>Docker</li>
             </ul>
           </div>
           <a class="work-link" href="https://startupqt.com/start" target="_blank" rel="noopener">
-            사이트 열기
+            <span data-i18n="work.open">사이트 열기</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
           </a>
         </article>
@@ -299,17 +335,17 @@
         <article class="work-card reveal">
           <div class="work-index">
             <span class="work-num">03</span>
-            <span class="work-tag">캡스톤 우수상</span>
+            <span class="work-tag" data-i18n="work.3.tag">캡스톤 우수상</span>
           </div>
           <div class="work-body">
             <h3>Eat Fit</h3>
-            <p>음식 사진을 분석해 식단을 기록하는 PWA. AI 이미지 분석 파이프라인과 오프라인 대응 화면을 함께 만들었습니다.</p>
+            <p data-i18n="work.3.p">음식 사진을 분석해 식단을 기록하는 PWA. AI 이미지 분석 파이프라인과 오프라인 대응 화면을 함께 만들었습니다.</p>
             <ul class="stack">
               <li>Next.js</li><li>FastAPI</li><li>AWS</li><li>PWA</li>
             </ul>
           </div>
           <a class="work-link" href="https://expo.tukorea.ac.kr/2025/work/87" target="_blank" rel="noopener">
-            전시 페이지
+            <span data-i18n="work.3.link">전시 페이지</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
           </a>
         </article>
@@ -317,17 +353,17 @@
         <article class="work-card reveal">
           <div class="work-index">
             <span class="work-num">04</span>
-            <span class="work-tag">마이그레이션</span>
+            <span class="work-tag" data-i18n="work.4.tag">마이그레이션</span>
           </div>
           <div class="work-body">
             <h3>Wairi</h3>
-            <p>검색 노출이 어려운 Vue 기반 서비스를 Next.js로 옮겨, 서버 렌더링과 메타데이터 구조를 다시 설계했습니다.</p>
+            <p data-i18n="work.4.p">검색 노출이 어려운 Vue 기반 서비스를 Next.js로 옮겨, 서버 렌더링과 메타데이터 구조를 다시 설계했습니다.</p>
             <ul class="stack">
               <li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>SEO</li>
             </ul>
           </div>
           <a class="work-link" href="https://www.wairi.co.kr/webapp" target="_blank" rel="noopener">
-            사이트 열기
+            <span data-i18n="work.open">사이트 열기</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
           </a>
         </article>
@@ -340,8 +376,8 @@
     <div class="site-container">
       <div class="section-header reveal">
         <span class="eyebrow">Process</span>
-        <h2>이렇게 <em>일합니다</em></h2>
-        <p>네 단계를 한 바퀴 돌리고, 지표를 확인한 뒤 다시 첫 단계로 돌아갑니다.</p>
+        <h2 data-i18n-html="process.title">이렇게 <em>일합니다</em></h2>
+        <p data-i18n="process.lede">네 단계를 한 바퀴 돌리고, 지표를 확인한 뒤 다시 첫 단계로 돌아갑니다.</p>
       </div>
 
       <ol class="process-list">
@@ -351,8 +387,8 @@
             <img src="icons/icon-process-define.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
           </div>
           <span class="step-num">STEP 01</span>
-          <h3>정의</h3>
-          <p>사용 현장과 데이터를 함께 보고, 무엇을 풀어야 하는지부터 좁힙니다.</p>
+          <h3 data-i18n="process.1.h">정의</h3>
+          <p data-i18n="process.1.p">사용 현장과 데이터를 함께 보고, 무엇을 풀어야 하는지부터 좁힙니다.</p>
         </li>
         <li class="process-step reveal" data-delay="1">
           <div class="icon3d icon3d--float-slow" style="--icon-size: min(80px, 20vw)">
@@ -360,8 +396,8 @@
             <img src="icons/icon-process-design.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
           </div>
           <span class="step-num">STEP 02</span>
-          <h3>설계</h3>
-          <p>화면 흐름과 데이터 구조, 권한 범위를 같은 자리에서 그립니다.</p>
+          <h3 data-i18n="process.2.h">설계</h3>
+          <p data-i18n="process.2.p">화면 흐름과 데이터 구조, 권한 범위를 같은 자리에서 그립니다.</p>
         </li>
         <li class="process-step reveal" data-delay="2">
           <div class="icon3d icon3d--float" style="--icon-size: min(80px, 20vw)">
@@ -369,8 +405,8 @@
             <img src="icons/icon-process-build.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
           </div>
           <span class="step-num">STEP 03</span>
-          <h3>구현</h3>
-          <p>프론트엔드와 API, 배포 파이프라인까지 이어서 만들고 자동화합니다.</p>
+          <h3 data-i18n="process.3.h">구현</h3>
+          <p data-i18n="process.3.p">프론트엔드와 API, 배포 파이프라인까지 이어서 만들고 자동화합니다.</p>
         </li>
         <li class="process-step reveal" data-delay="3">
           <div class="icon3d icon3d--float-slow" style="--icon-size: min(80px, 20vw)">
@@ -378,8 +414,8 @@
             <img src="icons/icon-process-operate.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
           </div>
           <span class="step-num">STEP 04</span>
-          <h3>운영</h3>
-          <p>실제 사용 지표를 읽고, 다음에 고칠 것을 정합니다.</p>
+          <h3 data-i18n="process.4.h">운영</h3>
+          <p data-i18n="process.4.p">실제 사용 지표를 읽고, 다음에 고칠 것을 정합니다.</p>
         </li>
       </ol>
     </div>
@@ -390,7 +426,7 @@
     <div class="site-container">
       <div class="section-header reveal">
         <span class="eyebrow">Experience</span>
-        <h2>지금까지의 <em>경로</em></h2>
+        <h2 data-i18n-html="exp.title">지금까지의 <em>경로</em></h2>
       </div>
 
       <div class="exp-layout">
@@ -398,35 +434,35 @@
           <article class="timeline-item reveal">
             <p class="when">2025.07 — 2026.06</p>
             <h3>AimBe Lab</h3>
-            <p class="role">Associate (정규직) · SaaS 기획 · 프론트엔드 · AI 통합</p>
+            <p class="role" data-i18n="exp.1.role">Associate (정규직) · SaaS 기획 · 프론트엔드 · AI 통합</p>
             <ul>
-              <li>My Feed: 농가 주문 시스템을 디지털화하고 AI 분류 오류율을 10%에서 3%로 낮췄습니다.</li>
-              <li>GA4 기반 개선으로 주간 방문 빈도가 2~3회에서 4회로 늘었습니다.</li>
-              <li>투자자 소개 사이트를 B2B 플랫폼으로 재구축 — Next.js RSC 기반 SEO와 자체 i18n 구현.</li>
-              <li>3단계 RBAC 대시보드 설계, GitHub Actions CI/CD 구축.</li>
+              <li data-i18n="exp.1.a">My Feed: 농가 주문 시스템을 디지털화하고 AI 분류 오류율을 10%에서 3%로 낮췄습니다.</li>
+              <li data-i18n="exp.1.b">GA4 기반 개선으로 주간 방문 빈도가 2~3회에서 4회로 늘었습니다.</li>
+              <li data-i18n="exp.1.c">투자자 소개 사이트를 B2B 플랫폼으로 재구축 — Next.js RSC 기반 SEO와 자체 i18n 구현.</li>
+              <li data-i18n="exp.1.d">3단계 RBAC 대시보드 설계, GitHub Actions CI/CD 구축.</li>
             </ul>
           </article>
 
           <article class="timeline-item reveal">
             <p class="when">2025.03 — 2025.06</p>
             <h3>The Innovators</h3>
-            <p class="role">Intern · 기술 리서치</p>
+            <p class="role" data-i18n="exp.2.role">Intern · 기술 리서치</p>
             <ul>
-              <li>StartupQT 퀴즈 저작 SaaS의 모듈형 에디터와 검수 워크플로우 구현.</li>
-              <li>Docker 컨테이너화와 무중단 CI/CD 파이프라인 구축.</li>
+              <li data-i18n="exp.2.a">StartupQT 퀴즈 저작 SaaS의 모듈형 에디터와 검수 워크플로우 구현.</li>
+              <li data-i18n="exp.2.b">Docker 컨테이너화와 무중단 CI/CD 파이프라인 구축.</li>
             </ul>
           </article>
 
           <article class="timeline-item reveal">
             <p class="when">2020.03 — 2026.02</p>
-            <h3>한국공학대학교</h3>
-            <p class="role">컴퓨터공학부 소프트웨어전공 · 학점 3.45 / 4.5 (전공 3.54)</p>
+            <h3 data-i18n="exp.3.school">한국공학대학교</h3>
+            <p class="role" data-i18n="exp.3.role">컴퓨터공학부 소프트웨어전공 · 학점 3.45 / 4.5 (전공 3.54)</p>
           </article>
         </div>
 
         <div>
           <div class="side-panel reveal">
-            <h3>주요 기술</h3>
+            <h3 data-i18n="skills.title">주요 기술</h3>
             <dl>
               <div class="skill-group">
                 <dt>Frontend</dt>
@@ -440,7 +476,7 @@
                 <dt>AI</dt>
                 <dd>
                   <ul class="chips">
-                    <li>LLM 통합</li><li>SAM2</li><li>FastAPI</li>
+                    <li data-i18n="skills.llm">LLM 통합</li><li>SAM2</li><li>FastAPI</li>
                   </ul>
                 </dd>
               </div>
@@ -453,7 +489,7 @@
                 </dd>
               </div>
               <div class="skill-group">
-                <dt>Data · 기타</dt>
+                <dt data-i18n="skills.data">Data · 기타</dt>
                 <dd>
                   <ul class="chips">
                     <li>GA4</li><li>Microsoft Clarity</li><li>RBAC</li><li>i18n</li><li>Tiptap</li><li>MUI</li>
@@ -464,13 +500,13 @@
           </div>
 
           <div class="side-panel reveal">
-            <h3>수상 · 자격</h3>
+            <h3 data-i18n="cred.title">수상 · 자격</h3>
             <ul class="credential-list">
-              <li><span>SW 캡스톤 디자인 우수상 (Eat Fit)</span><span class="year">2025</span></li>
-              <li><span>Sniper Factory 프론트엔드 부트캠프 우수상 (팀 리더)</span><span class="year">2024</span></li>
-              <li><span>웅진씽크빅 × Udemy Next.js 부트캠프 2위</span><span class="year">2024</span></li>
+              <li><span data-i18n="cred.1">SW 캡스톤 디자인 우수상 (Eat Fit)</span><span class="year">2025</span></li>
+              <li><span data-i18n="cred.2">Sniper Factory 프론트엔드 부트캠프 우수상 (팀 리더)</span><span class="year">2024</span></li>
+              <li><span data-i18n="cred.3">웅진씽크빅 × Udemy Next.js 부트캠프 2위</span><span class="year">2024</span></li>
               <li><span>ADsP</span><span class="year">2026.06</span></li>
-              <li><span>GA4 인증</span><span class="year">2025.09</span></li>
+              <li><span data-i18n="cred.ga4">GA4 인증</span><span class="year">2025.09</span></li>
               <li><span>OPIc IM1</span><span class="year">2025.02</span></li>
             </ul>
           </div>
@@ -484,11 +520,11 @@
     <div class="site-container">
       <div class="cta-panel reveal">
         <div>
-          <h2>함께 풀 문제를 찾고 있습니다</h2>
-          <p>제품을 처음부터 끝까지 맡을 사람이 필요하시다면 편하게 연락 주세요. 이력서와 상세 사례는 메일로 보내드립니다.</p>
+          <h2 data-i18n="final.title">함께 풀 문제를 찾고 있습니다</h2>
+          <p data-i18n="final.p">제품을 처음부터 끝까지 맡을 사람이 필요하시다면 편하게 연락 주세요. 이력서와 상세 사례는 메일로 보내드립니다.</p>
           <div class="cta-actions">
-            <a class="button button-primary" href="mailto:junsu4621@naver.com">이메일 보내기</a>
-            <a class="button button-secondary" href="https://github.com/kimjusnu" target="_blank" rel="noopener">GitHub 보기</a>
+            <a class="button button-primary" href="mailto:junsu4621@naver.com" data-i18n="cta.email">이메일 보내기</a>
+            <a class="button button-secondary" href="https://github.com/kimjusnu" target="_blank" rel="noopener" data-i18n="final.github">GitHub 보기</a>
           </div>
         </div>
         <div class="icon3d icon3d--float" style="--icon-size: min(200px, 44vw)">
@@ -505,21 +541,21 @@
 <div class="chat-dock" id="chat-dock" hidden>
   <button class="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-panel">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.2c3.9 0 7 2.4 7 5.4s-3.1 5.4-7 5.4c-.6 0-1.2-.06-1.7-.17L4.6 16l.6-2.9C3.8 12.1 3 10.7 3 8.6c0-3 3.1-5.4 7-5.4Z"/><circle cx="7.4" cy="8.6" r=".9" fill="currentColor" stroke="none"/><circle cx="10" cy="8.6" r=".9" fill="currentColor" stroke="none"/><circle cx="12.6" cy="8.6" r=".9" fill="currentColor" stroke="none"/></svg>
-    AI에게 물어보기
+    <span data-i18n="chat.toggle">AI에게 물어보기</span>
   </button>
 </div>
 
-<section class="chat-panel" id="chat-panel" aria-label="AI 안내 도우미" hidden>
+<section class="chat-panel" id="chat-panel" data-i18n-attr="aria-label:chat.panelLabel" aria-label="AI 안내 도우미" hidden>
   <header class="chat-header">
     <div class="icon3d" aria-hidden="true">
       <span class="icon3d-fallback"></span>
       <img src="icons/icon-chat-assistant.webp" alt="" width="44" height="44" loading="lazy" decoding="async">
     </div>
     <div>
-      <h2>포트폴리오 도우미</h2>
-      <p>이력 · 프로젝트에 대해 답해드립니다</p>
+      <h2 data-i18n="chat.title">포트폴리오 도우미</h2>
+      <p data-i18n="chat.sub">이력 · 프로젝트에 대해 답해드립니다</p>
     </div>
-    <button class="chat-close" type="button" aria-label="닫기">
+    <button class="chat-close" type="button" data-i18n-attr="aria-label:chat.close" aria-label="닫기">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l8 8M13 5l-8 8"/></svg>
     </button>
   </header>
@@ -527,54 +563,21 @@
   <div class="chat-log" role="log" aria-live="polite" aria-atomic="false"></div>
 
   <div class="chat-suggestions">
-    <button type="button">어떤 프로젝트를 했나요?</button>
-    <button type="button">주로 쓰는 기술 스택은?</button>
-    <button type="button">AimBe Lab에서 한 일은?</button>
+    <button type="button" data-i18n="chat.s1">어떤 프로젝트를 했나요?</button>
+    <button type="button" data-i18n="chat.s2">주로 쓰는 기술 스택은?</button>
+    <button type="button" data-i18n="chat.s3">AimBe Lab에서 한 일은?</button>
   </div>
 
   <form class="chat-form" autocomplete="off">
-    <label class="visually-hidden" for="chat-input">질문 입력</label>
-    <input id="chat-input" type="text" maxlength="500" placeholder="궁금한 점을 물어보세요" enterkeyhint="send">
-    <button class="chat-send" type="submit" aria-label="보내기">
+    <label class="visually-hidden" for="chat-input" data-i18n="chat.inputLabel">질문 입력</label>
+    <input id="chat-input" type="text" maxlength="500" data-i18n-attr="placeholder:chat.placeholder" placeholder="궁금한 점을 물어보세요" enterkeyhint="send">
+    <button class="chat-send" type="submit" data-i18n-attr="aria-label:chat.send" aria-label="보내기">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h11M10 5l4 4-4 4"/></svg>
     </button>
   </form>
 
-  <p class="chat-disclaimer">AI가 이력서 데이터를 바탕으로 답합니다. 대화는 저장되지 않으며, 정확한 확인은 메일로 부탁드립니다.</p>
+  <p class="chat-disclaimer" data-i18n="chat.disclaimer">AI가 이력서 데이터를 바탕으로 답합니다. 대화는 저장되지 않으며, 정확한 확인은 메일로 부탁드립니다.</p>
 </section>
-
-<!-- 소통망: 카카오톡 행은 contact-dock.js의 KAKAO_CHANNEL_ID가 채워질 때만 나타납니다 -->
-<div class="contact-dock" id="contact-dock">
-  <div class="contact-panel" id="contact-panel" hidden>
-    <p class="contact-panel-title">편하게 연락 주세요</p>
-    <p class="contact-panel-note">보통 하루 안에 답장드립니다.</p>
-    <ul>
-      <li>
-        <a href="mailto:junsu4621@naver.com">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M2.5 5.5 9 10l6.5-4.5"/></svg>
-          <span class="contact-label">junsu4621@naver.com</span>
-        </a>
-      </li>
-      <li>
-        <a class="contact-kakao" href="https://pf.kakao.com/" target="_blank" rel="noopener" hidden>
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3c3.6 0 6.5 2.2 6.5 5s-2.9 5-6.5 5c-.5 0-1-.05-1.5-.13L4.5 15l.5-2.6C3.4 11.5 2.5 10.3 2.5 8c0-2.8 2.9-5 6.5-5Z"/></svg>
-          <span class="contact-label">카카오톡으로 문의</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/kimjusnu" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 15.5v-2.3c-2.3.4-2.9-1-2.9-1-.3-.8-.8-1.1-.8-1.1-.7-.5 0-.5 0-.5.8.05 1.2.8 1.2.8.7 1.2 1.8.9 2.4.6.05-.5.3-.9.5-1.1-1.8-.2-3.4-.9-3.4-3.9 0-.9.3-1.6.8-2.1-.1-.2-.35-1 .08-2.1 0 0 .7-.2 2.3.8a5.6 5.6 0 0 1 3 0c1.6-1 2.3-.8 2.3-.8.43 1.1.16 1.9.08 2.1.5.5.8 1.2.8 2.1 0 3-1.6 3.7-3.4 3.9.3.3.6.85.6 1.7v2.5"/></svg>
-          <span class="contact-label">GitHub</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <button class="contact-toggle" type="button" aria-expanded="false" aria-controls="contact-panel" aria-label="연락처 열기">
-    <svg class="icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.6c4.6 0 8.4 2.9 8.4 6.5s-3.8 6.5-8.4 6.5c-.7 0-1.4-.07-2-.2L5.4 20.4l.7-3.6C4.4 15.6 3.6 13.9 3.6 10.1c0-3.6 3.8-6.5 8.4-6.5Z"/></svg>
-    <svg class="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l10 10M16 6L6 16"/></svg>
-  </button>
-</div>
 
 <footer class="site-footer">
   <div class="site-container">
@@ -582,42 +585,43 @@
       <div class="footer-brand">
         <a class="wordmark" href="#top">
           <span class="wordmark-mark" aria-hidden="true"></span>
-          김준수
+          <span data-i18n="brand.name">김준수</span>
         </a>
-        <p>문제를 관찰하고 배포되는 제품으로 만드는 프론트엔드 · AI 엔지니어입니다.</p>
+        <p data-i18n="footer.tagline">문제를 관찰하고 배포되는 제품으로 만드는 프론트엔드 · AI 엔지니어입니다.</p>
       </div>
 
-      <nav class="footer-links" aria-label="푸터 메뉴">
+      <nav class="footer-links" data-i18n-attr="aria-label:footer.label" aria-label="푸터 메뉴">
         <div>
-          <h3>둘러보기</h3>
+          <h3 data-i18n="footer.explore">둘러보기</h3>
           <ul>
-            <li><a href="#about">강점</a></li>
-            <li><a href="#work">프로젝트</a></li>
-            <li><a href="#process">일하는 방식</a></li>
-            <li><a href="#experience">경력</a></li>
+            <li><a href="#about" data-i18n="nav.about">강점</a></li>
+            <li><a href="#work" data-i18n="nav.work">프로젝트</a></li>
+            <li><a href="#process" data-i18n="nav.process">일하는 방식</a></li>
+            <li><a href="#experience" data-i18n="nav.experience">경력</a></li>
           </ul>
         </div>
         <div>
-          <h3>연락처</h3>
+          <h3 data-i18n="footer.contact">연락처</h3>
           <ul>
             <li><a href="mailto:junsu4621@naver.com">junsu4621@naver.com</a></li>
             <li><a href="https://github.com/kimjusnu" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://junsudev4.vercel.app/" target="_blank" rel="noopener">이전 포트폴리오</a></li>
-            <li><a href="https://dietisdie.tistory.com/" target="_blank" rel="noopener">기술 블로그</a></li>
+            <li><a href="https://junsudev4.vercel.app/" target="_blank" rel="noopener" data-i18n="footer.prev">이전 포트폴리오</a></li>
+            <li><a href="https://dietisdie.tistory.com/" target="_blank" rel="noopener" data-i18n="footer.blog">기술 블로그</a></li>
           </ul>
         </div>
       </nav>
     </div>
 
-    <p class="footer-bottom">© 2026 김준수 (Junsu Kim). Designed &amp; built by Junsu Kim.</p>
+    <p class="footer-bottom" data-i18n="footer.bottom">© 2026 김준수 (Junsu Kim). Designed &amp; built by Junsu Kim.</p>
   </div>
 </footer>
 
+<!-- i18n.js runs first: every other script reads its strings through window.i18n -->
+<script src="assets/js/i18n.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/sequence.js" defer></script>
 <script src="assets/js/intro.js" defer></script>
 <script src="assets/js/cursor.js" defer></script>
-<script src="assets/js/contact-dock.js" defer></script>
 <script src="assets/js/chat.js" defer></script>
 </body>
 </html>

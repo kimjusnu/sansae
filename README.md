@@ -17,13 +17,13 @@ portfolio/                 ← 이 폴더만 배포됩니다
   assets/css/sequence.css  히어로 고정 구간 · 캔버스 · 배경 위 텍스트 대비
   assets/css/intro.css     인트로 게이트
   assets/css/cursor.css    커스텀 커서
-  assets/css/contact-dock.css  우측 하단 연락처 독
+  assets/css/i18n.css      EN/KO 전환 스위치
   assets/css/chat.css      AI 안내 도우미 패널
+  assets/js/i18n.js        EN/KO 전환 (가장 먼저 로드)
   assets/js/main.js        헤더 · 모바일 메뉴 · 스크롤 리빌 · 아이콘 fallback
   assets/js/sequence.js    프레임 로더 · 스크롤 매핑 · 캔버스 렌더
   assets/js/intro.js       게이트 정책 · FLIP 전환
   assets/js/cursor.js      커스텀 커서
-  assets/js/contact-dock.js    우측 하단 연락처 독
   assets/js/chat.js        AI 안내 도우미 (WORKER_URL 필요)
   sequence/                스크럽 프레임 (hd/ sd/ poster manifest.json)
   icons/                   3D 아이콘 WebP (정규화된 배포용, 총 311 KB)
@@ -35,7 +35,10 @@ portfolio/                 ← 이 폴더만 배포됩니다
 
 worker/                    ← 배포되지 않음. wrangler로 Cloudflare에 따로 올립니다
   src/index.js             Origin 검사 · 레이트 리밋 · 스트리밍
-  src/persona.js           시스템 프롬프트 + 이력 데이터
+  src/persona.js           언어별 시스템 프롬프트 선택
+  src/persona-ko.js        한국어 이력 + 규칙
+  src/persona-en.js        영어 이력 + 규칙
+  src/contact.js           공용 연락처
   wrangler.jsonc           Workers AI 바인딩
   README.md                배포 순서
 
@@ -48,10 +51,37 @@ design/                    ← 배포되지 않는 원본과 빌드 스크립트
   build-brand-assets.py    favicon · 앱 아이콘 · OG 이미지 생성
 ```
 
-CSS는 `base → layout → sections → sequence → intro → cursor → contact-dock → chat` 순서로 로드해야 합니다.
+CSS는 `base → layout → sections → sequence → intro → cursor → i18n → chat` 순서로 로드해야 합니다.
 
 `main.js` · `sequence.js` · `intro.js`는 서로를 직접 호출하지 않습니다. 인트로는 끝날 때
 `intro:done` 커스텀 이벤트만 던지고, 어느 하나를 빼도 나머지가 그대로 동작합니다.
+
+`i18n.js`만은 예외로 **가장 먼저** 로드되어야 합니다. `main.js`와 `chat.js`가
+`window.i18n.t()`로 문구를 읽기 때문입니다.
+
+## 다국어 (EN / KO)
+
+기본 화면은 **영어**, 마크업은 **한국어**입니다. 이 비대칭은 의도한 것입니다.
+
+- JS를 실행하지 않는 크롤러(카카오톡 등)는 원본 HTML을 읽으므로 공유 미리보기가
+  한국어로 유지되고, 한국어 OG 이미지와 맞아떨어집니다.
+- 한국어 사전이 따로 없으므로 마크업과 번역이 어긋날 수 없습니다. 한국어로 되돌리는 것은
+  부팅 시 캡처해 둔 DOM 원본을 복원하는 일입니다.
+
+영어 문구는 `assets/js/i18n.js`의 `DICT.en` 한 곳에 있습니다. 마크업에서 번역할 노드는
+셋 중 하나로 표시합니다.
+
+| 속성 | 대상 |
+|---|---|
+| `data-i18n="key"` | `textContent` |
+| `data-i18n-html="key"` | `innerHTML` (이 파일이 쓴 문자열만) |
+| `data-i18n-attr="placeholder:key\|aria-label:key"` | 속성 |
+
+선택은 `localStorage.lang`에 남고 `?lang=en` · `?lang=ko`로 덮어쓸 수 있습니다.
+JS에만 존재해 DOM에 원본이 없는 문구(챗봇 인사말, 에러)는 `DICT.ko`에 따로 둡니다.
+
+챗봇은 UI 언어를 워커에 함께 보내고, 워커는 그 언어의 이력서를 프롬프트로 씁니다.
+질문이 프롬프트와 다른 언어로 와도 **질문한 언어로** 답합니다.
 
 ## 로컬 실행
 
@@ -107,22 +137,9 @@ var WORKER_URL = 'https://junsu-portfolio-assistant.<계정>.workers.dev';
 키가 필요 없는 구조입니다 — 브라우저는 워커만 부르고, 워커는 Workers AI를 바인딩으로
 호출하므로 저장소 어디에도 시크릿이 없습니다.
 
-환각을 막는 장치는 `worker/src/persona.js`에 있습니다. 이력이 바뀌면 이 파일과
-`portfolio/data/profile.json`을 **함께** 고치고 워커를 다시 배포하세요.
-
-### 카카오톡 채널 연결
-
-`business.kakao.com`(카카오톡 채널 관리자센터)에서 채널을 만들면 `http://pf.kakao.com/_abcdEF` 형태의
-URL이 생깁니다. `portfolio/assets/js/contact-dock.js` 상단의 한 줄만 채우면 됩니다.
-
-```js
-var KAKAO_CHANNEL_ID = '_abcdEF';
-```
-
-비워두면 카카오톡 항목이 DOM에서 제거되므로 죽은 링크가 배포되지 않습니다.
-
-채널 개설과 문의 수신은 무료입니다. 유료는 알림톡·친구톡 같은 **발송** 기능과 상담톡입니다.
-SDK나 API 키, 도메인 등록은 필요 없습니다 — 채널 URL로 직접 링크하기 때문입니다.
+환각을 막는 장치는 `worker/src/persona-ko.js`와 `worker/src/persona-en.js`에 있습니다.
+이력이 바뀌면 **세 파일을 함께** 고치고 워커를 다시 배포하세요 — 두 페르소나와
+`portfolio/data/profile.json`입니다. 하나만 고치면 언어에 따라 다른 이력이 나갑니다.
 
 ### 파비콘 · OG 이미지
 

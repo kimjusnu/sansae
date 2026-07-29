@@ -43,8 +43,15 @@
   var history = [];
   var busy = false;
 
+  function t(key) {
+    return window.i18n ? window.i18n.t(key) : key;
+  }
+
+  function lang() {
+    return window.i18n ? window.i18n.lang : 'ko';
+  }
+
   dock.hidden = false;
-  document.documentElement.classList.add('has-chat');
 
   /* ----------------------------------------------------------
      Rendering
@@ -143,7 +150,9 @@
     fetch(WORKER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: history }),
+      // lang is a hint for the greeting-language case only; the worker still
+      // answers in whatever language the question was actually asked in.
+      body: JSON.stringify({ messages: history, lang: lang() }),
       signal: controller ? controller.signal : undefined,
     })
       .then(function (response) {
@@ -168,11 +177,7 @@
         placeholder.remove();
         // The last question never got answered, so drop it from the history.
         history.pop();
-        addError(
-          err && err.message === 'rate_limited'
-            ? '질문이 잠시 몰렸습니다. 조금 뒤에 다시 시도하시거나 메일로 문의해 주세요 —'
-            : '답변을 가져오지 못했습니다. 메일로 문의해 주세요 —'
-        );
+        addError(t(err && err.message === 'rate_limited' ? 'chat.errRate' : 'chat.errGeneric'));
         setBusy(false);
       });
   }
@@ -187,10 +192,18 @@
   function open() {
     toggle.setAttribute('aria-expanded', 'true');
     panel.hidden = false;
-    if (!log.childElementCount) {
-      addMessage('bot', '안녕하세요. 김준수의 이력과 프로젝트에 대해 답해드립니다. 무엇이 궁금하신가요?');
-    }
+    if (!log.childElementCount) addMessage('bot', t('chat.greeting'));
     input.focus({ preventScroll: true });
+  }
+
+  // Switching language rewrites the greeting, but only while it is the whole
+  // conversation — an answer already given is left exactly as it was said.
+  if (window.i18n) {
+    window.i18n.onChange(function () {
+      if (!history.length && log.childElementCount === 1) {
+        log.firstElementChild.textContent = t('chat.greeting');
+      }
+    });
   }
 
   function close(returnFocus) {

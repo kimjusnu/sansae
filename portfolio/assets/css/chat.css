@@ -1,6 +1,6 @@
 /* =========================================================
    Portfolio assistant — chat panel
-   Requires base.css and contact-dock.css
+   Requires base.css
 
    chat.js only unhides this once a worker URL is configured, so an
    unconfigured build ships without a chat button at all.
@@ -20,17 +20,6 @@
 body.intro-active .chat-dock {
   opacity: 0;
   pointer-events: none;
-}
-
-/* The contact dock steps up to sit above the chat button. */
-.has-chat .contact-dock {
-  bottom: calc(clamp(16px, 3vw, 28px) + 68px);
-}
-
-@media (max-width: 767px) {
-  .has-chat .contact-dock {
-    bottom: calc(clamp(16px, 3vw, 28px) + 62px);
-  }
 }
 
 .chat-toggle {
