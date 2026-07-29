@@ -37,7 +37,7 @@ export const PROFILE = `
 
 ## Experience
 
-### AimBe Lab — Associate (full-time), 2025.07 – 2026.06
+### AimBe Lab — Associate (full-time), 2025.07 – Present (currently employed)
 - My Feed: digitised a farm ordering system and cut the AI classification error rate from 10% to 3%
 - GA4-driven improvements raised weekly visit frequency from 2–3 to 4
 - Rebuilt the investor site into a B2B platform (SEO on Next.js RSC, i18n written in-house)

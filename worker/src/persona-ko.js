@@ -40,7 +40,7 @@ export const PROFILE = `
 
 ## 경력
 
-### AimBe Lab — Associate (정규직), 2025.07 ~ 2026.06
+### AimBe Lab — Associate (정규직), 2025.07 ~ 현재 (재직 중)
 - My Feed: 농가 주문 시스템을 디지털화하고 AI 분류 오류율을 10%에서 3%로 낮춤
 - GA4 기반 개선으로 주간 방문 빈도가 2~3회에서 4회로 증가
 - 투자자 소개 사이트를 B2B 플랫폼으로 재구축 (Next.js RSC 기반 SEO, 자체 i18n)

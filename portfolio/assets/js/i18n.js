@@ -131,6 +131,7 @@
 
       /* ---------------- experience ---------------- */
       'exp.title': 'The path <em>so far</em>',
+      'exp.1.when': '2025.07 — Present',
       'exp.1.role': 'Associate (full-time) · SaaS planning · Frontend · AI integration',
       'exp.1.a':
         'My Feed: digitised a farm ordering system and cut the AI classification error rate from 10% to 3%.',
