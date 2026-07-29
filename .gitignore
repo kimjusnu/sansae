@@ -22,3 +22,9 @@ node_modules/
 # wrangler 로컬 상태·빌드 산출물
 .wrangler/
 .dev.vars
+
+# 증명사진 원본 (가공본만 portfolio/resume/photo.webp로 배포)
+/design/photo-source/
+
+# 이력서 PDF 생성용 임시 Chrome 프로필
+/design/.chrome-pdf/

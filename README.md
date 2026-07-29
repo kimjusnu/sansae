@@ -18,6 +18,7 @@ portfolio/                 ← 이 폴더만 배포됩니다
   assets/css/intro.css     인트로 게이트
   assets/css/cursor.css    커스텀 커서
   assets/css/i18n.css      EN/KO 전환 스위치
+  assets/css/resume.css    이력서 (화면 + 인쇄)
   assets/css/chat.css      AI 안내 도우미 패널
   assets/js/i18n.js        EN/KO 전환 (가장 먼저 로드)
   assets/js/main.js        헤더 · 모바일 메뉴 · 스크롤 리빌 · 아이콘 fallback
@@ -49,6 +50,10 @@ design/                    ← 배포되지 않는 원본과 빌드 스크립트
   build-sequence.py        영상 → portfolio/sequence/ 프레임 추출
   og-template.html         공유 카드 템플릿
   build-brand-assets.py    favicon · 앱 아이콘 · OG 이미지 생성
+  photo-source/            증명사진 원본 (gitignore)
+  build-resume-photo.py    원본 → portfolio/resume/photo.webp
+  build-resume-pdf.mjs     이력서 HTML → resume-ko.pdf · resume-en.pdf
+  verify-resume.py         생성된 PDF 검사 (1페이지 · A4 · 텍스트 추출)
 ```
 
 CSS는 `base → layout → sections → sequence → intro → cursor → i18n → chat` 순서로 로드해야 합니다.

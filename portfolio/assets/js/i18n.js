@@ -56,6 +56,7 @@
       'nav.open': 'Open menu',
       'nav.close': 'Close menu',
       'cta.email': 'Send email',
+      'cta.resume': 'View resume',
 
       /* ---------------- hero ---------------- */
       'hero.badge': 'Open to joining a new team',
@@ -189,6 +190,7 @@
       'footer.label': 'Footer menu',
       'footer.explore': 'Explore',
       'footer.contact': 'Contact',
+      'footer.resume': 'Resume',
       'footer.prev': 'Previous portfolio',
       'footer.blog': 'Tech blog',
       'footer.bottom': '© 2026 Junsu Kim. Designed & built by Junsu Kim.',
@@ -205,6 +207,19 @@
       'chat.errGeneric': '답변을 가져오지 못했습니다. 메일로 문의해 주세요 —',
     },
   };
+
+  // A page can add its own strings by defining window.i18nStrings in a script
+  // loaded before this one. The resume does that rather than growing DICT with
+  // keys the home page would carry and never use.
+  if (window.i18nStrings) {
+    Object.keys(window.i18nStrings).forEach(function (lang) {
+      var extra = window.i18nStrings[lang];
+      DICT[lang] = DICT[lang] || {};
+      Object.keys(extra).forEach(function (key) {
+        DICT[lang][key] = extra[key];
+      });
+    });
+  }
 
   var root = document.documentElement;
 
