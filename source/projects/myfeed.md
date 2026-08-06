@@ -25,6 +25,23 @@
 - 알림 미읽음 폴링 분당 6회 → 1회 + 숨은 탭 중단
 - ❌ "페이지 로드 O초→O초" 단위 측정치는 기록에 없음 — 위 검증 가능한 수치만 사용
 
+## My Feed v2 프론트엔드 마이그레이션 (자발적 사이드 시제품 — 2026-08-06 확인)
+
+- 로컬 `Desktop/myfeed_migration` — "레거시(FastAPI+Jinja) 프론트를 Next.js 16(App Router) 기반으로 마이그레이션한 모던 프론트 레포"
+- **Next.js 16 + React 19 + Recharts 2.13** + Tailwind v4 + Radix/Tremor + TanStack Query·Table + Zustand + Zod + Playwright·Vitest
+- Vercel 배포 + pre-push 훅(typecheck→build→deploy) 로컬 CI · monitoring/silos/orders/reports/depletion/질병정보 BFF/weather/admin feature 구현
+- Promise.all 병렬 페치 + 동시성 제한 러너 실사용 (⚠️ "14개 API" 숫자는 근거 없음 — 세지 않았으면 숫자 빼기)
+- **표기 원칙**: "마이피드 = React 19" ❌ → "**My Feed v2 프론트 마이그레이션(사이드 시제품, Vercel)**" ✅ — 운영 스택과 구분
+- ❌ Gemini 사용 이력 없음 (전 레포 0건) — 이력서·면접에서 언급 금지
+- 🔶 마이피드 1.5에 **Claude 기반 잔량 보정 기능 운영 중** — 단 본인이 만든 것인지 미확인. 본인 확인 전 이력서 사용 보류
+
+## 홈페이지 성능 (2026-08-06 검증)
+
+- 기록된 실측: **LCP 3.97s · INP 392ms** (6월 월간 보고서) — "개선이 7월 최우선 과제"
+- 개선 후 수치 기록 없음. 2026-08-06 로컬 Lighthouse 재측정: 데스크톱 LCP ~17s (히어로 fade-up 애니메이션 + 클라이언트 렌더가 LCP 지연 — 측정 환경 왜곡 가능성 있으나 개선 완료 주장 불가)
+- ✅ 사용 가능 문구: "LCP 3.97s·INP 392ms 실측해 성능 개선 과제로 도출·주도"
+- 💡 업무 기회: 히어로 애니메이션 initial-paint 처리·i18n 로딩 최적화 후 재측정하면 진짜 before/after 확보 가능
+
 ## AI 이미지 분류 성공률 90% → 97% (오류율 10% → 3%)
 
 - **대상**: 사료빈(사일로) 상단에서 촬영한 이미지의 세그멘테이션/분류

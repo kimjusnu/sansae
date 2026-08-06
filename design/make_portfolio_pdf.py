@@ -92,6 +92,8 @@ story.append(project(
         "admin 이미지 목록 멈춤 해결 — 실측 20장 <b>172초 → 수 초</b> · 62개 화면 공통 로드 <b>페이지당 139KB 절감</b> · 목록 HTML 42% 경량화",
         "주문 문의 멱등키(Idempotency-Key)·기준사진 낙관적 잠금(expected_version) 설계 — 파괴적 액션의 자동 재전송 금지 원칙",
         "프레임워크 없는 레거시(Jinja SSR + vanilla JS)를 페이지별 모듈 구조로 정비 — 핵심 화면은 ES Modules로 재설계",
+        "레거시 구조의 한계를 느껴 <b>Next.js 16 + React 19 + Recharts 기반 v2 마이그레이션 시제품을 자발적으로 구축</b> "
+        "(TanStack Query·Zustand·Zod, 병렬 페치+동시성 제한, Vercel 배포 + pre-push 로컬 CI) — 마이그레이션 경로를 코드로 검증",
     ],
     "FastAPI · Jinja2 SSR · Vanilla JS(ES Modules) · Redis·Celery · MySQL · FCM/Service Worker · Chart.js · Nginx · S3/CloudFront"))
 
@@ -105,6 +107,7 @@ story.append(project(
         "번역 API 100+ 동시 호출로 429가 터지던 구조를 분석 → <b>JSON 기반 자체 i18n</b>으로 재설계해 외부 API 의존 제거",
         "SEO·AEO 최적화(동적 Metadata·sitemap·301 리다이렉트), 네이버 블로그 RSS 자동 연동 파이프라인 구축",
         "GA4·Mixpanel·Clarity 3종을 직접 비교 운영 후 Clarity 채택 — 도구 선정부터 계측·개선까지 데이터 기반으로 수행",
+        "<b>LCP 3.97s·INP 392ms를 실측</b>해 성능 개선을 우선 과제로 도출 — 렌더링 경로·애니메이션 병목 분석 진행 중",
     ],
     "Next.js(App Router·RSC) · TypeScript · Tailwind · 자체 i18n · SEO/AEO · GA4·Clarity"))
 
