@@ -137,7 +137,7 @@
       'exp.1.a':
         'My Feed: digitised farm orders scattered across paper ledgers and KakaoTalk, and brought in SAM2 to cut the AI classification error rate from 10% to 3%.',
       'exp.1.b':
-        'GA4-driven improvements raised weekly visit frequency from 2–3 to 4.',
+        'Measured user behaviour with GA4 and Clarity to prioritise UX improvements.',
       'exp.1.c':
         'Website rebuild: took enquiries from none at all to 4 calls and 5 online a month, and helped close a real contract.',
       'exp.1.d':

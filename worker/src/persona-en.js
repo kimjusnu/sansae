@@ -44,8 +44,7 @@ Remit: SaaS and web product planning, frontend and AI feature development
   system, replacing orders scattered across paper ledgers, spreadsheets and KakaoTalk
 - Found the limits of the existing image-analysis AI and brought in SAM2, cutting object
   classification error in feed bins from 10% to 3%, a 70% reduction
-- Used GA4 behavioural analysis to prioritise UX work; farmers' average visits rose from
-  2-3 to 4 per week
+- Used GA4 behavioural analysis to prioritise UX work
 - Introduced GitHub Actions CI/CD to a legacy SaaS, replacing manual deployment, and set up
   automatic alerting above 70% CPU
 - Website rebuild (2026.02-03): turned an investor-facing legacy site into a customer-facing

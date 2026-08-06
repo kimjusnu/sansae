@@ -29,7 +29,7 @@ window.i18nStrings = {
     'r.exp.1.when': '2025.07 — Present',
     'r.exp.1.a':
       '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and brought in SAM2, cutting AI classification error from 10% to 3%.',
-    'r.exp.1.b': 'Raised weekly visits from 2–3 to 4 through GA4-driven improvements.',
+    'r.exp.1.b': 'Measured user behaviour with GA4 and Clarity to prioritise UX work.',
     'r.exp.1.c':
       '<strong>Website rebuild</strong> — turned an investor site into a B2B one, taking enquiries from zero to 4 calls and 5 online a month and helping close a contract.',
     'r.exp.1.d': 'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',

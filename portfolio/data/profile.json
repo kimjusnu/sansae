@@ -30,7 +30,7 @@
       "role": "Associate (정규직)",
       "period": "2025-07 ~ 현재",
       "highlights": [
-        "My Feed: 농가 주문 시스템 디지털화, AI 분류 오류율 10%→3%, GA4 최적화로 주간 방문 2~3→4회",
+        "My Feed: 농가 주문 시스템 디지털화, AI 분류 오류율 10%→3%, GA4·Clarity 기반 사용자 행동 계측",
         "웹사이트 리뉴얼: 투자자 사이트를 B2B 플랫폼으로, Next.js RSC 기반 SEO·자체 i18n",
         "3단계 RBAC 대시보드 설계, GitHub Actions CI/CD 구축"
       ]
