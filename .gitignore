@@ -28,3 +28,6 @@ dist/
 
 # 이력서 PDF 생성용 임시 Chrome 프로필
 /design/.chrome-pdf/
+
+# 연락처 포함 업로드용 이력서 PDF (공개 레포 커밋 금지)
+이력서-김준수-업로드용.pdf
