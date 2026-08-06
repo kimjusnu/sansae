@@ -23,5 +23,8 @@ dist/
 # 증명사진 원본 (가공본만 portfolio/resume/photo.webp로 배포)
 /design/photo-source/
 
+# 개인 이력서 원본 PDF (연락처 포함 — 공개 레포 커밋 금지)
+/main.pdf
+
 # 이력서 PDF 생성용 임시 Chrome 프로필
 /design/.chrome-pdf/
