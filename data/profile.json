@@ -1,0 +1,96 @@
+{
+  "_comment": "사실의 기준은 source/. 이 파일은 사이트가 로드하지 않는다 — design/verify-facts.py가 읽어 사이트·이력서·챗봇 문구를 검사하는 사실 대장이다. 사실이 바뀌면 여기부터 고치고 스크립트를 돌린다.",
+  "_banned": {
+    "_note": "근거 없는 표현. 어느 파일에든 나타나면 verify-facts.py가 실패한다.",
+    "patterns": [
+      { "pattern": "전무하던", "why": "source/projects/myfeed.md:64 — 리뉴얼 전 월 최대 1건이지 0건이 아니다" },
+      { "pattern": "from none at all", "why": "위와 같음 (영문)" },
+      { "pattern": "from zero to", "why": "위와 같음 (영문)" },
+      { "pattern": "Gemini", "why": "source/projects/myfeed.md:35 — 전 레포 0건, 언급 금지" },
+      { "pattern": "127,000", "why": "Componique 다운로드 과장. npm 실측 주간 최고 807회·누적 1,477회 (source/projects/componique.md)" },
+      { "pattern": "127000", "why": "위와 같음" },
+      { "pattern": "무중단", "why": "StartupQT Docker 배포는 ENOSPC로 실패해 PM2로 전환. 무중단 근거 없음 (source/projects/startupqt.md:75, 99)" },
+      { "pattern": "zero-downtime", "why": "위와 같음 (영문)" },
+      { "pattern": "Associate (", "why": "직급 오기. 현재 직급은 주임연구원 (source/resume/basic-info.md:16, 2026-08-11 본인 확인)" },
+      { "pattern": "자연 유입 강화", "why": "SEO 효과 미측정 상태에서의 결과 주장 (source/projects/aimbelab-seo-aeo-geo.md 말미)" },
+      { "pattern": "organic traffic", "why": "위와 같음 (영문)" }
+    ],
+    "_myFeedStackNote": "source/projects/myfeed.md:10 — My Feed를 Next.js/React로 표기 금지. 운영 스택은 FastAPI+Jinja2+vanilla JS. Next.js는 회사 홈페이지(aimbelab.com)와 v2 마이그레이션 시제품 쪽이다."
+  },
+  "_pending": {
+    "_note": "근거가 확보될 때까지 사이트·이력서·챗봇 어디에도 쓰지 않는다.",
+    "items": [
+      "My Feed v2 마이그레이션 시제품 — 본인 작업 진행 중이라 공개 불가 (2026-08-11). 완료 후 재검토",
+      "GA4 주간 농가 방문 2~3회→4회 — 증가 원인 불명, 인과 주장 금지 (myfeed.md:67)"
+    ],
+    "_resolved": [
+      "Componique npm 다운로드 — 2026-08-11 npm API 실측. 주간 최고 807회·누적 1,477회. 수치 자체를 쓰지 않기로 확정",
+      "GA4·Mixpanel·Clarity 3종 비교 후 Clarity 채택 — 2026-08-11 본인 확인, 사용 가능 (myfeed.md)",
+      "마이피드 1.5 Claude 잔량 보정 — 2026-08-11 본인 작업 아님으로 확인. 영구 사용 금지"
+    ]
+  },
+  "name": "김준수",
+  "nameEn": "Junsu Kim",
+  "tagline": "기획부터 운영까지, 문제를 제품으로 만드는 FE / AI Engineer",
+  "location": "인천 · 서울, 대한민국",
+  "openToWork": true,
+  "contact": {
+    "email": "junsu4621@naver.com",
+    "github": "https://github.com/kimjusnu",
+    "portfolio": "https://junsudev4.vercel.app/",
+    "blog": "https://dietisdie.tistory.com/"
+  },
+  "strengths": [
+    "기획 → 디자인 → 구현 → 배포 → 운영까지 제품 전 과정 오너십",
+    "프론트/백엔드/인프라를 아우르는 풀스택 실행력",
+    "현장 리서치 기반 문제 정의 (예: 농가 직접 방문)",
+    "설득력 있는 커뮤니케이션, 논리적 사고"
+  ],
+  "skills": {
+    "frontend": ["React", "Next.js (App Router, RSC)", "TypeScript", "Tailwind CSS"],
+    "ai": ["LLM 통합", "SAM2", "FastAPI"],
+    "devops": ["GitHub Actions", "Docker", "PM2", "CI/CD"],
+    "data": ["GA4 (인증)", "Microsoft Clarity"],
+    "etc": ["RBAC", "i18n", "Zustand", "Tiptap", "MUI", "Storybook"]
+  },
+  "experience": [
+    {
+      "company": "AimBe Lab",
+      "role": "주임연구원 (정규직)",
+      "period": "2025-07 ~ 현재",
+      "highlights": [
+        "My Feed: 농가 주문 시스템 디지털화, SAM2 도입 제안으로 AI 분류 오류율 10%→3%",
+        "My Feed: 모니터링 상세 API N+1 제거 (3개월 조회 DB 왕복 2,400회→1회), admin 이미지 목록 172초→수 초",
+        "웹사이트 리뉴얼: 투자자 사이트를 B2B 플랫폼으로, 도입 문의 월 1건 남짓→월 유선 4건·온라인 5건",
+        "3단계 RBAC 대시보드 설계, GitHub Actions CI/CD 구축"
+      ]
+    },
+    {
+      "company": "The Innovators",
+      "role": "Intern",
+      "period": "2025-03 ~ 2025-06",
+      "highlights": [
+        "StartupQT: 퀴즈 저작 SaaS, 모듈형 에디터+검수 워크플로우, GitHub Actions·self-hosted runner 배포 자동화 (Docker 빌드 실패 후 PM2 전환), 보안 이슈 자체 발견·문서화"
+      ]
+    }
+  ],
+  "education": {
+    "school": "한국공학대학교 (TUK)",
+    "major": "컴퓨터공학부 소프트웨어전공",
+    "period": "2020-03 ~ 2026-02",
+    "gpa": "3.45 / 4.5 (전공 3.54)"
+  },
+  "projects": [
+    { "name": "My Feed", "desc": "전국 130여 농가·1,200여 사료빈을 모니터링하는 축산 IoT SaaS (실무, 커밋 38%)", "stack": ["FastAPI", "Jinja2", "vanilla JS", "Redis", "Celery", "MySQL", "Chart.js"], "link": null, "internal": true },
+    { "name": "Componique", "desc": "오픈소스 디자인 시스템 UI 라이브러리 (30+ 컴포넌트)", "stack": ["React", "TypeScript", "Tailwind", "Storybook", "Rollup"], "link": "https://componique.vercel.app/" },
+    { "name": "StartupQT", "desc": "퀴즈 저작·검수·관리 SaaS", "stack": ["Next.js", "TypeScript", "Zustand", "Tiptap", "MUI"], "link": "https://startupqt.com/start" },
+    { "name": "Eat Fit", "desc": "AI 음식 사진 분석 식단관리 PWA (캡스톤 우수상)", "stack": ["Next.js", "FastAPI", "AWS", "PWA"], "link": "https://expo.tukorea.ac.kr/2025/work/87" },
+    { "name": "Wairi", "desc": "SEO 개선 위한 Vue→Next.js 마이그레이션", "stack": ["Next.js", "TypeScript", "Tailwind", "SEO"], "link": "https://www.wairi.co.kr/webapp" }
+  ],
+  "awards": [
+    { "title": "SW 캡스톤 디자인 우수상 (Eat Fit)", "year": "2025" },
+    { "title": "Sniper Factory 프론트엔드 부트캠프 우수상 (팀 리더)", "year": "2024" },
+    { "title": "웅진씽크빅 × Udemy Next.js 부트캠프 2위", "year": "2024" }
+  ],
+  "certifications": ["ADsP (2026-06)", "GA4 인증 (2025-09)", "OPIc IM1 (2025-02)"]
+}

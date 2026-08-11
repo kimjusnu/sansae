@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="김준수 포트폴리오">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset=".55" stop-color="#3182f6"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#brand)"/>
+  <!-- isometric glass block, echoing the hero icon -->
+  <g>
+    <path d="M16 5.6 25.4 11 16 16.4 6.6 11Z" fill="#fff"/>
+    <path d="M6.6 12.6 16 18v8.4L6.6 21Z" fill="#fff" fill-opacity=".58"/>
+    <path d="M25.4 12.6 16 18v8.4L25.4 21Z" fill="#fff" fill-opacity=".82"/>
+  </g>
+</svg>

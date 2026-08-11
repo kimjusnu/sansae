@@ -1,0 +1,24 @@
+{
+  "count": 192,
+  "poster": "poster.webp",
+  "sets": {
+    "hd": {
+      "dir": "hd",
+      "width": 1024,
+      "height": 576
+    },
+    "sd": {
+      "dir": "sd",
+      "width": 448,
+      "height": 252
+    }
+  },
+  "source": {
+    "file": "3.mp4",
+    "window": [
+      0.0,
+      8.0
+    ],
+    "crop": null
+  }
+}

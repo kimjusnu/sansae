@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김준수 · 프론트엔드 · AI 엔지니어 포트폴리오</title>
+<meta name="description" content="기획부터 디자인, 구현, 배포, 운영까지 직접 맡아 온 프론트엔드 · AI 엔지니어 김준수의 포트폴리오입니다.">
+<meta name="theme-color" content="#f7faff">
+<meta name="author" content="김준수">
+<link rel="canonical" href="https://kimjusnu.github.io/sansae/">
+<link rel="alternate" hreflang="ko" href="https://kimjusnu.github.io/sansae/?lang=ko">
+<link rel="alternate" hreflang="en" href="https://kimjusnu.github.io/sansae/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://kimjusnu.github.io/sansae/">
+
+<!-- icons -->
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- 공유 미리보기: 카카오톡 등 크롤러는 상대 경로를 읽지 못하므로 절대 URL을 쓴다.
+     크롤러는 JS도 실행하지 않으므로 이 값들은 마크업의 언어인 한국어로 고정된다. -->
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="김준수 포트폴리오">
+<meta property="og:url" content="https://kimjusnu.github.io/sansae/">
+<meta property="og:title" content="김준수 · 프론트엔드 · AI 엔지니어 포트폴리오">
+<meta property="og:description" content="기획부터 디자인, 구현, 배포, 운영까지 직접 맡아 온 프론트엔드 · AI 엔지니어 김준수의 포트폴리오입니다.">
+<meta property="og:image" content="https://kimjusnu.github.io/sansae/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="김준수 · 프론트엔드 · AI 엔지니어. 문제를 관찰하고, 배포되는 제품까지 만듭니다.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="김준수 · 프론트엔드 · AI 엔지니어 포트폴리오">
+<meta name="twitter:description" content="기획부터 디자인, 구현, 배포, 운영까지 직접 맡아 온 프론트엔드 · AI 엔지니어 김준수의 포트폴리오입니다.">
+<meta name="twitter:image" content="https://kimjusnu.github.io/sansae/og-image.jpg">
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('js');
+  // The markup is Korean but English is the default view, so most loads repaint
+  // into another language. i18n.css hides the body while that is pending; the
+  // timer makes sure a failed i18n.js can never leave a blank page behind.
+  var lang = 'en';
+  try {
+    var fromUrl = location.search.match(/[?&]lang=(en|ko)/);
+    var stored = fromUrl ? fromUrl[1] : localStorage.getItem('lang');
+    if (stored === 'ko' || stored === 'en') lang = stored;
+  } catch (e) {
+    /* storage blocked — the default stands */
+  }
+  if (lang !== 'ko') {
+    root.classList.add('i18n-pending');
+    setTimeout(function () {
+      root.classList.remove('i18n-pending');
+    }, 1500);
+  }
+})();
+</script>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/sections.css">
+<link rel="stylesheet" href="assets/css/sequence.css">
+<link rel="stylesheet" href="assets/css/intro.css">
+<link rel="stylesheet" href="assets/css/cursor.css">
+<link rel="stylesheet" href="assets/css/i18n.css">
+<link rel="stylesheet" href="assets/css/chat.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "김준수",
+  "alternateName": "Junsu Kim",
+  "jobTitle": "프론트엔드 · AI 엔지니어",
+  "email": "mailto:junsu4621@naver.com",
+  "url": "https://junsudev4.vercel.app/",
+  "sameAs": [
+    "https://github.com/kimjusnu",
+    "https://dietisdie.tistory.com/"
+  ],
+  "knowsLanguage": ["ko", "en"],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "한국공학대학교"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">본문 바로가기</a>
+<div class="page-wash" aria-hidden="true"></div>
+
+<!-- 인트로 게이트: intro.js가 표시 조건을 만족할 때만 hidden을 벗긴다.
+     JS가 없으면 이 레이어는 아예 나타나지 않는다. -->
+<div class="intro" id="intro" role="dialog" aria-modal="true" data-i18n-attr="aria-label:intro.label" aria-label="사이트 입장" hidden>
+  <div class="intro-grid" aria-hidden="true"></div>
+  <span class="intro-burst" aria-hidden="true"></span>
+  <div class="intro-inner">
+    <div class="intro-cube">
+      <span class="intro-orbit" aria-hidden="true"></span>
+      <span class="intro-orbit" aria-hidden="true"></span>
+      <img src="icons/icon-hero-product-build.webp" alt="" aria-hidden="true" width="420" height="420" decoding="async">
+    </div>
+    <p class="intro-name" data-i18n="intro.name">김준수</p>
+    <p class="intro-role" data-i18n="intro.role">프론트엔드 · AI 엔지니어</p>
+    <button class="button button-primary intro-enter" type="button">
+      Deep Dive
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5h9M8.5 4l3.5 3.5-3.5 3.5"/></svg>
+    </button>
+    <p class="intro-hint" data-i18n="intro.hint">버튼을 누르거나 ESC로 건너뛰기</p>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="site-container header-inner">
+    <a class="wordmark" href="#top">
+      <span class="wordmark-mark" aria-hidden="true"></span>
+      <span data-i18n="brand.name">김준수</span> <span class="wordmark-sub">FE · AI Engineer</span>
+    </a>
+
+    <nav class="nav-desktop" data-i18n-attr="aria-label:nav.label" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="#about" data-i18n="nav.about">강점</a></li>
+        <li><a href="#work" data-i18n="nav.work">프로젝트</a></li>
+        <li><a href="#process" data-i18n="nav.process">일하는 방식</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">경력</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switch" role="group" data-i18n-attr="aria-label:a11y.langGroup" aria-label="언어 선택">
+        <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-set="ko" aria-pressed="false">KO</button>
+      </div>
+      <a class="button button-secondary button--sm hide-md" href="https://github.com/kimjusnu" target="_blank" rel="noopener">GitHub</a>
+      <a class="button button-secondary button--sm" href="resume/" data-i18n="cta.resume">이력서</a>
+      <a class="button button-primary button--sm" href="#contact" data-i18n="nav.contact">연락하기</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-i18n-attr="aria-label:nav.open" aria-label="메뉴 열기">
+        <svg class="icon-open" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 6h14M3 10h14M3 14h14"/>
+        </svg>
+        <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M5 5l10 10M15 5L5 15"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <div class="site-container">
+      <div class="lang-switch" role="group" data-i18n-attr="aria-label:a11y.langGroup" aria-label="언어 선택">
+        <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-set="ko" aria-pressed="false">KO</button>
+      </div>
+      <ul>
+        <li><a href="#about" data-i18n="nav.about">강점</a></li>
+        <li><a href="#work" data-i18n="nav.work">프로젝트</a></li>
+        <li><a href="#process" data-i18n="nav.process">일하는 방식</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">경력</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">연락하기</a></li>
+      </ul>
+      <div class="mobile-nav-cta">
+        <a class="button button-secondary" href="https://github.com/kimjusnu" target="_blank" rel="noopener">GitHub</a>
+        <a class="button button-primary" href="mailto:junsu4621@naver.com" data-i18n="cta.email">이메일 보내기</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================ Hero ============================ -->
+  <!-- The stage stays inert until sequence.js activates it, so without JS
+       this is exactly the plain hero. -->
+  <div class="scrollstage" id="scrollstage">
+   <div class="scrollstage-pin">
+    <canvas class="scrollstage-canvas" aria-hidden="true"></canvas>
+    <section class="hero" id="top">
+    <div class="site-container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow-badge">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-i18n="hero.badge">재직 중 · 합류할 팀을 찾고 있습니다</span>
+        </span>
+        <h1 data-i18n-html="hero.title">문제를 관찰하고,<br><em>배포되는 제품</em>까지 만듭니다</h1>
+        <p class="hero-lede" data-i18n="hero.lede">
+          기획 · 디자인 · 구현 · 배포 · 운영을 직접 맡아 온 프론트엔드 · AI 엔지니어 김준수입니다.
+          경력 1년 5개월, 전국 130여 농가·1,200여 사료빈을 보는 축산 IoT SaaS를 2인 웹 팀에서 만들고 있습니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work" data-i18n="hero.cta1">프로젝트 살펴보기</a>
+          <a class="button button-secondary" href="#contact" data-i18n="hero.cta2">연락하기</a>
+        </div>
+        <ul class="hero-meta">
+          <li data-i18n="hero.meta1">인천 · 서울</li>
+          <li>Next.js · TypeScript · React</li>
+          <li>FastAPI · LLM · CI/CD</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual">
+        <span class="hero-orbit" aria-hidden="true"></span>
+        <span class="hero-orbit" aria-hidden="true"></span>
+        <div class="icon3d icon3d--float" style="--icon-size: min(440px, 68vw)">
+          <span class="icon3d-fallback" aria-hidden="true"></span>
+          <img src="icons/icon-hero-product-build.webp"
+               srcset="icons/icon-hero-product-build-560.webp 560w, icons/icon-hero-product-build.webp 880w"
+               sizes="(max-width: 767px) 280px, 440px"
+               alt="" aria-hidden="true" width="440" height="440" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+    </section>
+   </div>
+  </div>
+
+  <!-- ======================= Working principles ======================= -->
+  <section class="section section--tight" aria-labelledby="principles-title">
+    <div class="site-container">
+      <h2 class="visually-hidden" id="principles-title" data-i18n="principles.title">일하는 원칙</h2>
+      <ul class="principles reveal">
+        <li class="principle">
+          <span class="principle-mark">01</span>
+          <h3 data-i18n="principles.1.h">끝까지 이어서 책임집니다</h3>
+          <p data-i18n="principles.1.p">기획에서 시작해 배포와 운영까지 한 사람이 맡습니다. 인수인계 없이 개선이 이어집니다.</p>
+        </li>
+        <li class="principle">
+          <span class="principle-mark">02</span>
+          <h3 data-i18n="principles.2.h">현장에서 문제를 찾습니다</h3>
+          <p data-i18n="principles.2.p">실제 사용 환경을 직접 보고 문제를 정의합니다. 농가를 방문해 주문 흐름을 관찰한 뒤 화면을 설계했습니다.</p>
+        </li>
+        <li class="principle">
+          <span class="principle-mark">03</span>
+          <h3 data-i18n="principles.3.h">개선 결과를 확인합니다</h3>
+          <p data-i18n="principles.3.p">GA4와 Clarity로 사용자 행동을 읽고, 바꾼 것이 실제로 나아졌는지 지표로 확인합니다.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ About ============================ -->
+  <section class="section" id="about">
+    <div class="site-container">
+      <div class="section-header reveal">
+        <span class="eyebrow">About</span>
+        <h2 data-i18n-html="about.title">제품의 <em>처음부터 끝까지</em>를 혼자서도 끌고 갑니다</h2>
+        <p data-i18n="about.lede">한 화면을 만드는 일보다, 그 화면이 실제로 쓰이게 만드는 일에 시간을 씁니다.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <div class="icon3d icon3d--float" style="--icon-size: min(104px, 22vw)">
+            <span class="icon3d-fallback" aria-hidden="true"></span>
+            <img src="icons/icon-feature-ownership.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
+          </div>
+          <h3 data-i18n="about.1.h">End-to-End 오너십</h3>
+          <p data-i18n="about.1.p">기획 → 디자인 → 구현 → 배포 → 운영. 아이디어가 사용자에게 닿을 때까지의 모든 단계를 직접 맡습니다.</p>
+        </article>
+
+        <article class="feature-card reveal" data-delay="1">
+          <div class="icon3d icon3d--float-slow" style="--icon-size: min(104px, 22vw)">
+            <span class="icon3d-fallback" aria-hidden="true"></span>
+            <img src="icons/icon-feature-fullstack.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
+          </div>
+          <h3 data-i18n="about.2.h">풀스택 실행력</h3>
+          <p data-i18n="about.2.p">프론트엔드부터 FastAPI 백엔드, Docker와 CI/CD 인프라까지 이어서 다룹니다. 막히는 지점을 남에게 넘기지 않습니다.</p>
+        </article>
+
+        <article class="feature-card reveal" data-delay="2">
+          <div class="icon3d icon3d--float" style="--icon-size: min(104px, 22vw)">
+            <span class="icon3d-fallback" aria-hidden="true"></span>
+            <img src="icons/icon-feature-research.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
+          </div>
+          <h3 data-i18n="about.3.h">현장 기반 문제 정의</h3>
+          <p data-i18n="about.3.p">사용 현장을 직접 관찰하고 행동 데이터를 읽어, 요구사항 뒤에 있는 진짜 문제를 정의합니다.</p>
+        </article>
+
+        <article class="feature-card reveal" data-delay="3">
+          <div class="icon3d icon3d--float-slow" style="--icon-size: min(104px, 22vw)">
+            <span class="icon3d-fallback" aria-hidden="true"></span>
+            <img src="icons/icon-feature-ai.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
+          </div>
+          <h3 data-i18n="about.4.h">AI를 제품에 녹이기</h3>
+          <p data-i18n="about.4.p">LLM과 SAM2를 실제 화면 흐름에 통합합니다. My Feed에서는 AI 분류 오류율을 10%에서 3%로 낮췄습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ Work ============================ -->
+  <section class="section" id="work">
+    <div class="site-container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Selected Work</span>
+        <h2 data-i18n-html="work.title">만들어서 <em>배포한</em> 것들</h2>
+        <p data-i18n="work.lede">실제로 운영되는 제품들입니다. 사내 서비스를 뺀 나머지는 데모 링크가 살아 있습니다.</p>
+      </div>
+
+      <div class="work-list">
+        <article class="work-card reveal">
+          <div class="work-index">
+            <span class="work-num">01</span>
+            <span class="work-tag" data-i18n="work.myfeed.tag">실무 · 축산 IoT SaaS</span>
+          </div>
+          <div class="work-body">
+            <h3>My Feed</h3>
+            <p data-i18n="work.myfeed.p">전국 130여 농가·1,200여 사료빈을 모니터링하는 축산 IoT SaaS. 웹 개발 2인 체제에서 커밋 38%를 맡아 농장 모니터링 화면과 관리자, 웹 알림 시스템을 주도했습니다. 모니터링 상세 API의 N+1을 걷어내 3개월 조회 기준 DB 왕복을 2,400회에서 1회로 줄였고, 관리자 이미지 목록은 실측 20장 172초에서 수 초로 내렸습니다. SAM2 도입을 직접 제안해 사료빈 이미지 분류 오류율은 10%에서 3%가 됐습니다.</p>
+            <ul class="stack">
+              <li>FastAPI</li><li>Jinja2</li><li>vanilla JS</li><li>Redis</li><li>Celery</li><li>MySQL</li><li>Chart.js</li>
+            </ul>
+          </div>
+          <span class="work-note" data-i18n="work.myfeed.note">사내 서비스</span>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-index">
+            <span class="work-num">02</span>
+            <span class="work-tag" data-i18n="work.1.tag">오픈소스 · 4인 팀</span>
+          </div>
+          <div class="work-body">
+            <h3>Componique</h3>
+            <p data-i18n="work.1.p">30개 이상의 컴포넌트를 npm에 배포한 오픈소스 디자인 시스템. 4인 팀에서 UI 컴포넌트 설계·개발을 맡았고, Storybook 문서와 Rollup 빌드 파이프라인을 함께 구성했습니다. 웅진씽크빅 × Udemy 부트캠프 2등.</p>
+            <ul class="stack">
+              <li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>Storybook</li><li>Rollup</li>
+            </ul>
+          </div>
+          <div class="work-links">
+            <a class="work-link" href="https://componique.vercel.app/" target="_blank" rel="noopener">
+              <span data-i18n="work.open">사이트 열기</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+            </a>
+            <a class="work-link work-link--ghost" href="https://github.com/Poten14/Componique" target="_blank" rel="noopener">
+              <span data-i18n="work.code">코드 보기</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-index">
+            <span class="work-num">03</span>
+            <span class="work-tag" data-i18n="work.2.tag">SaaS</span>
+          </div>
+          <div class="work-body">
+            <h3>StartupQT</h3>
+            <p data-i18n="work.2.p">퀴즈 저작 · 검수 · 관리 SaaS. 모듈형 에디터와 검수 워크플로우를 설계했고, GitHub Actions와 EC2 self-hosted runner로 배포를 자동화했습니다. 멀티스테이지 Dockerfile은 인스턴스 디스크가 모자라 빌드가 계속 죽어서 PM2 기반으로 바꿔 끝냈습니다. 자료 삭제 API에서 남의 자료도 지워지는 문제를 발견해 등록자 검증과 사용자별 API 분리를 제안하고 문서로 남겼습니다.</p>
+            <ul class="stack">
+              <li>Next.js</li><li>TypeScript</li><li>Zustand</li><li>Tiptap</li><li>MUI</li><li>Docker</li>
+            </ul>
+          </div>
+          <a class="work-link" href="https://startupqt.com/start" target="_blank" rel="noopener">
+            <span data-i18n="work.open">사이트 열기</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+          </a>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-index">
+            <span class="work-num">04</span>
+            <span class="work-tag" data-i18n="work.3.tag">캡스톤 · 3인 팀</span>
+          </div>
+          <div class="work-body">
+            <h3>Eat Fit</h3>
+            <p data-i18n="work.3.p">한국인 영양섭취기준(KDRIs)으로 개인별 목표 섭취량을 계산하고, EfficientNet으로 음식 사진을 분류하는 식단관리 PWA. 3인 팀에서 기획·프론트엔드·발표를 맡았습니다. 전날 식단은 매일 00시 배치로 ChatGPT API가 피드백합니다. 여러 음식이 한 접시에 담기면 분류가 흔들리고 질량 추정은 구현하지 못했습니다. 한국공학대전 우수상.</p>
+            <ul class="stack">
+              <li>Next.js</li><li>FastAPI</li><li>AWS</li><li>PWA</li>
+            </ul>
+          </div>
+          <a class="work-link" href="https://expo.tukorea.ac.kr/2025/work/87" target="_blank" rel="noopener">
+            <span data-i18n="work.3.link">전시 페이지</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+          </a>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-index">
+            <span class="work-num">05</span>
+            <span class="work-tag" data-i18n="work.4.tag">마이그레이션 · 팀 리더</span>
+          </div>
+          <div class="work-body">
+            <h3>Wairi</h3>
+            <p data-i18n="work.4.p">검색 노출이 어려운 실제 기업의 Vue 서비스를 Next.js로 옮겨 서버 렌더링과 메타데이터 구조를 다시 설계했습니다. 팀 리더로 일정과 UI 개발을 총괄했고, 스나이퍼팩토리 부트캠프 우수상을 받았습니다.</p>
+            <ul class="stack">
+              <li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>SEO</li>
+            </ul>
+          </div>
+          <a class="work-link" href="https://www.wairi.co.kr/webapp" target="_blank" rel="noopener">
+            <span data-i18n="work.open">사이트 열기</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ Process ============================ -->
+  <section class="section" id="process">
+    <div class="site-container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Process</span>
+        <h2 data-i18n-html="process.title">이렇게 <em>일합니다</em></h2>
+        <p data-i18n="process.lede">네 단계를 한 바퀴 돌리고, 지표를 확인한 뒤 다시 첫 단계로 돌아갑니다.</p>
+      </div>
+
+      <ol class="process-list">
+        <li class="process-step reveal">
+          <div class="icon3d icon3d--float" style="--icon-size: min(80px, 20vw)">
+            <span class="icon3d-fallback" aria-hidden="true"></span>
+            <img src="icons/icon-process-define.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
+          </div>
+          <span class="step-num">STEP 01</span>
+          <h3 data-i18n="process.1.h">정의</h3>
+          <p data-i18n="process.1.p">사용 현장과 데이터를 함께 보고, 무엇을 풀어야 하는지부터 좁힙니다.</p>
+        </li>
+        <li class="process-step reveal" data-delay="1">
+          <div class="icon3d icon3d--float-slow" style="--icon-size: min(80px, 20vw)">
+            <span class="icon3d-fallback" aria-hidden="true"></span>
+            <img src="icons/icon-process-design.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
+          </div>
+          <span class="step-num">STEP 02</span>
+          <h3 data-i18n="process.2.h">설계</h3>
+          <p data-i18n="process.2.p">화면 흐름과 데이터 구조, 권한 범위를 같은 자리에서 그립니다.</p>
+        </li>
+        <li class="process-step reveal" data-delay="2">
+          <div class="icon3d icon3d--float" style="--icon-size: min(80px, 20vw)">
+            <span class="icon3d-fallback" aria-hidden="true"></span>
+            <img src="icons/icon-process-build.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
+          </div>
+          <span class="step-num">STEP 03</span>
+          <h3 data-i18n="process.3.h">구현</h3>
+          <p data-i18n="process.3.p">프론트엔드와 API, 배포 파이프라인까지 이어서 만들고 자동화합니다.</p>
+        </li>
+        <li class="process-step reveal" data-delay="3">
+          <div class="icon3d icon3d--float-slow" style="--icon-size: min(80px, 20vw)">
+            <span class="icon3d-fallback" aria-hidden="true"></span>
+            <img src="icons/icon-process-operate.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
+          </div>
+          <span class="step-num">STEP 04</span>
+          <h3 data-i18n="process.4.h">운영</h3>
+          <p data-i18n="process.4.p">실제 사용 지표를 읽고, 다음에 고칠 것을 정합니다.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ========================== Experience ========================== -->
+  <section class="section" id="experience">
+    <div class="site-container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Experience</span>
+        <h2 data-i18n-html="exp.title">지금까지의 <em>경로</em></h2>
+      </div>
+
+      <div class="exp-layout">
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <p class="when" data-i18n="exp.1.when">2025.07 — 현재</p>
+            <h3>AimBe Lab</h3>
+            <p class="role" data-i18n="exp.1.role">주임연구원 (정규직) · SaaS 기획 · 프론트엔드 · AI 통합</p>
+            <ul>
+              <li data-i18n="exp.1.a">My Feed: 수기 장부·카카오톡으로 흩어져 있던 농가 주문을 디지털화했습니다.</li>
+              <li data-i18n="exp.1.b">GA4·Clarity로 사용자 행동을 계측해 UX 개선 우선순위를 정했습니다.</li>
+              <li data-i18n="exp.1.c">홈페이지 리뉴얼: 월 1건 남짓이던 도입 문의를 월 평균 유선 4건·온라인 5건으로 만들고 실제 계약 성사에 기여했습니다.</li>
+              <li data-i18n="exp.1.d">3단계 RBAC 대시보드 설계, GitHub Actions CI/CD 구축.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <p class="when">2025.03 — 2025.06</p>
+            <h3>The Innovators</h3>
+            <p class="role" data-i18n="exp.2.role">Intern · 기술 리서치</p>
+            <ul>
+              <li data-i18n="exp.2.a">StartupQT 퀴즈 저작 SaaS의 모듈형 에디터와 검수 워크플로우 구현.</li>
+              <li data-i18n="exp.2.b">GitHub Actions·Docker·PM2 배포 파이프라인 단독 구축, Nginx 리버스 프록시와 HTTPS 환경 구성.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <p class="when">2020.03 — 2026.02</p>
+            <h3 data-i18n="exp.3.school">한국공학대학교</h3>
+            <p class="role" data-i18n="exp.3.role">컴퓨터공학부 소프트웨어전공 · 학점 3.45 / 4.5 (전공 3.54)</p>
+          </article>
+        </div>
+
+        <div>
+          <div class="side-panel reveal">
+            <h3 data-i18n="skills.title">주요 기술</h3>
+            <dl>
+              <div class="skill-group">
+                <dt>Frontend</dt>
+                <dd>
+                  <ul class="chips">
+                    <li>React</li><li>Next.js (App Router · RSC)</li><li>TypeScript</li><li>Tailwind CSS</li><li>Zustand</li><li>Storybook</li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="skill-group">
+                <dt>AI</dt>
+                <dd>
+                  <ul class="chips">
+                    <li data-i18n="skills.llm">LLM 통합</li><li>SAM2</li><li>FastAPI</li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="skill-group">
+                <dt>DevOps</dt>
+                <dd>
+                  <ul class="chips">
+                    <li>GitHub Actions</li><li>Docker</li><li>PM2</li><li>CI/CD</li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="skill-group">
+                <dt data-i18n="skills.data">Data · 기타</dt>
+                <dd>
+                  <ul class="chips">
+                    <li>GA4</li><li>Microsoft Clarity</li><li>RBAC</li><li>i18n</li><li>Tiptap</li><li>MUI</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="side-panel reveal">
+            <h3 data-i18n="cred.title">수상 · 자격</h3>
+            <ul class="credential-list">
+              <li><span data-i18n="cred.1">한국공학대전 우수상 — Eat Fit</span><span class="year">2025</span></li>
+              <li><span data-i18n="cred.2">스나이퍼팩토리 부트캠프 우수상 — Wairi, 팀 리더</span><span class="year">2024</span></li>
+              <li><span data-i18n="cred.3">웅진씽크빅 × Udemy 부트캠프 2등 — Componique</span><span class="year">2024</span></li>
+              <li><span>ADsP</span><span class="year">2026.06</span></li>
+              <li><span data-i18n="cred.ga4">GA4 인증</span><span class="year">2025.09</span></li>
+              <li><span>OPIc IM1</span><span class="year">2025.02</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== Final CTA =========================== -->
+  <section class="section" id="contact">
+    <div class="site-container">
+      <div class="cta-panel reveal">
+        <div>
+          <h2 data-i18n="final.title">함께 풀 문제를 찾고 있습니다</h2>
+          <p data-i18n="final.p">제품을 처음부터 끝까지 맡을 사람이 필요하시다면 편하게 연락 주세요. 이력서와 상세 사례는 메일로 보내드립니다.</p>
+          <div class="cta-actions">
+            <a class="button button-primary" href="mailto:junsu4621@naver.com" data-i18n="cta.email">이메일 보내기</a>
+            <a class="button button-secondary" href="resume/" data-i18n="cta.resume">이력서 보기</a>
+            <a class="button button-secondary" href="https://github.com/kimjusnu" target="_blank" rel="noopener" data-i18n="final.github">GitHub 보기</a>
+          </div>
+        </div>
+        <div class="icon3d icon3d--float" style="--icon-size: min(200px, 44vw)">
+          <span class="icon3d-fallback" aria-hidden="true"></span>
+          <img src="icons/icon-cta-contact.webp" alt="" aria-hidden="true" width="200" height="200" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- AI 안내 도우미: chat.js의 WORKER_URL이 비어 있으면 이 두 블록은 DOM에서 제거됩니다 -->
+<div class="chat-dock" id="chat-dock" hidden>
+  <button class="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-panel">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.2c3.9 0 7 2.4 7 5.4s-3.1 5.4-7 5.4c-.6 0-1.2-.06-1.7-.17L4.6 16l.6-2.9C3.8 12.1 3 10.7 3 8.6c0-3 3.1-5.4 7-5.4Z"/><circle cx="7.4" cy="8.6" r=".9" fill="currentColor" stroke="none"/><circle cx="10" cy="8.6" r=".9" fill="currentColor" stroke="none"/><circle cx="12.6" cy="8.6" r=".9" fill="currentColor" stroke="none"/></svg>
+    <span data-i18n="chat.toggle">AI에게 물어보기</span>
+  </button>
+</div>
+
+<section class="chat-panel" id="chat-panel" data-i18n-attr="aria-label:chat.panelLabel" aria-label="AI 안내 도우미" hidden>
+  <header class="chat-header">
+    <div class="icon3d" aria-hidden="true">
+      <span class="icon3d-fallback"></span>
+      <img src="icons/icon-chat-assistant.webp" alt="" width="44" height="44" loading="lazy" decoding="async">
+    </div>
+    <div>
+      <h2 data-i18n="chat.title">포트폴리오 도우미</h2>
+      <p data-i18n="chat.sub">이력 · 프로젝트에 대해 답해드립니다</p>
+    </div>
+    <button class="chat-close" type="button" data-i18n-attr="aria-label:chat.close" aria-label="닫기">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l8 8M13 5l-8 8"/></svg>
+    </button>
+  </header>
+
+  <div class="chat-log" role="log" aria-live="polite" aria-atomic="false"></div>
+
+  <div class="chat-suggestions">
+    <button type="button" data-i18n="chat.s1">어떤 프로젝트를 했나요?</button>
+    <button type="button" data-i18n="chat.s2">주로 쓰는 기술 스택은?</button>
+    <button type="button" data-i18n="chat.s3">AimBe Lab에서 한 일은?</button>
+  </div>
+
+  <form class="chat-form" autocomplete="off">
+    <label class="visually-hidden" for="chat-input" data-i18n="chat.inputLabel">질문 입력</label>
+    <input id="chat-input" type="text" maxlength="500" data-i18n-attr="placeholder:chat.placeholder" placeholder="궁금한 점을 물어보세요" enterkeyhint="send">
+    <button class="chat-send" type="submit" data-i18n-attr="aria-label:chat.send" aria-label="보내기">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h11M10 5l4 4-4 4"/></svg>
+    </button>
+  </form>
+
+  <p class="chat-disclaimer" data-i18n="chat.disclaimer">AI가 이력서 데이터를 바탕으로 답합니다. 대화는 저장되지 않으며, 정확한 확인은 메일로 부탁드립니다.</p>
+</section>
+
+<footer class="site-footer">
+  <div class="site-container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="wordmark" href="#top">
+          <span class="wordmark-mark" aria-hidden="true"></span>
+          <span data-i18n="brand.name">김준수</span>
+        </a>
+        <p data-i18n="footer.tagline">문제를 관찰하고 배포되는 제품으로 만드는 프론트엔드 · AI 엔지니어입니다.</p>
+      </div>
+
+      <nav class="footer-links" data-i18n-attr="aria-label:footer.label" aria-label="푸터 메뉴">
+        <div>
+          <h3 data-i18n="footer.explore">둘러보기</h3>
+          <ul>
+            <li><a href="#about" data-i18n="nav.about">강점</a></li>
+            <li><a href="#work" data-i18n="nav.work">프로젝트</a></li>
+            <li><a href="#process" data-i18n="nav.process">일하는 방식</a></li>
+            <li><a href="#experience" data-i18n="nav.experience">경력</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.contact">연락처</h3>
+          <ul>
+            <li><a href="mailto:junsu4621@naver.com">junsu4621@naver.com</a></li>
+            <li><a href="resume/" data-i18n="footer.resume">이력서</a></li>
+            <li><a href="https://github.com/kimjusnu" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://junsudev4.vercel.app/" target="_blank" rel="noopener" data-i18n="footer.prev">이전 포트폴리오</a></li>
+            <li><a href="https://dietisdie.tistory.com/" target="_blank" rel="noopener" data-i18n="footer.blog">기술 블로그</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <p class="footer-bottom" data-i18n="footer.bottom">© 2026 김준수 (Junsu Kim). Designed &amp; built by Junsu Kim.</p>
+  </div>
+</footer>
+
+<!-- i18n.js runs first: every other script reads its strings through window.i18n -->
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/sequence.js" defer></script>
+<script src="assets/js/intro.js" defer></script>
+<script src="assets/js/cursor.js" defer></script>
+<script src="assets/js/chat.js" defer></script>
+<script src="assets/js/analytics.js" defer></script>
+</body>
+</html>
