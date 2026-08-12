@@ -130,6 +130,14 @@
       'work.myfeed.p':
         'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide. On a two-person web team I own about 38% of the commits, leading the farm monitoring screens, the admin, and the whole web notification system. Clearing an N+1 in the monitoring detail API cut database round trips from roughly 2,400 to one for a three-month query, and the admin image list went from a measured 172 seconds for 20 images to a few seconds. I proposed adopting SAM2 myself, which took the feed-bin image classification error rate from 10% to 3%.',
       'work.myfeed.note': 'Internal service',
+      'work.notify.tag': 'Professional · designed and built solo',
+      'work.notify.h': 'My Feed — web notifications',
+      'work.notify.p':
+        "I owned My Feed's web notifications end to end, from the design through the admin sending screen. They reach the user even when the tab is not in front of them, via a Service Worker and FCM. The unread count was being polled every ten seconds, which meant six requests a minute per tab — including tabs nobody was looking at. I dropped it to once a minute and stopped polling entirely while the tab is hidden, so the cost of receiving a notification came down first.",
+      'work.geo.tag': 'Professional · SEO · AEO · GEO',
+      'work.geo.h': 'AimBe Lab website',
+      'work.geo.p':
+        'Work aimed at getting AI to cite the company. I rewrote the feed-ordering page as a document that can actually be read and quoted. Adjectives do not get cited, so instead of writing new copy I pulled some 40 verified sentences out of a 12-slide ordering guide the company already had, and moved them into HTML text — uploading those slides as images would have been worth nothing. I added a four-step HowTo and a 12-question FAQ, and fixed a sitemap that was stamping build time as lastmod on all 12 pages, replacing it with each page\'s real change date from git history. Google retired HowTo rich results in 2023 and I knew that when I added them: the target is not search ranking but being cited by ChatGPT and Perplexity. Measurement is set for September 2026, so there are no results to claim yet.',
       'work.1.tag': 'Open source · team of 4',
       'work.1.p':
         'An open-source design system of 30+ components published to npm. A team of four, where my part was designing and building the UI components, alongside Storybook docs and a Rollup build. 2nd place at the Woongjin ThinkBig x Udemy bootcamp.',

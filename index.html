@@ -318,6 +318,39 @@
         <article class="work-card reveal">
           <div class="work-index">
             <span class="work-num">02</span>
+            <span class="work-tag" data-i18n="work.notify.tag">실무 · 단독 설계·구현</span>
+          </div>
+          <div class="work-body">
+            <h3 data-i18n="work.notify.h">My Feed — 웹 알림</h3>
+            <p data-i18n="work.notify.p">My Feed의 웹 알림을 설계부터 관리자 발송 화면까지 혼자 맡았습니다. 브라우저 탭을 떠나 있어도 알림이 닿도록 Service Worker와 FCM으로 붙였습니다. 미읽음 개수는 10초에 한 번씩 물어보고 있었는데, 아무도 보고 있지 않은 탭까지 분당 6번 서버를 두드리는 구조였습니다. 주기를 분당 1회로 낮추고 탭이 가려지면 폴링을 멈추게 해서, 알림을 받는 쪽 비용부터 줄였습니다.</p>
+            <ul class="stack">
+              <li>Service Worker</li><li>FCM</li><li>vanilla JS</li><li>FastAPI</li>
+            </ul>
+          </div>
+          <span class="work-note" data-i18n="work.myfeed.note">사내 서비스</span>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-index">
+            <span class="work-num">03</span>
+            <span class="work-tag" data-i18n="work.geo.tag">실무 · SEO · AEO · GEO</span>
+          </div>
+          <div class="work-body">
+            <h3 data-i18n="work.geo.h">AimBe Lab 홈페이지</h3>
+            <p data-i18n="work.geo.p">AI가 회사를 인용하게 만드는 작업입니다. 사료주문 페이지를 읽고 인용할 수 있는 문서로 다시 썼습니다. 형용사는 인용되지 않는다고 보고, 사내에 이미 있던 주문 가이드 12장에서 검증된 문장 40여 개를 뽑아 HTML 텍스트로 옮겼습니다. 슬라이드를 이미지로 올렸다면 효과는 0이었을 겁니다. HowTo 4스텝과 FAQ 12문항을 붙였고, 12개 페이지 전부 빌드 시각으로 나가던 사이트맵 lastmod를 git 이력 기준 실제 변경일로 고쳤습니다. 구글이 HowTo 리치 결과를 2023년에 폐지한 것을 알고도 붙인 이유는, 목표가 검색 순위가 아니라 ChatGPT·Perplexity의 인용이기 때문입니다. 효과 측정은 2026년 9월이라 아직 결과를 말할 단계는 아닙니다.</p>
+            <ul class="stack">
+              <li>Next.js</li><li>TypeScript</li><li>schema.org</li><li>llms.txt</li>
+            </ul>
+          </div>
+          <a class="work-link" href="https://www.aimbelab.com" target="_blank" rel="noopener">
+            <span data-i18n="work.open">사이트 열기</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+          </a>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-index">
+            <span class="work-num">04</span>
             <span class="work-tag" data-i18n="work.1.tag">오픈소스 · 4인 팀</span>
           </div>
           <div class="work-body">
@@ -341,7 +374,7 @@
 
         <article class="work-card reveal">
           <div class="work-index">
-            <span class="work-num">03</span>
+            <span class="work-num">05</span>
             <span class="work-tag" data-i18n="work.2.tag">SaaS</span>
           </div>
           <div class="work-body">
@@ -359,7 +392,7 @@
 
         <article class="work-card reveal">
           <div class="work-index">
-            <span class="work-num">04</span>
+            <span class="work-num">06</span>
             <span class="work-tag" data-i18n="work.3.tag">캡스톤 · 3인 팀</span>
           </div>
           <div class="work-body">
@@ -377,7 +410,7 @@
 
         <article class="work-card reveal">
           <div class="work-index">
-            <span class="work-num">05</span>
+            <span class="work-num">07</span>
             <span class="work-tag" data-i18n="work.4.tag">마이그레이션 · 팀 리더</span>
           </div>
           <div class="work-body">
