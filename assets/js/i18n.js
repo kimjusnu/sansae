@@ -58,7 +58,7 @@
   var DICT = {
     en: {
       /* ---------------- document ---------------- */
-      'meta.title': 'Junsu Kim · Frontend · AI Engineer Portfolio',
+      'meta.title': 'Junsu Kim · Frontend Engineer, AI integration',
       'meta.description':
         'Portfolio of Junsu Kim, a frontend and AI engineer who has personally owned planning, design, implementation, deployment and operation.',
       'a11y.skip': 'Skip to content',
@@ -67,7 +67,7 @@
       /* ---------------- intro gate ---------------- */
       'intro.label': 'Enter site',
       'intro.name': 'Junsu Kim',
-      'intro.role': 'Frontend · AI Engineer',
+      'intro.role': 'Frontend Engineer · AI integration',
       'intro.hint': 'Press the button, or hit ESC to skip',
 
       /* ---------------- header ---------------- */
@@ -128,7 +128,7 @@
       'work.code': 'View code',
       'work.myfeed.tag': 'Professional · IoT SaaS',
       'work.myfeed.p':
-        'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide. On a two-person web team I own about 38% of the commits, leading the farm monitoring screens, the admin, and the whole web notification system. Clearing an N+1 in the monitoring detail API cut database round trips from roughly 2,400 to one for a three-month query, and the admin image list went from a measured 172 seconds for 20 images to a few seconds. I proposed adopting SAM2 myself, which took the feed-bin image classification error rate from 10% to 3%.',
+        'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide. On a two-person web team I own about 38% of the commits, leading the farm monitoring screens, the admin, and the whole web notification system. Clearing an N+1 in the monitoring detail API cut database round trips from roughly 2,400 to one for a three-month query, and the admin image list went from a measured 172 seconds for 20 images to a few seconds. Dropping unused scripts that all 62 screens were loading saved 139KB per page. I proposed adopting SAM2 myself, which took the feed-bin image classification error rate from 10% to 3%.',
       'work.myfeed.note': 'Internal service',
       'work.notify.tag': 'Professional · incident response · built solo',
       'work.notify.h': 'My Feed — web notifications',

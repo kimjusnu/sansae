@@ -12,7 +12,7 @@ window.i18nStrings = {
       'Resume of Junsu Kim, a frontend and AI engineer who owns products from planning through operation.',
 
     'r.name': 'Junsu Kim',
-    'r.role': 'Frontend · AI Engineer',
+    'r.role': 'Frontend Engineer · AI integration',
     'r.print': 'Download PDF',
     'r.pdfHref': 'resume-en.pdf',
     'r.pdfName': 'Junsu-Kim-Resume.pdf',
