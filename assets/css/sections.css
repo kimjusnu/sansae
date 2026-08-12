@@ -191,7 +191,7 @@
 
 .work-card {
   display: grid;
-  grid-template-columns: 132px minmax(0, 1fr) auto;
+  grid-template-columns: 132px minmax(0, 1fr) 300px auto;
   align-items: center;
   gap: clamp(20px, 3vw, 40px);
   padding: clamp(24px, 3vw, 32px);
@@ -217,6 +217,40 @@
   gap: var(--space-2);
   align-self: start;
   padding-top: 4px;
+}
+
+/* Every one of these is below the fold, so they load lazily and never touch
+   LCP. The border keeps a light screenshot from bleeding into the card on a
+   white surface, and the slight dim in dark mode stops seven bright rectangles
+   from glaring on a dark page. */
+.work-shot {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-blue);
+  box-shadow: var(--shadow-xs);
+  transition:
+    transform 220ms var(--ease),
+    box-shadow 220ms var(--ease);
+}
+
+.work-card:hover .work-shot {
+  transform: scale(1.015);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (prefers-color-scheme: dark) {
+  .work-shot {
+    filter: brightness(0.86) saturate(0.95);
+  }
+
+  .work-card:hover .work-shot {
+    filter: none;
+  }
 }
 
 /* 13px at 3.79:1 on the card. --primary-700 takes it to 6.7:1 in light and
@@ -632,6 +666,15 @@
     align-items: start;
     gap: var(--space-5);
   }
+
+  /* Stacked, the screenshot reads better right after the index row than
+     wedged between the copy and the link, which is where the DOM puts it. */
+  .work-index { order: 1; }
+  .work-shot { order: 2; }
+  .work-body { order: 3; }
+  .work-link,
+  .work-links,
+  .work-note { order: 4; }
 
   .work-index {
     flex-direction: row;

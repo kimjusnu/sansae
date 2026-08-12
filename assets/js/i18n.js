@@ -126,6 +126,15 @@
       'work.lede': 'Real, running products. Every demo link is live except the internal one.',
       'work.open': 'Open site',
       'work.code': 'View code',
+      'shot.myfeed':
+        'My Feed feed-management page — the product page explaining how bin levels are checked',
+      'shot.notify':
+        'My Feed ordering page, laying out the four steps from the low-stock notification to the order',
+      'shot.aimbelab': 'The rebuilt AimBe Lab homepage, with its enquiry call to action',
+      'shot.componique': 'Componique documentation site — the form and data-display components',
+      'shot.startupqt': 'The StartupQT entry screen',
+      'shot.eatfit': 'Eat Fit on the Korea Engineering Exhibition site, previewing the app screens',
+      'shot.wairi': 'The Wairi service landing screen',
       'work.myfeed.tag': 'Professional · IoT SaaS',
       'work.myfeed.p':
         'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide. On a two-person web team I own about 38% of the commits, leading the farm monitoring screens, the admin, and the whole web notification system. Clearing an N+1 in the monitoring detail API cut database round trips from roughly 2,400 to one for a three-month query, and the admin image list went from a measured 172 seconds for 20 images to a few seconds. Dropping unused scripts that all 62 screens were loading saved 139KB per page. I proposed adopting SAM2 myself, which took the feed-bin image classification error rate from 10% to 3%.',
@@ -134,10 +143,10 @@
       'work.notify.h': 'My Feed — web notifications',
       'work.notify.p':
         'On one browser, web push went quiet after a version update. No errors — the notifications simply stopped arriving. I followed the push path hop by hop through the OS event log and pinned down that it reached the network, left the server and was received by the OS, then vanished inside the browser. That layer was not mine to fix. So instead of fixing the cause I built for delivery: push, a polling fallback, and a refresh on tab return — three ways in. Hidden tabs have their timers throttled, which I measured at 65 seconds with zero requests after the five-minute mark, so I claimed an exemption with a Web Lock. When the browser is patched, push takes priority back on its own. Nine files and eight commits over four days, on my own.',
-      'work.geo.tag': 'Professional · SEO · AEO · GEO',
+      'work.geo.tag': 'Professional · rebuild · SEO/AEO/GEO',
       'work.geo.h': 'AimBe Lab website',
       'work.geo.p':
-        'Work aimed at getting AI to cite the company. I rewrote the feed-ordering page as a document that can actually be read and quoted. Adjectives do not get cited, so instead of writing new copy I pulled some 40 verified sentences out of a 12-slide ordering guide the company already had, and moved them into HTML text — uploading those slides as images would have been worth nothing. I added a four-step HowTo and a 12-question FAQ, and fixed a sitemap that was stamping build time as lastmod on all 12 pages, replacing it with each page\'s real change date from git history. Google retired HowTo rich results in 2023 and I knew that when I added them: the target is not search ranking but being cited by ChatGPT and Perplexity. Measurement is set for September 2026, so there are no results to claim yet.',
+        'Before this work nobody arrived via ChatGPT; it is now over ten visits a month. First the rebuild: an investor-facing brochure became a site for customers, with an enquiry flow wired in, so enquiries that had only ever come by phone could arrive online too. Then the part about getting AI to cite us. Adjectives do not get cited, so instead of writing new copy I pulled some 40 verified sentences out of a 12-slide ordering guide the company already had and moved them into HTML text — uploading those slides as images would have been worth nothing. I added a four-step HowTo and a 12-question FAQ, and fixed a sitemap that was stamping build time as lastmod on all 12 pages, replacing it with each page\'s real change date from git history. Google retired HowTo rich results in 2023 and I knew that when I added them: the target is not search ranking, it is being cited.',
       'work.1.tag': 'Open source · team of 4',
       'work.1.p':
         'An open-source design system of 30+ components published to npm. A team of four, where my part was designing and building the UI components, alongside Storybook docs and a Rollup build. 2nd place at the Woongjin ThinkBig x Udemy bootcamp.',
