@@ -144,7 +144,7 @@
       'work.2.tag': 'SaaS',
       'work.2.p':
         'A SaaS for authoring, reviewing and managing quizzes. I designed the modular editor and the review workflow, and automated deployment with GitHub Actions on a self-hosted EC2 runner. The multi-stage Dockerfile kept failing because the instance ran out of disk, so I moved it to PM2 and shipped. Before measuring performance I wrote the audit down first: five target screens, with the conditions pinned to an incognito window on Slow 4G. The first pass gave the main page LCP 2.7s, CLS 0.103 and a Performance score of 82; after the fixes I re-ran it under the same conditions and compared the reports. I also found that the delete-attachment API let you delete other people\'s files, and wrote up owner verification and per-user API separation as the fix.',
-      'work.3.tag': 'Capstone · team of 3',
+      'work.3.tag': 'Graduation project · team of 3',
       'work.3.p':
         'A diet-tracking PWA that works out your target intake from the Korean Dietary Reference Intakes and classifies food photos with EfficientNet. On a team of three I did the planning, the frontend and the final presentation. A nightly batch sends the previous day\'s meals to the ChatGPT API for feedback. Classification wobbles when several dishes share a plate, and we never got to estimating portion mass. Excellence Award at the Korea Engineering Exhibition.',
       'work.3.link': 'Exhibition page',
@@ -233,7 +233,6 @@
       'footer.explore': 'Explore',
       'footer.contact': 'Contact',
       'footer.resume': 'Resume',
-      'footer.prev': 'Previous portfolio',
       'footer.blog': 'Tech blog',
       'footer.bottom': '© 2026 Junsu Kim. Designed & built by Junsu Kim.',
     },

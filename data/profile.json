@@ -37,7 +37,7 @@
   "contact": {
     "email": "junsu4621@naver.com",
     "github": "https://github.com/kimjusnu",
-    "portfolio": "https://junsudev4.vercel.app/",
+    "portfolio": "https://kimjusnu.github.io/sansae/",
     "blog": "https://dietisdie.tistory.com/"
   },
   "strengths": [
@@ -84,11 +84,11 @@
     { "name": "My Feed", "desc": "전국 130여 농가·1,200여 사료빈을 모니터링하는 축산 IoT SaaS (실무, 커밋 38%)", "stack": ["FastAPI", "Jinja2", "vanilla JS", "Redis", "Celery", "MySQL", "Chart.js"], "link": null, "internal": true },
     { "name": "Componique", "desc": "오픈소스 디자인 시스템 UI 라이브러리 (30+ 컴포넌트)", "stack": ["React", "TypeScript", "Tailwind", "Storybook", "Rollup"], "link": "https://componique.vercel.app/" },
     { "name": "StartupQT", "desc": "퀴즈 저작·검수·관리 SaaS", "stack": ["Next.js", "TypeScript", "Zustand", "Tiptap", "MUI"], "link": "https://startupqt.com/start" },
-    { "name": "Eat Fit", "desc": "AI 음식 사진 분석 식단관리 PWA (캡스톤 우수상)", "stack": ["Next.js", "FastAPI", "AWS", "PWA"], "link": "https://expo.tukorea.ac.kr/2025/work/87" },
+    { "name": "Eat Fit", "desc": "AI 음식 사진 분석 식단관리 PWA (한국공학대전 우수상)", "stack": ["Next.js", "FastAPI", "AWS", "PWA"], "link": "https://expo.tukorea.ac.kr/2025/work/87" },
     { "name": "Wairi", "desc": "SEO 개선 위한 Vue→Next.js 마이그레이션", "stack": ["Next.js", "TypeScript", "Tailwind", "SEO"], "link": "https://www.wairi.co.kr/webapp" }
   ],
   "awards": [
-    { "title": "SW 캡스톤 디자인 우수상 (Eat Fit)", "year": "2025" },
+    { "title": "한국공학대전 우수상 (Eat Fit)", "year": "2025.12" },
     { "title": "Sniper Factory 프론트엔드 부트캠프 우수상 (팀 리더)", "year": "2024" },
     { "title": "웅진씽크빅 × Udemy Next.js 부트캠프 2위", "year": "2024" }
   ],
