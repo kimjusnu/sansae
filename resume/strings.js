@@ -25,7 +25,7 @@ window.i18nStrings = {
 
     'r.exp.title': 'Experience',
     'r.exp.1.company': 'AimBe Lab',
-    'r.exp.1.role': 'Research Engineer, full-time · SaaS planning · Frontend · AI integration',
+    'r.exp.1.role': 'Engineer, full-time · SaaS planning · Frontend · AI integration',
     'r.exp.1.when': '2025.07 — Present',
     'r.exp.1.a':
       '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and brought in SAM2, cutting AI classification error from 10% to 3%.',
@@ -34,7 +34,7 @@ window.i18nStrings = {
       '<strong>Website rebuild</strong> — turned an investor site into a B2B one, taking enquiries from around one a month to 4 calls and 5 online a month and helping close a contract.',
     'r.exp.1.d': 'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',
     'r.exp.2.company': 'The Innovators',
-    'r.exp.2.role': 'Intern · Technical research',
+    'r.exp.2.role': 'Intern · Frontend · Deployment automation',
     'r.exp.2.when': '2025.03 — 2025.06',
     'r.exp.2.a':
       '<strong>StartupQT</strong> — built the modular editor and review workflow for a quiz-authoring SaaS.',
@@ -58,6 +58,7 @@ window.i18nStrings = {
     'r.edu.major': 'B.S. Computer Engineering, Software major',
     'r.edu.when': '2020.03 — 2026.02',
     'r.edu.gpa': 'GPA 3.45 / 4.5 (major 3.54)',
+    'r.edu.military': 'Military service completed — ROK Army Sergeant (2021.06 — 2022.12)',
 
     'r.awards.title': 'Awards · Certifications',
     'r.awards.1': 'Korea Engineering Exhibition — Eat Fit',

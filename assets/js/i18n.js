@@ -164,7 +164,7 @@
       /* ---------------- experience ---------------- */
       'exp.title': 'The path <em>so far</em>',
       'exp.1.when': '2025.07 — Present',
-      'exp.1.role': 'Research Engineer, full-time · SaaS planning · Frontend · AI integration',
+      'exp.1.role': 'Engineer, full-time · SaaS planning · Frontend · AI integration',
       'exp.1.a':
         'My Feed: digitised farm orders scattered across paper ledgers and KakaoTalk.',
       'exp.1.b':
@@ -173,10 +173,13 @@
         'Website rebuild: took enquiries from around one a month to 4 calls and 5 online a month, and helped close a real contract.',
       'exp.1.d':
         'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',
-      'exp.2.role': 'Intern · Technical research',
+      'exp.2.role': 'Intern · Frontend · Deployment automation',
       'exp.2.a':
         'Implemented the modular editor and review workflow for the StartupQT quiz-authoring SaaS.',
       'exp.2.b': 'Built the GitHub Actions, Docker and PM2 pipeline single-handedly, with an Nginx reverse proxy and HTTPS.',
+      'exp.mil.org': 'Republic of Korea Army — completed service, Sergeant',
+      'exp.mil.role':
+        'Signal corps — network maintenance for an intelligence-analysis unit.',
       'exp.3.school': 'Tech University of Korea',
       'exp.3.role':
         'B.S. Computer Engineering, Software major · GPA 3.45 / 4.5 (major 3.54)',
