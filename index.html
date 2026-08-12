@@ -319,11 +319,11 @@
         <article class="work-card reveal">
           <div class="work-index">
             <span class="work-num">02</span>
-            <span class="work-tag" data-i18n="work.notify.tag">실무 · 단독 설계·구현</span>
+            <span class="work-tag" data-i18n="work.notify.tag">실무 · 장애 대응 · 단독 구현</span>
           </div>
           <div class="work-body">
             <h3 data-i18n="work.notify.h">My Feed — 웹 알림</h3>
-            <p data-i18n="work.notify.p">My Feed의 웹 알림을 설계부터 관리자 발송 화면까지 혼자 맡았습니다. 브라우저 탭을 떠나 있어도 알림이 닿도록 Service Worker와 FCM으로 붙였습니다. 미읽음 개수는 10초에 한 번씩 물어보고 있었는데, 아무도 보고 있지 않은 탭까지 분당 6번 서버를 두드리는 구조였습니다. 주기를 분당 1회로 낮추고 탭이 가려지면 폴링을 멈추게 해서, 알림을 받는 쪽 비용부터 줄였습니다.</p>
+            <p data-i18n="work.notify.p">특정 브라우저에서 버전 업데이트 뒤부터 웹푸시가 조용히 끊겼습니다. 에러 하나 없이 알림만 오지 않았습니다. OS 이벤트 로그로 푸시 경로를 홉 단위로 따라가 네트워크 도달·서버 발송·OS 수신까지는 정상이고 브라우저 내부에서 사라진다는 것을 특정했습니다. 제가 손댈 수 없는 계층이었습니다. 그래서 원인을 고치는 대신 도달을 보장하는 구조로 갔습니다 — 푸시, 폴링 폴백, 탭 복귀 갱신의 3중 방어. 숨은 탭은 타이머가 눌려 5분 뒤 65초 동안 요청이 0건인 것을 실측하고 Web Lock으로 면제를 받았습니다. 브라우저가 패치되면 푸시가 다시 우선권을 가져갑니다. 4일 동안 9개 파일, 커밋 8개로 혼자 넣었습니다.</p>
             <ul class="stack">
               <li>Service Worker</li><li>FCM</li><li>vanilla JS</li><li>FastAPI</li>
             </ul>

@@ -130,10 +130,10 @@
       'work.myfeed.p':
         'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide. On a two-person web team I own about 38% of the commits, leading the farm monitoring screens, the admin, and the whole web notification system. Clearing an N+1 in the monitoring detail API cut database round trips from roughly 2,400 to one for a three-month query, and the admin image list went from a measured 172 seconds for 20 images to a few seconds. I proposed adopting SAM2 myself, which took the feed-bin image classification error rate from 10% to 3%.',
       'work.myfeed.note': 'Internal service',
-      'work.notify.tag': 'Professional · designed and built solo',
+      'work.notify.tag': 'Professional · incident response · built solo',
       'work.notify.h': 'My Feed — web notifications',
       'work.notify.p':
-        "I owned My Feed's web notifications end to end, from the design through the admin sending screen. They reach the user even when the tab is not in front of them, via a Service Worker and FCM. The unread count was being polled every ten seconds, which meant six requests a minute per tab — including tabs nobody was looking at. I dropped it to once a minute and stopped polling entirely while the tab is hidden, so the cost of receiving a notification came down first.",
+        'On one browser, web push went quiet after a version update. No errors — the notifications simply stopped arriving. I followed the push path hop by hop through the OS event log and pinned down that it reached the network, left the server and was received by the OS, then vanished inside the browser. That layer was not mine to fix. So instead of fixing the cause I built for delivery: push, a polling fallback, and a refresh on tab return — three ways in. Hidden tabs have their timers throttled, which I measured at 65 seconds with zero requests after the five-minute mark, so I claimed an exemption with a Web Lock. When the browser is patched, push takes priority back on its own. Nine files and eight commits over four days, on my own.',
       'work.geo.tag': 'Professional · SEO · AEO · GEO',
       'work.geo.h': 'AimBe Lab website',
       'work.geo.p':
