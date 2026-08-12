@@ -42,11 +42,15 @@
   letter-spacing: 0.02em;
 }
 
+/* The favicon already carries the brand mark — the isometric glass block that
+   the hero and the intro use. This used to be an empty span filled with the
+   gradient, so the header showed a plain coloured tile while every other
+   surface showed the mark. Same asset, one request, already cached. */
 .wordmark .wordmark-mark {
   width: 22px;
   height: 22px;
+  flex: none;
   border-radius: 7px;
-  background: var(--grad-mark);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
 }
 
