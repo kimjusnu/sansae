@@ -19,7 +19,7 @@
   justify-content: center;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 42%, #ffffff 0%, rgba(255, 255, 255, 0) 58%),
+    radial-gradient(circle at 50% 42%, rgba(var(--surface-rgb), 1) 0%, rgba(var(--surface-rgb), 0) 58%),
     radial-gradient(circle at 78% 8%, rgba(49, 130, 246, 0.14), transparent 40%),
     radial-gradient(circle at 14% 84%, rgba(34, 211, 238, 0.1), transparent 38%),
     var(--page-bg);

@@ -3,21 +3,30 @@
    Load order: base.css → layout.css → sections.css
    ========================================================= */
 :root {
-  /* surface */
+  /* surface — the two base colours also ship as raw channels, because a dozen
+     rules build their own translucency out of them (headers, glass panels, the
+     scroll scrims). Channels let those follow the theme without each rule
+     needing a dark twin. */
   --page-bg: #f7faff;
+  --page-bg-rgb: 247, 250, 255;
   --page-bg-secondary: #f1f6ff;
   --surface: #ffffff;
-  --surface-soft: rgba(255, 255, 255, 0.78);
+  --surface-rgb: 255, 255, 255;
+  --surface-soft: rgba(var(--surface-rgb), 0.78);
   --surface-blue: #eef5ff;
 
   /* text */
   --text-primary: #0f1b2d;
   --text-secondary: #4f6078;
-  /* 4.54:1 on the footer's --surface-blue, 4.75:1 on white — both clear WCAG AA
-     for body text. The old #7c8ba1 measured 3.31:1 and Lighthouse failed the
-     footer headings and the copyright line on it. Same hue, lower lightness. */
-  --text-tertiary: #64748c;
+  /* 4.90:1 on the tinted chip background, 5.33:1 on white. The previous
+     #64748c came in at 4.37:1 once measured against the actual chip rather
+     than the page, which misses AA for the 12px labels that use it. */
+  --text-tertiary: #5e6c82;
   --text-inverse: #ffffff;
+  /* The hero sits over moving glass, so its text is darkened past the ordinary
+     secondary greys to hold 4.5:1 while a panel slides underneath. */
+  --text-scrim-strong: #1e2c42;
+  --text-scrim: #2a374d;
 
   /* brand */
   --primary-700: #1d4ed8;
@@ -39,6 +48,30 @@
   --success: #18a874;
   --warning: #e89b21;
   --danger: #e65c6a;
+  --danger-text: #8f2f3b;
+
+  /* Split out from --primary-700 because this one is a *background* carrying
+     white text. In dark mode --primary-700 becomes a light blue for text, and
+     white on light blue would be unreadable. */
+  --skip-bg: var(--primary-700);
+  --badge-bg: rgba(239, 246, 255, 0.8);
+
+  /* Three gradients, split by what sits on top of them.
+
+     --grad-cta carries white 14px labels, so every point along it has to clear
+     4.5:1. The old blue→cyan ramp measured 2.51:1 where the label crosses the
+     cyan end — Lighthouse never caught it because it does not evaluate
+     background-image. Deepening the far stop to teal keeps the blue→cyan read
+     and puts the whole ramp at 5.17:1 or better.
+
+     --grad-mark keeps the original vivid ramp for the 22px wordmark tile and
+     the cursor dot, which carry no text.
+
+     --grad-head is clipped to the hero heading, so it is text itself and flips
+     in dark mode. */
+  --grad-cta: linear-gradient(135deg, #1d4ed8 0%, #2563eb 55%, #0e7490 100%);
+  --grad-mark: linear-gradient(135deg, #1d4ed8 0%, #3182f6 55%, #22d3ee 100%);
+  --grad-head: linear-gradient(120deg, #1d4ed8 0%, #2563eb 55%, #3182f6 100%);
 
   /* spacing */
   --space-1: 4px;
@@ -82,6 +115,62 @@
   --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
 
   --ease: cubic-bezier(0.22, 0.7, 0.24, 1);
+}
+
+/* =========================================================
+   Dark mode
+
+   Everything below only re-points the tokens above, so no component
+   carries a dark branch of its own. Two deliberate exceptions:
+
+   - --text-inverse stays white. It labels the blue gradient buttons and
+     the chat bubble, and that gradient does not flip.
+   - The blue ramp splits by role. 700/600/300 are read as *text* on this
+     page, so they get lighter; 100/50 are read as *fills*, so they get
+     darker. Flipping the whole ramp one way would break the other half.
+   ========================================================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: #0b1220;
+    --page-bg-rgb: 11, 18, 32;
+    --page-bg-secondary: #0e1526;
+    --surface: #151d2e;
+    --surface-rgb: 21, 29, 46;
+    --surface-blue: #14203a;
+
+    --text-primary: #e9eefb;
+    --text-secondary: #aab9d6;
+    --text-tertiary: #93a3bf;
+    --text-scrim-strong: #e3eaf9;
+    --text-scrim: #cbd6ec;
+
+    /* text-weight blues */
+    --primary-700: #a8c6ff;
+    --primary-600: #8db4ff;
+    --primary-300: #6ea4ff;
+    /* fill-weight blues */
+    --primary-100: #1d2b48;
+    --primary-50: #16223c;
+
+    --border-default: rgba(125, 170, 255, 0.14);
+    --border-strong: rgba(125, 170, 255, 0.3);
+
+    --success: #34d399;
+    --danger-text: #ff9aa5;
+
+    --skip-bg: #1d4ed8;
+    --badge-bg: rgba(37, 99, 235, 0.18);
+
+    /* The heading gradient is the text, so it inverts. Its darkest stop
+       measured 2.79:1 against the dark page — under the 3:1 large-text floor. */
+    --grad-head: linear-gradient(120deg, #7fb0ff 0%, #9cc3ff 55%, #7fe8f8 100%);
+
+    /* Blue-tinted shadows vanish against a dark page; these carry depth. */
+    --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.36);
+    --shadow-md: 0 18px 48px rgba(0, 0, 0, 0.44);
+    --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.5);
+  }
 }
 
 /* =========================================================
@@ -178,7 +267,7 @@ button {
   color: var(--text-inverse);
   font-size: 14px;
   font-weight: 650;
-  background: var(--primary-700);
+  background: var(--skip-bg);
   transition: top 180ms var(--ease);
 }
 
@@ -268,7 +357,7 @@ main > .section:last-child {
   color: var(--primary-700);
   font-size: 13px;
   font-weight: 650;
-  background: rgba(239, 246, 255, 0.8);
+  background: var(--badge-bg);
 }
 
 .eyebrow-badge .status-dot {
@@ -309,7 +398,7 @@ main > .section:last-child {
 
 .button-primary {
   color: var(--text-inverse);
-  background: linear-gradient(135deg, #1d4ed8 0%, #3182f6 55%, #22d3ee 100%);
+  background: var(--grad-cta);
   box-shadow: 0 12px 30px rgba(37, 99, 235, 0.24);
 }
 
@@ -326,7 +415,7 @@ main > .section:last-child {
 .button-secondary {
   border: 1px solid rgba(37, 99, 235, 0.16);
   color: var(--primary-700);
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(var(--surface-rgb), 0.82);
   box-shadow: 0 8px 22px rgba(29, 78, 216, 0.06);
 }
 

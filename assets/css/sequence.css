@@ -42,9 +42,9 @@
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(247, 250, 255, 0.55) 0%,
-    rgba(247, 250, 255, 0.18) 26%,
-    rgba(247, 250, 255, 0.18) 58%,
+    rgba(var(--page-bg-rgb), 0.55) 0%,
+    rgba(var(--page-bg-rgb), 0.18) 26%,
+    rgba(var(--page-bg-rgb), 0.18) 58%,
     var(--page-bg) 100%
   );
 }
@@ -60,10 +60,10 @@
   pointer-events: none;
   background: linear-gradient(
     100deg,
-    rgba(247, 250, 255, 0.92) 0%,
-    rgba(247, 250, 255, 0.86) 26%,
-    rgba(247, 250, 255, 0.42) 46%,
-    rgba(247, 250, 255, 0) 64%
+    rgba(var(--page-bg-rgb), 0.92) 0%,
+    rgba(var(--page-bg-rgb), 0.86) 26%,
+    rgba(var(--page-bg-rgb), 0.42) 46%,
+    rgba(var(--page-bg-rgb), 0) 64%
   );
 }
 
@@ -74,20 +74,20 @@
 
 /* Secondary greys were chosen against a flat page, not against moving glass. */
 .scrollstage.is-ready .hero-lede {
-  color: #1e2c42;
+  color: var(--text-scrim-strong);
 }
 
 /* Small text needs 4.5:1, and this row sits lowest where the scrim is
    weakest, so it takes the biggest step down. */
 .scrollstage.is-ready .hero-meta {
-  color: #2a374d;
+  color: var(--text-scrim);
 }
 
 /* The badge is translucent by default, which lets a panel bleed through and
    drops its label below 4.5:1. Over the backdrop it goes fully opaque. */
 .scrollstage.is-ready .eyebrow-badge {
   border-color: rgba(37, 99, 235, 0.2);
-  background: #ffffff;
+  background: var(--surface);
 }
 
 /* ---------------------------------------------------------
@@ -144,10 +144,10 @@
   .scrollstage.is-ready .scrollstage-pin::before {
     background: linear-gradient(
       180deg,
-      rgba(247, 250, 255, 0) 0%,
-      rgba(247, 250, 255, 0.35) 26%,
-      rgba(247, 250, 255, 0.88) 44%,
-      rgba(247, 250, 255, 0.94) 100%
+      rgba(var(--page-bg-rgb), 0) 0%,
+      rgba(var(--page-bg-rgb), 0.35) 26%,
+      rgba(var(--page-bg-rgb), 0.88) 44%,
+      rgba(var(--page-bg-rgb), 0.94) 100%
     );
   }
 }

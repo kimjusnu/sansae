@@ -30,7 +30,7 @@
   justify-content: space-between;
   gap: var(--space-4);
   padding: var(--space-3) var(--gutter);
-  background: rgba(247, 250, 255, 0.86);
+  background: rgba(var(--page-bg-rgb), 0.86);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-default);
 }
@@ -50,7 +50,7 @@
   padding: 0 14px;
   border: 1px solid rgba(37, 99, 235, 0.16);
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(var(--surface-rgb), 0.82);
   color: var(--primary-700);
   font-family: inherit;
   font-size: 13px;
@@ -68,7 +68,7 @@
 .resume-print {
   color: var(--text-inverse);
   border-color: transparent;
-  background: var(--primary-500);
+  background: var(--skip-bg);
 }
 
 .resume-print:hover {

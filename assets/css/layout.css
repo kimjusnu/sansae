@@ -12,7 +12,7 @@
   right: 0;
   left: 0;
   z-index: 40;
-  background: rgba(247, 250, 255, 0.72);
+  background: rgba(var(--page-bg-rgb), 0.72);
   border-bottom: 1px solid transparent;
   transition: background 220ms var(--ease), border-color 220ms var(--ease);
 }
@@ -46,7 +46,7 @@
   width: 22px;
   height: 22px;
   border-radius: 7px;
-  background: linear-gradient(135deg, #1d4ed8 0%, #3182f6 55%, #22d3ee 100%);
+  background: var(--grad-mark);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
 }
 
@@ -113,7 +113,7 @@
 
 .mobile-nav {
   border-top: 1px solid var(--border-default);
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(var(--surface-rgb), 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -178,7 +178,7 @@
 /* 제목용 그라디언트는 배경 대비 3:1을 유지하도록 시안 끝단을 쓰지 않는다 */
 .hero-copy h1 em {
   font-style: normal;
-  background: linear-gradient(120deg, #1d4ed8 0%, #2563eb 55%, #3182f6 100%);
+  background: var(--grad-head);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

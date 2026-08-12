@@ -18,7 +18,7 @@
   padding: 3px;
   border: 1px solid rgba(37, 99, 235, 0.16);
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(var(--surface-rgb), 0.82);
   box-shadow: 0 8px 22px rgba(29, 78, 216, 0.06);
 }
 
@@ -44,9 +44,11 @@
   color: var(--primary-700);
 }
 
+/* --primary-500 measured 3.71:1 under white — the pressed pill is 12px, so it
+   takes the deeper blue that is reserved for white-on-blue backgrounds. */
 .lang-switch button[aria-pressed='true'] {
   color: var(--text-inverse);
-  background: var(--primary-500);
+  background: var(--skip-bg);
   box-shadow: 0 4px 12px rgba(49, 130, 246, 0.32);
 }
 
