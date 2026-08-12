@@ -249,8 +249,11 @@
         });
     })
     .catch(function () {
-      /* Poster-only, unpinned. The hero still reads correctly. */
+      /* Poster-only, unpinned. The hero still reads correctly. The head script
+         reserved the pinned height before first paint, so give that back too —
+         otherwise the stage keeps 260vh of empty scroll it will never use. */
       stage.classList.remove('is-pinned');
+      document.documentElement.classList.remove('sequence-pin');
     });
 
   // The intro gate warms the first frames while the visitor reads the splash.

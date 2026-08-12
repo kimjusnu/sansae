@@ -41,16 +41,54 @@
 (function () {
   var root = document.documentElement;
   root.classList.add('js');
-  // The markup is Korean but English is the default view, so most loads repaint
-  // into another language. i18n.css hides the body while that is pending; the
-  // timer makes sure a failed i18n.js can never leave a blank page behind.
-  var lang = 'en';
+
+  // sequence.js pins the hero to a 260vh stage once its frames arrive, which
+  // used to grow the document by ~1700px around 800ms in and push every
+  // section below it down — CLS 0.18 on desktop, and a visible jump for anyone
+  // who has already seen the intro this session. The two conditions that stop
+  // it from pinning are both readable right here, so the space is reserved
+  // before the first paint instead. sequence.js drops this class if it ends up
+  // bailing for any other reason.
+  try {
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      || !!(navigator.connection && navigator.connection.saveData);
+    if (!still) root.classList.add('sequence-pin');
+  } catch (e) {
+    /* no matchMedia — leave the stage unpinned, sequence.js will handle it */
+  }
+  // The markup is Korean, so a load that ends up Korean has nothing to repaint
+  // and must not be hidden. Only a load heading for English hides the body
+  // while i18n.js swaps it; the timer makes sure a failed i18n.js can never
+  // leave a blank page behind.
+  //
+  // This repeats the language resolution in i18n.js on purpose — it has to run
+  // before that file arrives. Keep the two in step. Getting it wrong used to
+  // cost every first-time Korean visitor the whole wait: Lighthouse measured
+  // LCP as 87% render delay, the body sitting hidden for a swap that was never
+  // going to happen.
+  var lang = null;
   try {
     var fromUrl = location.search.match(/[?&]lang=(en|ko)/);
     var stored = fromUrl ? fromUrl[1] : localStorage.getItem('lang');
     if (stored === 'ko' || stored === 'en') lang = stored;
   } catch (e) {
-    /* storage blocked — the default stands */
+    /* storage blocked — fall through to the browser's own languages */
+  }
+  if (!lang) {
+    var tags = [];
+    try {
+      tags = navigator.languages && navigator.languages.length
+        ? [].slice.call(navigator.languages)
+        : (navigator.language ? [navigator.language] : []);
+    } catch (e) {
+      tags = [];
+    }
+    for (var i = 0; i < tags.length; i++) {
+      var tag = String(tags[i]).toLowerCase();
+      if (tag === 'ko' || tag.indexOf('ko-') === 0) { lang = 'ko'; break; }
+      if (tag === 'en' || tag.indexOf('en-') === 0) { lang = 'en'; break; }
+    }
+    if (!lang) lang = 'en';
   }
   if (lang !== 'ko') {
     root.classList.add('i18n-pending');
@@ -65,9 +103,18 @@
 <link rel="stylesheet" href="assets/css/sections.css">
 <link rel="stylesheet" href="assets/css/sequence.css">
 <link rel="stylesheet" href="assets/css/intro.css">
-<link rel="stylesheet" href="assets/css/cursor.css">
 <link rel="stylesheet" href="assets/css/i18n.css">
-<link rel="stylesheet" href="assets/css/chat.css">
+<!-- Neither of these styles anything in the first paint: the chat panel opens
+     on click and the custom cursor is a pointer-device enhancement. Loading
+     them as print and flipping to all on load takes them off the critical
+     path — Lighthouse measured the eight blocking sheets at ~750ms on mobile.
+     The noscript copies keep them for browsers without JS. -->
+<link rel="stylesheet" href="assets/css/cursor.css" media="print" onload="this.media='all';this.onload=null">
+<link rel="stylesheet" href="assets/css/chat.css" media="print" onload="this.media='all';this.onload=null">
+<noscript>
+  <link rel="stylesheet" href="assets/css/cursor.css">
+  <link rel="stylesheet" href="assets/css/chat.css">
+</noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -103,7 +150,12 @@
     <div class="intro-cube">
       <span class="intro-orbit" aria-hidden="true"></span>
       <span class="intro-orbit" aria-hidden="true"></span>
-      <img src="icons/icon-hero-product-build.webp" alt="" aria-hidden="true" width="420" height="420" decoding="async">
+      <img src="icons/icon-hero-product-build.webp"
+           srcset="icons/icon-hero-product-build-420.webp 420w,
+                   icons/icon-hero-product-build-640.webp 640w,
+                   icons/icon-hero-product-build.webp 880w"
+           sizes="(max-width: 750px) 56vw, 420px"
+           alt="" aria-hidden="true" width="420" height="420" decoding="async">
     </div>
     <p class="intro-name" data-i18n="intro.name">김준수</p>
     <p class="intro-role" data-i18n="intro.role">프론트엔드 엔지니어 · AI 통합</p>
@@ -208,7 +260,10 @@
         <div class="icon3d icon3d--float" style="--icon-size: min(440px, 68vw)">
           <span class="icon3d-fallback" aria-hidden="true"></span>
           <img src="icons/icon-hero-product-build.webp"
-               srcset="icons/icon-hero-product-build-560.webp 560w, icons/icon-hero-product-build.webp 880w"
+               srcset="icons/icon-hero-product-build-420.webp 420w,
+                       icons/icon-hero-product-build-560.webp 560w,
+                       icons/icon-hero-product-build-640.webp 640w,
+                       icons/icon-hero-product-build.webp 880w"
                sizes="(max-width: 767px) 280px, 440px"
                alt="" aria-hidden="true" width="440" height="440" decoding="async" fetchpriority="high">
         </div>
@@ -255,7 +310,9 @@
         <article class="feature-card reveal">
           <div class="icon3d icon3d--float" style="--icon-size: min(104px, 22vw)">
             <span class="icon3d-fallback" aria-hidden="true"></span>
-            <img src="icons/icon-feature-ownership.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
+            <img src="icons/icon-feature-ownership.webp"
+               srcset="icons/icon-feature-ownership-176.webp 176w, icons/icon-feature-ownership.webp 264w"
+               sizes="104px" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
           <h3 data-i18n="about.1.h">End-to-End 오너십</h3>
           <p data-i18n="about.1.p">기획 → 디자인 → 구현 → 배포 → 운영. 아이디어가 사용자에게 닿을 때까지의 모든 단계를 직접 맡습니다.</p>
@@ -264,7 +321,9 @@
         <article class="feature-card reveal" data-delay="1">
           <div class="icon3d icon3d--float-slow" style="--icon-size: min(104px, 22vw)">
             <span class="icon3d-fallback" aria-hidden="true"></span>
-            <img src="icons/icon-feature-fullstack.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
+            <img src="icons/icon-feature-fullstack.webp"
+               srcset="icons/icon-feature-fullstack-176.webp 176w, icons/icon-feature-fullstack.webp 264w"
+               sizes="104px" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
           <h3 data-i18n="about.2.h">풀스택 실행력</h3>
           <p data-i18n="about.2.p">프론트엔드부터 FastAPI 백엔드, Docker와 CI/CD 인프라까지 이어서 다룹니다. 막히는 지점을 남에게 넘기지 않습니다.</p>
@@ -273,7 +332,9 @@
         <article class="feature-card reveal" data-delay="2">
           <div class="icon3d icon3d--float" style="--icon-size: min(104px, 22vw)">
             <span class="icon3d-fallback" aria-hidden="true"></span>
-            <img src="icons/icon-feature-research.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
+            <img src="icons/icon-feature-research.webp"
+               srcset="icons/icon-feature-research-176.webp 176w, icons/icon-feature-research.webp 264w"
+               sizes="104px" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
           <h3 data-i18n="about.3.h">현장 기반 문제 정의</h3>
           <p data-i18n="about.3.p">사용 현장을 직접 관찰하고 행동 데이터를 읽어, 요구사항 뒤에 있는 진짜 문제를 정의합니다.</p>
@@ -282,7 +343,9 @@
         <article class="feature-card reveal" data-delay="3">
           <div class="icon3d icon3d--float-slow" style="--icon-size: min(104px, 22vw)">
             <span class="icon3d-fallback" aria-hidden="true"></span>
-            <img src="icons/icon-feature-ai.webp" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
+            <img src="icons/icon-feature-ai.webp"
+               srcset="icons/icon-feature-ai-176.webp 176w, icons/icon-feature-ai.webp 264w"
+               sizes="104px" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
           <h3 data-i18n="about.4.h">AI를 제품에 녹이기</h3>
           <p data-i18n="about.4.p">LLM과 SAM2를 실제 화면 흐름에 통합합니다. My Feed에서는 AI 분류 오류율을 10%에서 3%로 낮췄습니다.</p>
@@ -464,7 +527,9 @@
         <li class="process-step reveal">
           <div class="icon3d icon3d--float" style="--icon-size: min(80px, 20vw)">
             <span class="icon3d-fallback" aria-hidden="true"></span>
-            <img src="icons/icon-process-define.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
+            <img src="icons/icon-process-define.webp"
+               srcset="icons/icon-process-define-160.webp 160w, icons/icon-process-define.webp 264w"
+               sizes="80px" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
           </div>
           <span class="step-num">STEP 01</span>
           <h3 data-i18n="process.1.h">정의</h3>
@@ -473,7 +538,9 @@
         <li class="process-step reveal" data-delay="1">
           <div class="icon3d icon3d--float-slow" style="--icon-size: min(80px, 20vw)">
             <span class="icon3d-fallback" aria-hidden="true"></span>
-            <img src="icons/icon-process-design.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
+            <img src="icons/icon-process-design.webp"
+               srcset="icons/icon-process-design-160.webp 160w, icons/icon-process-design.webp 264w"
+               sizes="80px" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
           </div>
           <span class="step-num">STEP 02</span>
           <h3 data-i18n="process.2.h">설계</h3>
@@ -482,7 +549,9 @@
         <li class="process-step reveal" data-delay="2">
           <div class="icon3d icon3d--float" style="--icon-size: min(80px, 20vw)">
             <span class="icon3d-fallback" aria-hidden="true"></span>
-            <img src="icons/icon-process-build.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
+            <img src="icons/icon-process-build.webp"
+               srcset="icons/icon-process-build-160.webp 160w, icons/icon-process-build.webp 264w"
+               sizes="80px" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
           </div>
           <span class="step-num">STEP 03</span>
           <h3 data-i18n="process.3.h">구현</h3>
@@ -491,7 +560,9 @@
         <li class="process-step reveal" data-delay="3">
           <div class="icon3d icon3d--float-slow" style="--icon-size: min(80px, 20vw)">
             <span class="icon3d-fallback" aria-hidden="true"></span>
-            <img src="icons/icon-process-operate.webp" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
+            <img src="icons/icon-process-operate.webp"
+               srcset="icons/icon-process-operate-160.webp 160w, icons/icon-process-operate.webp 264w"
+               sizes="80px" alt="" aria-hidden="true" width="80" height="80" loading="lazy" decoding="async">
           </div>
           <span class="step-num">STEP 04</span>
           <h3 data-i18n="process.4.h">운영</h3>
@@ -616,7 +687,9 @@
         </div>
         <div class="icon3d icon3d--float" style="--icon-size: min(200px, 44vw)">
           <span class="icon3d-fallback" aria-hidden="true"></span>
-          <img src="icons/icon-cta-contact.webp" alt="" aria-hidden="true" width="200" height="200" loading="lazy" decoding="async">
+          <img src="icons/icon-cta-contact.webp"
+               srcset="icons/icon-cta-contact-320.webp 320w, icons/icon-cta-contact.webp 440w"
+               sizes="200px" alt="" aria-hidden="true" width="200" height="200" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -636,7 +709,9 @@
   <header class="chat-header">
     <div class="icon3d" aria-hidden="true">
       <span class="icon3d-fallback"></span>
-      <img src="icons/icon-chat-assistant.webp" alt="" width="44" height="44" loading="lazy" decoding="async">
+      <img src="icons/icon-chat-assistant.webp"
+               srcset="icons/icon-chat-assistant-96.webp 96w, icons/icon-chat-assistant.webp 264w"
+               sizes="44px" alt="" width="44" height="44" loading="lazy" decoding="async">
     </div>
     <div>
       <h2 data-i18n="chat.title">포트폴리오 도우미</h2>

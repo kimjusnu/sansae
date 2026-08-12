@@ -95,10 +95,12 @@
    Height drives how much scroll the scrub gets: 260vh of stage
    minus the 100vh that is stuck leaves 160vh of travel.
    --------------------------------------------------------- */
+.sequence-pin .scrollstage,
 .scrollstage.is-pinned {
   height: 260vh;
 }
 
+.sequence-pin .scrollstage .scrollstage-pin,
 .scrollstage.is-pinned .scrollstage-pin {
   position: sticky;
   top: 0;
@@ -108,6 +110,7 @@
   overflow: hidden;
 }
 
+.sequence-pin .scrollstage .hero,
 .scrollstage.is-pinned .hero {
   width: 100%;
   padding-block: var(--header-h) 0;
@@ -115,6 +118,7 @@
 
 /* Values are written by sequence.js as custom properties, so the browser
    only ever animates transform and opacity. */
+.sequence-pin .scrollstage .hero-copy,
 .scrollstage.is-pinned .hero-copy {
   opacity: var(--hero-text-opacity, 1);
   transform: translate3d(0, var(--hero-text-y, 0px), 0);
@@ -123,6 +127,7 @@
 
 /* Applied to the wrapper, not .icon3d — the float keyframes own that
    element's transform and would override anything set here. */
+.sequence-pin .scrollstage .hero-visual,
 .scrollstage.is-pinned .hero-visual {
   opacity: var(--cube-opacity, 1);
   transform: scale(var(--cube-scale, 1));
@@ -135,7 +140,8 @@
 }
 
 @media (max-width: 1023px) {
-  .scrollstage.is-pinned {
+  .sequence-pin .scrollstage,
+.scrollstage.is-pinned {
     height: 230vh;
   }
 
@@ -153,17 +159,21 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scrollstage.is-pinned {
+  .sequence-pin .scrollstage,
+.scrollstage.is-pinned {
     height: auto;
   }
 
-  .scrollstage.is-pinned .scrollstage-pin {
+  .sequence-pin .scrollstage .scrollstage-pin,
+.scrollstage.is-pinned .scrollstage-pin {
     position: relative;
     height: auto;
   }
 
-  .scrollstage.is-pinned .hero-copy,
-  .scrollstage.is-pinned .hero-visual {
+  .sequence-pin .scrollstage .hero-copy,
+.scrollstage.is-pinned .hero-copy,
+  .sequence-pin .scrollstage .hero-visual,
+.scrollstage.is-pinned .hero-visual {
     opacity: 1;
     transform: none;
   }
