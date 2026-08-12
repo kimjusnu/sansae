@@ -8,6 +8,7 @@
       { "pattern": "from zero to", "why": "위와 같음 (영문)" },
       { "pattern": "Gemini", "why": "source/projects/myfeed.md:35 — 전 레포 0건, 언급 금지" },
       { "pattern": "127,000", "why": "Componique 다운로드 과장. npm 실측 주간 최고 807회·누적 1,477회 (source/projects/componique.md)" },
+    { "pattern": "잔량 보정", "why": "마이피드 1.5의 Claude 잔량 보정은 본인 작업이 아님 (2026-08-12 본인 재확인). 본인 성과로 쓰면 날조" },
       { "pattern": "127000", "why": "위와 같음" },
       { "pattern": "무중단", "why": "StartupQT Docker 배포는 ENOSPC로 실패해 PM2로 전환. 무중단 근거 없음 (source/projects/startupqt.md:75, 99)" },
       { "pattern": "zero-downtime", "why": "위와 같음 (영문)" },

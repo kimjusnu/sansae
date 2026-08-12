@@ -176,8 +176,11 @@ html[data-lang='en'] .r-photo {
 /* ---------------------------------------------------------
    Sections
    --------------------------------------------------------- */
+/* 4.5mm left the sheet sitting 0.1–0.4mm from spilling onto a second page, so
+   every added line turned into word-golf. 4mm across the five sections buys
+   ~2.5mm of headroom and is not perceptible in the printed rhythm. */
 .r-section {
-  margin-top: 4.5mm;
+  margin-top: 4mm;
 }
 
 .r-section h2 {
