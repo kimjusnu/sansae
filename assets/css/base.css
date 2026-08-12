@@ -191,6 +191,12 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 24px);
   -webkit-text-size-adjust: 100%;
+  /* The intro gate and the mobile nav both lock the body, which removes the
+     scrollbar and widens the page by its width — every element reflows.
+     Lighthouse measured CLS 0.183 on desktop from exactly that, and 0 on
+     mobile, where there is no scrollbar to lose. Reserving the gutter up
+     front means locking scroll no longer moves anything. */
+  scrollbar-gutter: stable;
 }
 
 body {
