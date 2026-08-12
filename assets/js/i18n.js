@@ -94,20 +94,20 @@
 
       /* ---------------- principles ---------------- */
       'principles.title': 'Working principles',
-      'principles.1.h': 'I own it end to end',
+      'principles.1.h': 'I write the planning doc and the deploy runbook too',
       'principles.1.p':
-        'One person carries it from planning through deployment and operation, so improvement continues without a handoff.',
+        'On a two-person web team I authored 38% of the commits (355 of 941). Instead of stopping at the screens, I wrote the deployment steps down so the next person could pick them up.',
       'principles.2.h': 'I find problems on site',
       'principles.2.p':
         'I define problems by seeing the real environment. I visited farms, watched how orders actually flowed, then designed the screens.',
       'principles.3.h': 'I verify the improvement',
       'principles.3.p':
-        'I read user behaviour with GA4 and Clarity, then check in the numbers whether the change actually helped.',
+        'I read user behaviour with GA4 and Clarity, then check the numbers to see whether the change actually helped.',
 
       /* ---------------- about ---------------- */
-      'about.title': 'I can carry a product <em>from end to end</em> on my own',
+      'about.title': 'The smaller the team, the <em>wider the ground</em> you cover',
       'about.lede':
-        'I spend less time building a screen than making sure that screen actually gets used.',
+        'I have worked on teams of two and three. I spent less time building a screen than making sure that screen actually got used.',
       'about.1.h': 'End-to-end ownership',
       'about.1.p':
         'Planning → design → implementation → deployment → operation. I take every step until the idea reaches the user.',
@@ -145,20 +145,21 @@
         'Moved a real company\'s Vue service, which search engines struggled with, onto Next.js, redesigning server rendering and the metadata structure. I led the team on schedule and UI, and it won an Excellence Award at the Sniper Factory bootcamp.',
 
       /* ---------------- process ---------------- */
-      'process.title': 'How I <em>work</em>',
+      'process.title': 'I do not <em>open the tools first</em>',
       'process.lede':
-        'Four steps, one loop. I check the numbers, then start again at step one.',
+        'Most failures come from touching the code before deciding what to solve. Four steps, one loop — I check the numbers, then start again at step one.',
       'process.1.h': 'Define',
       'process.1.p':
-        'I look at the site of use and the data together, and narrow down what actually needs solving.',
+        'Narrowing down what to solve comes first. I look at the site of use and the data together.',
       'process.2.h': 'Design',
       'process.2.p':
-        'Screen flow, data structure and permission scope all get drawn in the same place.',
+        'Screen flow, data structure and permission scope all get drawn in the same place. Whatever gets missed here comes back twice as expensive in the build.',
       'process.3.h': 'Build',
       'process.3.p':
-        'Frontend, API and deployment pipeline get built and automated as one continuous piece.',
+        'Frontend, API and deployment pipeline as one continuous piece.',
       'process.4.h': 'Operate',
-      'process.4.p': 'I read real usage metrics and decide what to fix next.',
+      'process.4.p':
+        'I read real usage metrics and decide what to fix next. Usually that is where step one begins again.',
 
       /* ---------------- experience ---------------- */
       'exp.title': 'The path <em>so far</em>',
