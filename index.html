@@ -365,9 +365,28 @@
 
       <div class="work-list">
         <article class="work-card reveal">
-          <div class="work-index">
-            <span class="work-num">01</span>
-            <span class="work-tag" data-i18n="work.myfeed.tag">실무 · 축산 IoT SaaS</span>
+          <div class="work-aside">
+            <div class="work-index">
+              <span class="work-num">01</span>
+              <span class="work-tag" data-i18n="work.myfeed.tag">실무 · 축산 IoT SaaS</span>
+            </div>
+            <div class="work-gallery">
+              <img class="work-shot" src="shots/myfeed-1.webp"
+                   srcset="shots/myfeed-1.webp 640w, shots/myfeed-1-960.webp 960w"
+                   sizes="(max-width: 767px) 74vw, 38vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.myfeed" alt="마이피드 농장 모니터링 — 사료빈별 최근 촬영 이미지와 잔량·온도·습도·신선도">
+              <img class="work-shot" src="shots/myfeed-2.webp"
+                   srcset="shots/myfeed-2.webp 640w, shots/myfeed-2-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.myfeed2" alt="마이피드 대시보드 — 주문이 필요한 사료빈 비율과 사료빈 위치 지도">
+              <img class="work-shot" src="shots/myfeed-3.webp"
+                   srcset="shots/myfeed-3.webp 640w, shots/myfeed-3-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.myfeed3" alt="마이피드 사료 주문 — 사료빈을 골라 수량과 희망 배송일을 정하는 화면">
+            </div>
           </div>
           <div class="work-body">
             <h3>My Feed</h3>
@@ -377,17 +396,30 @@
             <ul class="stack">
               <li>FastAPI</li><li>Jinja2</li><li>vanilla JS</li><li>Redis</li><li>Celery</li><li>MySQL</li><li>Chart.js</li>
             </ul>
+            <div class="work-meta">
+              <span class="work-note" data-i18n="work.myfeed.note">사내 서비스</span>
+            </div>
           </div>
-          <img class="work-shot" src="shots/myfeed.webp" width="640" height="400"
-               loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.myfeed" alt="마이피드 농장 모니터링 화면 — 사료빈별 최근 촬영 이미지와 잔량·온도·습도·신선도">
-          <span class="work-note" data-i18n="work.myfeed.note">사내 서비스</span>
         </article>
 
         <article class="work-card reveal">
-          <div class="work-index">
-            <span class="work-num">02</span>
-            <span class="work-tag" data-i18n="work.notify.tag">실무 · 장애 대응 · 단독 구현</span>
+          <div class="work-aside">
+            <div class="work-index">
+              <span class="work-num">02</span>
+              <span class="work-tag" data-i18n="work.notify.tag">실무 · 장애 대응 · 단독 구현</span>
+            </div>
+            <div class="work-gallery work-gallery--pair">
+              <img class="work-shot" src="shots/notify-1.webp"
+                   srcset="shots/notify-1.webp 640w, shots/notify-1-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.notify" alt="마이피드 알림 목록 — 안 읽은 알림 3개와 종류별 필터">
+              <img class="work-shot" src="shots/notify-2.webp"
+                   srcset="shots/notify-2.webp 640w, shots/notify-2-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.notify2" alt="마이피드 알림 설정 — 브라우저 알림 허용 상태와 알림 종류별 토글">
+            </div>
           </div>
           <div class="work-body">
             <h3 data-i18n="work.notify.h">My Feed — 웹 알림</h3>
@@ -397,17 +429,35 @@
             <ul class="stack">
               <li>Service Worker</li><li>FCM</li><li>vanilla JS</li><li>FastAPI</li>
             </ul>
+            <div class="work-meta">
+              <span class="work-note" data-i18n="work.myfeed.note">사내 서비스</span>
+            </div>
           </div>
-          <img class="work-shot" src="shots/notify.webp" width="640" height="400"
-               loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.notify" alt="마이피드 알림 설정 화면 — 브라우저 알림 허용 상태와 알림 종류별 토글">
-          <span class="work-note" data-i18n="work.myfeed.note">사내 서비스</span>
         </article>
 
         <article class="work-card reveal">
-          <div class="work-index">
-            <span class="work-num">03</span>
-            <span class="work-tag" data-i18n="work.geo.tag">실무 · 리뉴얼 · SEO·AEO·GEO</span>
+          <div class="work-aside">
+            <div class="work-index">
+              <span class="work-num">03</span>
+              <span class="work-tag" data-i18n="work.geo.tag">실무 · 리뉴얼 · SEO·AEO·GEO</span>
+            </div>
+            <div class="work-gallery">
+              <img class="work-shot" src="shots/aimbelab-1.webp"
+                   srcset="shots/aimbelab-1.webp 640w, shots/aimbelab-1-960.webp 960w"
+                   sizes="(max-width: 767px) 74vw, 38vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.aimbelab" alt="리뉴얼한 에임비랩 홈페이지 첫 화면 — 도입 문의하기 버튼">
+              <img class="work-shot" src="shots/aimbelab-2.webp"
+                   srcset="shots/aimbelab-2.webp 640w, shots/aimbelab-2-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.aimbelab2" alt="에임비랩 홈페이지 — 도입 전후를 표로 비교하는 구간">
+              <img class="work-shot" src="shots/aimbelab-3.webp"
+                   srcset="shots/aimbelab-3.webp 640w, shots/aimbelab-3-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.aimbelab3" alt="에임비랩 홈페이지 — 농장주 인터뷰 영상 카드">
+            </div>
           </div>
           <div class="work-body">
             <h3 data-i18n="work.geo.h">AimBe Lab 홈페이지</h3>
@@ -418,20 +468,38 @@
             <ul class="stack">
               <li>Next.js</li><li>TypeScript</li><li>schema.org</li><li>llms.txt</li>
             </ul>
+            <div class="work-meta">
+              <a class="work-link" href="https://www.aimbelab.com" target="_blank" rel="noopener">
+              <span data-i18n="work.open">사이트 열기</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+            </a>
+            </div>
           </div>
-          <img class="work-shot" src="shots/aimbelab.webp" width="640" height="400"
-               loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.aimbelab" alt="리뉴얼한 에임비랩 홈페이지 첫 화면 — 도입 문의하기 버튼">
-          <a class="work-link" href="https://www.aimbelab.com" target="_blank" rel="noopener">
-            <span data-i18n="work.open">사이트 열기</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
-          </a>
         </article>
 
         <article class="work-card reveal">
-          <div class="work-index">
-            <span class="work-num">04</span>
-            <span class="work-tag" data-i18n="work.1.tag">오픈소스 · 4인 팀</span>
+          <div class="work-aside">
+            <div class="work-index">
+              <span class="work-num">04</span>
+              <span class="work-tag" data-i18n="work.1.tag">오픈소스 · 4인 팀</span>
+            </div>
+            <div class="work-gallery">
+              <img class="work-shot" src="shots/componique-1.webp"
+                   srcset="shots/componique-1.webp 640w, shots/componique-1-960.webp 960w"
+                   sizes="(max-width: 767px) 74vw, 38vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.componique" alt="Componique 문서 사이트 첫 화면과 Form 컴포넌트 목록">
+              <img class="work-shot" src="shots/componique-2.webp"
+                   srcset="shots/componique-2.webp 640w, shots/componique-2-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.componique2" alt="Componique 문서 — Data display 컴포넌트 모음">
+              <img class="work-shot" src="shots/componique-3.webp"
+                   srcset="shots/componique-3.webp 640w, shots/componique-3-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.componique3" alt="Componique 문서 — Feedback·Navigation 컴포넌트 모음">
+            </div>
           </div>
           <div class="work-body">
             <h3>Componique</h3>
@@ -439,26 +507,34 @@
             <ul class="stack">
               <li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>Storybook</li><li>Rollup</li>
             </ul>
-          </div>
-          <img class="work-shot" src="shots/componique.webp" width="640" height="400"
-               loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.componique" alt="Componique 문서 사이트 — 폼·데이터 표시 컴포넌트 목록">
-          <div class="work-links">
-            <a class="work-link" href="https://componique.vercel.app/" target="_blank" rel="noopener">
-              <span data-i18n="work.open">사이트 열기</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
-            </a>
-            <a class="work-link work-link--ghost" href="https://github.com/Poten14/Componique" target="_blank" rel="noopener">
-              <span data-i18n="work.code">코드 보기</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
-            </a>
+            <div class="work-meta">
+              <div class="work-links">
+              <a class="work-link" href="https://componique.vercel.app/" target="_blank" rel="noopener">
+                <span data-i18n="work.open">사이트 열기</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+              </a>
+              <a class="work-link work-link--ghost" href="https://github.com/Poten14/Componique" target="_blank" rel="noopener">
+                <span data-i18n="work.code">코드 보기</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+              </a>
+            </div>
+            </div>
           </div>
         </article>
 
         <article class="work-card reveal">
-          <div class="work-index">
-            <span class="work-num">05</span>
-            <span class="work-tag" data-i18n="work.2.tag">SaaS</span>
+          <div class="work-aside">
+            <div class="work-index">
+              <span class="work-num">05</span>
+              <span class="work-tag" data-i18n="work.2.tag">SaaS</span>
+            </div>
+            <div class="work-gallery">
+              <img class="work-shot" src="shots/startupqt-1.webp"
+                   srcset="shots/startupqt-1.webp 640w, shots/startupqt-1-960.webp 960w"
+                   sizes="(max-width: 767px) 74vw, 38vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.startupqt" alt="StartupQT 진입 화면">
+            </div>
           </div>
           <div class="work-body">
             <h3>StartupQT</h3>
@@ -468,20 +544,33 @@
             <ul class="stack">
               <li>Next.js</li><li>TypeScript</li><li>Zustand</li><li>Tiptap</li><li>MUI</li><li>Docker</li>
             </ul>
+            <div class="work-meta">
+              <a class="work-link" href="https://startupqt.com/start" target="_blank" rel="noopener">
+              <span data-i18n="work.open">사이트 열기</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+            </a>
+            </div>
           </div>
-          <img class="work-shot" src="shots/startupqt.webp" width="640" height="400"
-               loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.startupqt" alt="StartupQT 첫 진입 화면">
-          <a class="work-link" href="https://startupqt.com/start" target="_blank" rel="noopener">
-            <span data-i18n="work.open">사이트 열기</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
-          </a>
         </article>
 
         <article class="work-card reveal">
-          <div class="work-index">
-            <span class="work-num">06</span>
-            <span class="work-tag" data-i18n="work.3.tag">졸업작품 · 3인 팀</span>
+          <div class="work-aside">
+            <div class="work-index">
+              <span class="work-num">06</span>
+              <span class="work-tag" data-i18n="work.3.tag">졸업작품 · 3인 팀</span>
+            </div>
+            <div class="work-gallery work-gallery--pair">
+              <img class="work-shot" src="shots/eatfit-1.webp"
+                   srcset="shots/eatfit-1.webp 640w, shots/eatfit-1-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.eatfit" alt="한국공학대전 사이트의 Eat Fit 소개 — 앱 화면 미리보기">
+              <img class="work-shot" src="shots/eatfit-2.webp"
+                   srcset="shots/eatfit-2.webp 640w, shots/eatfit-2-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.eatfit2" alt="Eat Fit 개발 결과 — 시스템 구성도와 지표 화면">
+            </div>
           </div>
           <div class="work-body">
             <h3>Eat Fit</h3>
@@ -489,20 +578,38 @@
             <ul class="stack">
               <li>Next.js</li><li>FastAPI</li><li>AWS</li><li>PWA</li>
             </ul>
+            <div class="work-meta">
+              <a class="work-link" href="https://expo.tukorea.ac.kr/2025/work/87" target="_blank" rel="noopener">
+              <span data-i18n="work.3.link">전시 페이지</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+            </a>
+            </div>
           </div>
-          <img class="work-shot" src="shots/eatfit.webp" width="640" height="400"
-               loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.eatfit" alt="Eat Fit 한국공학대전 전시 페이지 — 앱 화면 미리보기">
-          <a class="work-link" href="https://expo.tukorea.ac.kr/2025/work/87" target="_blank" rel="noopener">
-            <span data-i18n="work.3.link">전시 페이지</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
-          </a>
         </article>
 
         <article class="work-card reveal">
-          <div class="work-index">
-            <span class="work-num">07</span>
-            <span class="work-tag" data-i18n="work.4.tag">마이그레이션 · 팀 리더</span>
+          <div class="work-aside">
+            <div class="work-index">
+              <span class="work-num">07</span>
+              <span class="work-tag" data-i18n="work.4.tag">마이그레이션 · 팀 리더</span>
+            </div>
+            <div class="work-gallery">
+              <img class="work-shot" src="shots/wairi-1.webp"
+                   srcset="shots/wairi-1.webp 640w, shots/wairi-1-960.webp 960w"
+                   sizes="(max-width: 767px) 74vw, 38vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.wairi" alt="와이리 첫 화면 — 대행사 수수료 부담을 짚는 히어로 영상">
+              <img class="work-shot" src="shots/wairi-2.webp"
+                   srcset="shots/wairi-2.webp 640w, shots/wairi-2-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.wairi2" alt="와이리 — 검증된 인플루언서를 무료로 만나보라는 안내 화면">
+              <img class="work-shot" src="shots/wairi-3.webp"
+                   srcset="shots/wairi-3.webp 640w, shots/wairi-3-960.webp 960w"
+                   sizes="(max-width: 767px) 36vw, 19vw" width="640" height="400"
+                   loading="lazy" decoding="async"
+                   data-i18n-attr="alt:shot.wairi3" alt="와이리 — 어떻게 무료인지 설명하는 구간">
+            </div>
           </div>
           <div class="work-body">
             <h3>Wairi</h3>
@@ -510,14 +617,13 @@
             <ul class="stack">
               <li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>SEO</li>
             </ul>
+            <div class="work-meta">
+              <a class="work-link" href="https://www.wairi.co.kr/webapp" target="_blank" rel="noopener">
+              <span data-i18n="work.open">사이트 열기</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
+            </a>
+            </div>
           </div>
-          <img class="work-shot" src="shots/wairi.webp" width="640" height="400"
-               loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.wairi" alt="Wairi 서비스 첫 화면">
-          <a class="work-link" href="https://www.wairi.co.kr/webapp" target="_blank" rel="noopener">
-            <span data-i18n="work.open">사이트 열기</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5"/></svg>
-          </a>
         </article>
       </div>
     </div>
