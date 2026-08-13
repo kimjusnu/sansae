@@ -61,6 +61,7 @@ window.i18nStrings = {
     'r.edu.military': 'ROK Army, sergeant, completed (2021.06 — 2022.12)',
 
     'r.awards.title': 'Awards · Certifications',
+    'r.awards.0': 'Veritas Alpha Journalism Contest, Excellence Award — data analysis',
     'r.awards.1': 'Korea Engineering Exhibition, Excellence Award — Eat Fit',
     'r.awards.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi (team lead)',
     'r.awards.3': 'Woongjin × Udemy Bootcamp, 2nd — Componique',

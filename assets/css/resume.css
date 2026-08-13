@@ -177,14 +177,16 @@ html[data-lang='en'] .r-photo {
    Sections
    --------------------------------------------------------- */
 /* 4.5mm left the sheet sitting 0.1–0.4mm from spilling onto a second page, so
-   every added line turned into word-golf. 4mm across the five sections buys
-   ~2.5mm of headroom and is not perceptible in the printed rhythm. */
+   every added line turned into word-golf. Section spacing is the budget every
+   new line is paid out of: 4.5 → 3.4mm bought the AimBe rewrite, 3.4 → 3.0mm
+   (with the h2 gap at 2.0mm) bought the fourth award line. Sub-millimetre
+   steps here are not perceptible in the printed rhythm. */
 .r-section {
-  margin-top: 4mm;
+  margin-top: 3.0mm;
 }
 
 .r-section h2 {
-  margin: 0 0 3mm;
+  margin: 0 0 2.0mm;
   padding-bottom: 1.5mm;
   border-bottom: 1px solid var(--border-default);
   color: var(--primary-700);
@@ -195,7 +197,7 @@ html[data-lang='en'] .r-photo {
 }
 
 .r-item + .r-item {
-  margin-top: 4mm;
+  margin-top: 3.5mm;
 }
 
 .r-item-head {
@@ -311,10 +313,13 @@ html[data-lang='en'] .r-photo {
 /* ---------------------------------------------------------
    Education · Awards
    --------------------------------------------------------- */
+/* The education column is four short lines; the awards column is four titles long
+   enough to wrap, and wrapping is what sets the height of the pair. Giving the
+   width to awards costs education nothing and buys back two lines in English. */
 .r-columns {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: var(--space-7);
+  grid-template-columns: 0.76fr 1.24fr;
+  gap: var(--space-6);
 }
 
 .r-awards {
@@ -328,7 +333,7 @@ html[data-lang='en'] .r-photo {
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-top: 1.2mm;
+  margin-top: 1.0mm;
   color: var(--text-secondary);
   font-size: 11.6px;
 }

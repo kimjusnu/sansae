@@ -89,6 +89,7 @@
     { "name": "Wairi", "desc": "SEO 개선 위한 Vue→Next.js 마이그레이션", "stack": ["Next.js", "TypeScript", "Tailwind", "SEO"], "link": "https://www.wairi.co.kr/webapp" }
   ],
   "awards": [
+    { "title": "베리타스알파 교육기사 공모전 우수상 (공개 데이터 분석)", "year": "2026.08" },
     { "title": "한국공학대전 우수상 (Eat Fit)", "year": "2025.12" },
     { "title": "Sniper Factory 프론트엔드 부트캠프 우수상 (팀 리더)", "year": "2024" },
     { "title": "웅진씽크빅 × Udemy Next.js 부트캠프 2위", "year": "2024" }

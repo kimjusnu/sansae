@@ -204,6 +204,7 @@
       'skills.llm': 'LLM integration',
       'skills.data': 'Data · Other',
       'cred.title': 'Awards · Certifications',
+      'cred.0': 'Veritas Alpha Journalism Contest, Excellence Award — data analysis',
       'cred.1': 'Korea Engineering Exhibition, Excellence Award — Eat Fit',
       'cred.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi, team lead',
       'cred.3': 'Woongjin ThinkBig × Udemy Bootcamp, 2nd place — Componique',
