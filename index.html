@@ -371,14 +371,16 @@
           </div>
           <div class="work-body">
             <h3>My Feed</h3>
-            <p data-i18n="work.myfeed.p">전국 130여 농가·1,200여 사료빈을 모니터링하는 축산 IoT SaaS. 웹 개발 2인 체제에서 커밋 38%를 맡아 농장 모니터링 화면과 관리자, 웹 알림 시스템을 주도했습니다. 모니터링 상세 API의 N+1을 걷어내 3개월 조회 기준 DB 왕복을 2,400회에서 1회로 줄였고, 관리자 이미지 목록은 실측 20장 172초에서 수 초로 내렸습니다. 62개 화면이 공통으로 받던 미사용 스크립트를 걷어내 페이지당 139KB를 줄였습니다. SAM2 도입을 직접 제안해 사료빈 이미지 분류 오류율은 10%에서 3%가 됐습니다.</p>
+            <p data-i18n="work.myfeed.p1">전국 130여 농가·1,200여 사료빈을 모니터링하는 축산 IoT SaaS. 웹 개발 2인 체제에서 커밋 38%를 맡아 농장 모니터링 화면과 관리자, 웹 알림 시스템을 주도했습니다.</p>
+            <p data-i18n="work.myfeed.p2">모니터링 상세 API의 N+1을 걷어내 3개월 조회 기준 DB 왕복을 2,400회에서 1회로 줄였고, 관리자 이미지 목록은 실측 20장 172초에서 수 초로 내렸습니다. 62개 화면이 공통으로 받던 미사용 스크립트를 걷어내 페이지당 139KB를 줄였습니다.</p>
+            <p data-i18n="work.myfeed.p3">SAM2 도입을 직접 제안해 사료빈 이미지 분류 오류율은 10%에서 3%가 됐습니다.</p>
             <ul class="stack">
               <li>FastAPI</li><li>Jinja2</li><li>vanilla JS</li><li>Redis</li><li>Celery</li><li>MySQL</li><li>Chart.js</li>
             </ul>
           </div>
           <img class="work-shot" src="shots/myfeed.webp" width="640" height="400"
                loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.myfeed" alt="마이피드 사료관리 화면 — 사료빈 잔량을 눈으로 확인하는 소개 페이지">
+               data-i18n-attr="alt:shot.myfeed" alt="마이피드 농장 모니터링 화면 — 사료빈별 최근 촬영 이미지와 잔량·온도·습도·신선도">
           <span class="work-note" data-i18n="work.myfeed.note">사내 서비스</span>
         </article>
 
@@ -389,14 +391,16 @@
           </div>
           <div class="work-body">
             <h3 data-i18n="work.notify.h">My Feed — 웹 알림</h3>
-            <p data-i18n="work.notify.p">특정 브라우저에서 버전 업데이트 뒤부터 웹푸시가 조용히 끊겼습니다. 에러 하나 없이 알림만 오지 않았습니다. OS 이벤트 로그로 푸시 경로를 홉 단위로 따라가 네트워크 도달·서버 발송·OS 수신까지는 정상이고 브라우저 내부에서 사라진다는 것을 특정했습니다. 제가 손댈 수 없는 계층이었습니다. 그래서 원인을 고치는 대신 도달을 보장하는 구조로 갔습니다 — 푸시, 폴링 폴백, 탭 복귀 갱신의 3중 방어. 숨은 탭은 타이머가 눌려 5분 뒤 65초 동안 요청이 0건인 것을 실측하고 Web Lock으로 면제를 받았습니다. 브라우저가 패치되면 푸시가 다시 우선권을 가져갑니다. 4일 동안 9개 파일, 커밋 8개로 혼자 넣었습니다.</p>
+            <p data-i18n="work.notify.p1">특정 브라우저에서 버전 업데이트 뒤부터 웹푸시가 조용히 끊겼습니다. 에러 하나 없이 알림만 오지 않았습니다.</p>
+            <p data-i18n="work.notify.p2">OS 이벤트 로그로 푸시 경로를 홉 단위로 따라가 네트워크 도달·서버 발송·OS 수신까지는 정상이고 브라우저 내부에서 사라진다는 것을 특정했습니다. 제가 손댈 수 없는 계층이었습니다.</p>
+            <p data-i18n="work.notify.p3">그래서 원인을 고치는 대신 도달을 보장하는 구조로 갔습니다 — 푸시, 폴링 폴백, 탭 복귀 갱신의 3중 방어. 숨은 탭은 타이머가 눌려 5분 뒤 65초 동안 요청이 0건인 것을 실측하고 Web Lock으로 면제를 받았습니다. 브라우저가 패치되면 푸시가 다시 우선권을 가져갑니다. 4일 동안 9개 파일, 커밋 8개로 혼자 넣었습니다.</p>
             <ul class="stack">
               <li>Service Worker</li><li>FCM</li><li>vanilla JS</li><li>FastAPI</li>
             </ul>
           </div>
           <img class="work-shot" src="shots/notify.webp" width="640" height="400"
                loading="lazy" decoding="async"
-               data-i18n-attr="alt:shot.notify" alt="주문 필요 알림에서 주문까지 4단계를 안내하는 마이피드 사료주문 페이지">
+               data-i18n-attr="alt:shot.notify" alt="마이피드 알림 설정 화면 — 브라우저 알림 허용 상태와 알림 종류별 토글">
           <span class="work-note" data-i18n="work.myfeed.note">사내 서비스</span>
         </article>
 
@@ -407,7 +411,10 @@
           </div>
           <div class="work-body">
             <h3 data-i18n="work.geo.h">AimBe Lab 홈페이지</h3>
-            <p data-i18n="work.geo.p">작업 전 0이던 ChatGPT 경유 방문이 지금은 월 10명대입니다. Clarity로 셌습니다. 투자자용 소개 페이지였던 회사 홈페이지를 고객이 보는 사이트로 다시 짓고 문의 flow를 붙여, 전화로만 받던 도입 문의를 온라인으로도 받게 만들었습니다. 그다음이 AI가 인용하게 만드는 일이었습니다. 형용사는 인용되지 않는다고 보고, 사내에 이미 있던 주문 가이드 12장에서 검증된 문장 40여 개를 뽑아 HTML 텍스트로 옮겼습니다 — 슬라이드를 이미지로 올렸다면 효과는 0이었습니다. HowTo 4스텝과 FAQ 12문항을 붙였고, 12개 페이지 전부 빌드 시각으로 나가던 사이트맵 lastmod를 git 이력 기준 실제 변경일로 고쳤습니다. 구글이 2023년 HowTo 리치 결과를 폐지한 것을 알고도 붙인 이유는, 목표가 검색 순위가 아니라 인용이기 때문입니다.</p>
+            <p data-i18n="work.geo.p1">작업 전 0이던 ChatGPT 경유 방문이 지금은 월 10명대입니다. Clarity로 셌습니다.</p>
+            <p data-i18n="work.geo.p2">투자자용 소개 페이지였던 회사 홈페이지를 고객이 보는 사이트로 다시 짓고 문의 flow를 붙여, 전화로만 받던 도입 문의를 온라인으로도 받게 만들었습니다. 메인 영상도 AI로 직접 만들어 올렸습니다.</p>
+            <p data-i18n="work.geo.p3">그다음이 AI가 인용하게 만드는 일이었습니다. 형용사는 인용되지 않는다고 보고, 사내에 이미 있던 주문 가이드 12장에서 검증된 문장 40여 개를 뽑아 HTML 텍스트로 옮겼습니다 — 슬라이드를 이미지로 올렸다면 효과는 0이었습니다. HowTo 4스텝과 FAQ 12문항을 붙였고, 12개 페이지 전부 빌드 시각으로 나가던 사이트맵 lastmod를 git 이력 기준 실제 변경일로 고쳤습니다.</p>
+            <p data-i18n="work.geo.p4">구글이 2023년 HowTo 리치 결과를 폐지한 것을 알고도 붙인 이유는, 목표가 검색 순위가 아니라 인용이기 때문입니다.</p>
             <ul class="stack">
               <li>Next.js</li><li>TypeScript</li><li>schema.org</li><li>llms.txt</li>
             </ul>
@@ -455,7 +462,9 @@
           </div>
           <div class="work-body">
             <h3>StartupQT</h3>
-            <p data-i18n="work.2.p">퀴즈 저작 · 검수 · 관리 SaaS. 모듈형 에디터와 검수 워크플로우를 설계하고, GitHub Actions와 EC2 self-hosted runner로 배포를 자동화했습니다. 멀티스테이지 Dockerfile은 인스턴스 디스크가 모자라 빌드가 계속 죽어서 PM2로 바꿔 끝냈습니다. 성능은 재기 전에 점검 문서부터 썼습니다. 대상 5개 화면과 측정 환경을 시크릿 창·Slow 4G로 고정해 1차에서 메인 LCP 2.7초·CLS 0.103·Performance 82를 얻었고, 개선한 뒤 같은 조건으로 다시 재 리포트를 비교했습니다. 자료 삭제 API에서 남의 자료까지 지워지는 문제를 발견해 등록자 검증과 사용자별 API 분리를 제안했습니다.</p>
+            <p data-i18n="work.2.p1">퀴즈 저작 · 검수 · 관리 SaaS. 모듈형 에디터와 검수 워크플로우를 설계하고, GitHub Actions와 EC2 self-hosted runner로 배포를 자동화했습니다. 멀티스테이지 Dockerfile은 인스턴스 디스크가 모자라 빌드가 계속 죽어서 PM2로 바꿔 끝냈습니다.</p>
+            <p data-i18n="work.2.p2">성능은 재기 전에 점검 문서부터 썼습니다. 대상 5개 화면과 측정 환경을 시크릿 창·Slow 4G로 고정해 1차에서 메인 LCP 2.7초·CLS 0.103·Performance 82를 얻었고, 개선한 뒤 같은 조건으로 다시 재 리포트를 비교했습니다.</p>
+            <p data-i18n="work.2.p3">자료 삭제 API에서 남의 자료까지 지워지는 문제를 발견해 등록자 검증과 사용자별 API 분리를 제안했습니다.</p>
             <ul class="stack">
               <li>Next.js</li><li>TypeScript</li><li>Zustand</li><li>Tiptap</li><li>MUI</li><li>Docker</li>
             </ul>
@@ -619,6 +628,25 @@
 
         <div>
           <div class="side-panel reveal">
+            <h3 data-i18n="cred.title">수상</h3>
+            <ul class="credential-list">
+              <li><span data-i18n="cred.0">베리타스알파 교육기사 공모전 우수상 — 공개 데이터 분석</span><span class="year">2026</span></li>
+              <li><span data-i18n="cred.1">한국공학대전 우수상 — Eat Fit</span><span class="year">2025</span></li>
+              <li><span data-i18n="cred.2">스나이퍼팩토리 부트캠프 우수상 — Wairi, 팀 리더</span><span class="year">2024</span></li>
+              <li><span data-i18n="cred.3">웅진씽크빅 × Udemy 부트캠프 2등 — Componique</span><span class="year">2024</span></li>
+            </ul>
+          </div>
+
+          <div class="side-panel reveal">
+            <h3 data-i18n="certs.title">자격</h3>
+            <ul class="credential-list">
+              <li><span>ADsP</span><span class="year">2026.06</span></li>
+              <li><span data-i18n="cred.ga4">GA4 인증</span><span class="year">2025.09</span></li>
+              <li><span>OPIc IM1</span><span class="year">2025.02</span></li>
+            </ul>
+          </div>
+
+          <div class="side-panel reveal">
             <h3 data-i18n="skills.title">주요 기술</h3>
             <dl>
               <div class="skill-group">
@@ -654,19 +682,6 @@
                 </dd>
               </div>
             </dl>
-          </div>
-
-          <div class="side-panel reveal">
-            <h3 data-i18n="cred.title">수상 · 자격</h3>
-            <ul class="credential-list">
-              <li><span data-i18n="cred.0">베리타스알파 교육기사 공모전 우수상 — 공개 데이터 분석</span><span class="year">2026</span></li>
-              <li><span data-i18n="cred.1">한국공학대전 우수상 — Eat Fit</span><span class="year">2025</span></li>
-              <li><span data-i18n="cred.2">스나이퍼팩토리 부트캠프 우수상 — Wairi, 팀 리더</span><span class="year">2024</span></li>
-              <li><span data-i18n="cred.3">웅진씽크빅 × Udemy 부트캠프 2등 — Componique</span><span class="year">2024</span></li>
-              <li><span>ADsP</span><span class="year">2026.06</span></li>
-              <li><span data-i18n="cred.ga4">GA4 인증</span><span class="year">2025.09</span></li>
-              <li><span>OPIc IM1</span><span class="year">2025.02</span></li>
-            </ul>
           </div>
         </div>
       </div>

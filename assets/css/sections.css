@@ -289,6 +289,14 @@
   line-height: 1.65;
 }
 
+/* Each card tells a story in three beats — what came out of it, what the problem
+   was, what was actually done — and eight sentences in one block hid all three.
+   The gap is what separates them; Korean web text does not indent, so leading a
+   paragraph with a first-line indent would read as a mistake rather than a break. */
+.work-body p + p {
+  margin-top: var(--space-3);
+}
+
 .stack {
   display: flex;
   flex-wrap: wrap;

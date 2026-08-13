@@ -127,32 +127,50 @@
       'work.open': 'Open site',
       'work.code': 'View code',
       'shot.myfeed':
-        'My Feed feed-management page — the product page explaining how bin levels are checked',
+        'My Feed farm monitoring — each silo with its latest interior photo, remaining tonnage, temperature, humidity and freshness',
       'shot.notify':
-        'My Feed ordering page, laying out the four steps from the low-stock notification to the order',
+        'My Feed notification settings — browser permission state and a toggle per alert type',
       'shot.aimbelab': 'The rebuilt AimBe Lab homepage, with its enquiry call to action',
       'shot.componique': 'Componique documentation site — the form and data-display components',
       'shot.startupqt': 'The StartupQT entry screen',
       'shot.eatfit': 'Eat Fit on the Korea Engineering Exhibition site, previewing the app screens',
       'shot.wairi': 'The Wairi service landing screen',
       'work.myfeed.tag': 'Professional · IoT SaaS',
-      'work.myfeed.p':
-        'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide. On a two-person web team I own about 38% of the commits, leading the farm monitoring screens, the admin, and the whole web notification system. Clearing an N+1 in the monitoring detail API cut database round trips from roughly 2,400 to one for a three-month query, and the admin image list went from a measured 172 seconds for 20 images to a few seconds. Dropping unused scripts that all 62 screens were loading saved 139KB per page. I proposed adopting SAM2 myself, which took the feed-bin image classification error rate from 10% to 3%.',
+      'work.myfeed.p1':
+        'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide. On a two-person web team I own about 38% of the commits, leading the farm monitoring screens, the admin, and the whole web notification system.',
+      'work.myfeed.p2':
+        'Clearing an N+1 in the monitoring detail API cut database round trips from roughly 2,400 to one for a three-month query, and the admin image list went from a measured 172 seconds for 20 images to a few seconds. Dropping unused scripts that all 62 screens were loading saved 139KB per page.',
+      'work.myfeed.p3':
+        'I proposed adopting SAM2 myself, which took the feed-bin image classification error rate from 10% to 3%.',
       'work.myfeed.note': 'Internal service',
       'work.notify.tag': 'Professional · incident response · built solo',
       'work.notify.h': 'My Feed — web notifications',
-      'work.notify.p':
-        'On one browser, web push went quiet after a version update. No errors — the notifications simply stopped arriving. I followed the push path hop by hop through the OS event log and pinned down that it reached the network, left the server and was received by the OS, then vanished inside the browser. That layer was not mine to fix. So instead of fixing the cause I built for delivery: push, a polling fallback, and a refresh on tab return — three ways in. Hidden tabs have their timers throttled, which I measured at 65 seconds with zero requests after the five-minute mark, so I claimed an exemption with a Web Lock. When the browser is patched, push takes priority back on its own. Nine files and eight commits over four days, on my own.',
+      'work.notify.p1':
+        'On one browser, web push went quiet after a version update. No errors — the notifications simply stopped arriving.',
+      'work.notify.p2':
+        'I followed the push path hop by hop through the OS event log and pinned down that it reached the network, left the server and was received by the OS, then vanished inside the browser. That layer was not mine to fix.',
+      'work.notify.p3':
+        'So instead of fixing the cause I built for delivery: push, a polling fallback, and a refresh on tab return — three ways in. Hidden tabs have their timers throttled, which I measured at 65 seconds with zero requests after the five-minute mark, so I claimed an exemption with a Web Lock. When the browser is patched, push takes priority back on its own. Nine files and eight commits over four days, on my own.',
       'work.geo.tag': 'Professional · rebuild · SEO/AEO/GEO',
       'work.geo.h': 'AimBe Lab website',
-      'work.geo.p':
-        'Before this work nobody arrived via ChatGPT; it is now over ten visits a month, counted in Clarity. First the rebuild: an investor-facing brochure became a site for customers, with an enquiry flow wired in, so enquiries that had only ever come by phone could arrive online too. Then the part about getting AI to cite us. Adjectives do not get cited, so instead of writing new copy I pulled some 40 verified sentences out of a 12-slide ordering guide the company already had and moved them into HTML text — uploading those slides as images would have been worth nothing. I added a four-step HowTo and a 12-question FAQ, and fixed a sitemap that was stamping build time as lastmod on all 12 pages, replacing it with each page\'s real change date from git history. Google retired HowTo rich results in 2023 and I knew that when I added them: the target is not search ranking, it is being cited.',
+      'work.geo.p1':
+        'Before this work nobody arrived via ChatGPT; it is now over ten visits a month, counted in Clarity.',
+      'work.geo.p2':
+        'First the rebuild: an investor-facing brochure became a site for customers, with an enquiry flow wired in, so enquiries that had only ever come by phone could arrive online too. The video on the front page is mine as well — I made it with AI.',
+      'work.geo.p3':
+        'Then the part about getting AI to cite us. Adjectives do not get cited, so instead of writing new copy I pulled some 40 verified sentences out of a 12-slide ordering guide the company already had and moved them into HTML text — uploading those slides as images would have been worth nothing. I added a four-step HowTo and a 12-question FAQ, and fixed a sitemap that was stamping build time as lastmod on all 12 pages, replacing it with each page\'s real change date from git history.',
+      'work.geo.p4':
+        'Google retired HowTo rich results in 2023 and I knew that when I added them: the target is not search ranking, it is being cited.',
       'work.1.tag': 'Open source · team of 4',
       'work.1.p':
         'An open-source design system of 30+ components published to npm. A team of four, where my part was designing and building the UI components, alongside Storybook docs and a Rollup build. 2nd place at the Woongjin ThinkBig x Udemy bootcamp.',
       'work.2.tag': 'SaaS',
-      'work.2.p':
-        'A SaaS for authoring, reviewing and managing quizzes. I designed the modular editor and the review workflow, and automated deployment with GitHub Actions on a self-hosted EC2 runner. The multi-stage Dockerfile kept failing because the instance ran out of disk, so I moved it to PM2 and shipped. Before measuring performance I wrote the audit down first: five target screens, with the conditions pinned to an incognito window on Slow 4G. The first pass gave the main page LCP 2.7s, CLS 0.103 and a Performance score of 82; after the fixes I re-ran it under the same conditions and compared the reports. I also found that the delete-attachment API let you delete other people\'s files, and wrote up owner verification and per-user API separation as the fix.',
+      'work.2.p1':
+        'A SaaS for authoring, reviewing and managing quizzes. I designed the modular editor and the review workflow, and automated deployment with GitHub Actions on a self-hosted EC2 runner. The multi-stage Dockerfile kept failing because the instance ran out of disk, so I moved it to PM2 and shipped.',
+      'work.2.p2':
+        'Before measuring performance I wrote the audit down first: five target screens, with the conditions pinned to an incognito window on Slow 4G. The first pass gave the main page LCP 2.7s, CLS 0.103 and a Performance score of 82; after the fixes I re-ran it under the same conditions and compared the reports.',
+      'work.2.p3':
+        'I also found that the delete-attachment API let you delete other people\'s files, and wrote up owner verification and per-user API separation as the fix.',
       'work.3.tag': 'Graduation project · team of 3',
       'work.3.p':
         'A diet-tracking PWA that works out your target intake from the Korean Dietary Reference Intakes and classifies food photos with EfficientNet. On a team of three I did the planning, the frontend and the final presentation. A nightly batch sends the previous day\'s meals to the ChatGPT API for feedback. Classification wobbles when several dishes share a plate, and we never got to estimating portion mass. Excellence Award at the Korea Engineering Exhibition.',
@@ -203,7 +221,8 @@
       'skills.title': 'Core skills',
       'skills.llm': 'LLM integration',
       'skills.data': 'Data · Other',
-      'cred.title': 'Awards · Certifications',
+      'cred.title': 'Awards',
+      'certs.title': 'Certifications',
       'cred.0': 'Veritas Alpha Journalism Contest, Excellence Award — data analysis',
       'cred.1': 'Korea Engineering Exhibition, Excellence Award — Eat Fit',
       'cred.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi, team lead',
