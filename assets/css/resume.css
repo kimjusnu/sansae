@@ -313,12 +313,12 @@ html[data-lang='en'] .r-photo {
 /* ---------------------------------------------------------
    Education · Awards
    --------------------------------------------------------- */
-/* The education column is four short lines; the awards column is four titles long
-   enough to wrap, and wrapping is what sets the height of the pair. Giving the
-   width to awards costs education nothing and buys back two lines in English. */
+/* Both columns are at their minimum: widening awards to stop a title wrapping
+   broke "Tech University of Korea" and the military line in English instead.
+   The ratio stays; a title that will not fit on one line gets shortened. */
 .r-columns {
   display: grid;
-  grid-template-columns: 0.76fr 1.24fr;
+  grid-template-columns: 0.9fr 1.1fr;
   gap: var(--space-6);
 }
 
