@@ -133,6 +133,7 @@
       'shot.myfeed2': 'My Feed dashboard — the share of bins needing an order, and the bin location map',
       'shot.myfeed3': 'My Feed ordering — picking a bin, a quantity and a delivery date',
       'shot.notify2': 'My Feed notification settings — browser permission state and a toggle per alert type',
+      'shot.notify3': 'My Feed per-bin alert settings — change the reference photo, snooze the order alert, or turn it off',
       'shot.aimbelab': 'The rebuilt AimBe Lab homepage, with its enquiry call to action',
       'shot.aimbelab2': 'AimBe Lab homepage — the before-and-after comparison table',
       'shot.aimbelab3': 'AimBe Lab homepage — the farmer interview video cards',
