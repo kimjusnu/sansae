@@ -129,7 +129,7 @@
       'shot.myfeed':
         'My Feed farm monitoring — each silo with its latest interior photo, remaining tonnage, temperature, humidity and freshness',
       'shot.notify':
-        'My Feed notification settings — browser permission state and a toggle per alert type',
+        'My Feed notification list — three unread alerts and the filter by alert type',
       'shot.myfeed2': 'My Feed dashboard — the share of bins needing an order, and the bin location map',
       'shot.myfeed3': 'My Feed ordering — picking a bin, a quantity and a delivery date',
       'shot.notify2': 'My Feed notification settings — browser permission state and a toggle per alert type',
@@ -216,7 +216,7 @@
       'exp.1.b':
         'Measured user behaviour with GA4 and Clarity to prioritise UX improvements.',
       'exp.1.c':
-        'Website rebuild: took enquiries from around one a month to 4 calls and 5 online a month, and helped close a real contract.',
+        'Website rebuild: reworked the structure for AEO/GEO and wired in an enquiry flow, turning around one enquiry a month into an average of 4 by phone and 5 online, collected automatically.',
       'exp.1.d':
         'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',
       'exp.2.role': 'Intern · Frontend · Deployment automation',

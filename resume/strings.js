@@ -31,7 +31,7 @@ window.i18nStrings = {
       '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and brought in SAM2, cutting AI classification error from 10% to 3%.',
     'r.exp.1.b': 'Measured user behaviour with GA4 and Clarity to prioritise UX work.',
     'r.exp.1.c':
-      '<strong>Website rebuild</strong> — turned an investor site into a B2B one, taking enquiries from around one a month to 4 calls and 5 online a month and helping close a contract.',
+      '<strong>Website rebuild</strong> — reworked the structure for AEO/GEO and added an enquiry flow, taking enquiries from around one a month to 4 calls and 5 online, collected automatically.',
     'r.exp.1.d': 'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',
     'r.exp.2.company': 'The Innovators',
     'r.exp.2.role': 'Intern · Frontend · Deployment automation',
@@ -61,9 +61,9 @@ window.i18nStrings = {
     'r.edu.military': 'ROK Army, sergeant, completed (2021.06 — 2022.12)',
 
     'r.awards.title': 'Awards · Certifications',
-    'r.awards.0': 'Veritas Alpha Journalism Contest, Excellence Award',
+    'r.awards.0': 'Veritas Alpha Journalism Contest, Excellence Award — data analysis',
     'r.awards.1': 'Korea Engineering Exhibition, Excellence Award — Eat Fit',
-    'r.awards.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi (team lead)',
+    'r.awards.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi',
     'r.awards.3': 'Woongjin × Udemy Bootcamp, 2nd — Componique',
     'r.certs.label': 'Certified',
     'r.certs.list': 'ADsP (2026.06) · GA4 (2025.09) · OPIc IM1 (2025.02)',
