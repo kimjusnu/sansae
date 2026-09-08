@@ -21,18 +21,17 @@ window.i18nStrings = {
 
     'r.summary.title': 'Summary',
     'r.summary.body':
-      'A frontend and AI engineer who has owned products from planning through operation. I define problems by watching where the product is actually used, and check in the numbers that the change helped.',
+      'A frontend engineer of 1 year 5 months running an admin back-office on jQuery legacy, with the module boundaries drawn by hand. I measure how the browser behaves before fixing it — a web push failure that raised no errors, traced and solved alone with a three-layer delivery structure. I proposed and shipped a SAM2 swap that cut AI classification error from 10% to 3%.',
 
     'r.exp.title': 'Experience',
     'r.exp.1.company': 'AimBe Lab',
     'r.exp.1.role': 'Engineer, full-time · SaaS planning · Frontend · AI integration',
     'r.exp.1.when': '2025.07 — Present',
     'r.exp.1.a':
-      '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and brought in SAM2, cutting AI classification error from 10% to 3%.',
-    'r.exp.1.b': 'Measured user behaviour with GA4 and Clarity to prioritise UX work.',
+      '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and removed an N+1 in the monitoring API, cutting DB round trips for a three-month range from about 2,400 to 1.',
     'r.exp.1.c':
       '<strong>Website rebuild</strong> — reworked the structure for AEO/GEO and added an enquiry flow, taking enquiries from around one a month to 4 calls and 5 online, collected automatically.',
-    'r.exp.1.d': 'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',
+    'r.exp.1.d': 'Designed a three-tier RBAC dashboard, set up GitHub Actions CI/CD, and used GA4 and Clarity to prioritise the work.',
     'r.exp.2.company': 'The Innovators',
     'r.exp.2.role': 'Intern · Frontend · Deployment automation',
     'r.exp.2.when': '2025.03 — 2025.06',
@@ -44,7 +43,7 @@ window.i18nStrings = {
     'r.proj.1.desc': 'Open-source design system of 30+ components, published to npm. Team of four; my part was the UI components.',
     'r.proj.2.desc': 'Quiz authoring and review SaaS. Set up deployment alone; swapped Docker for PM2 when the build ran out of disk.',
     'r.proj.3.desc': 'Nutrition PWA driven by AI food-photo analysis. Team of three; planning, frontend and presenting.',
-    'r.proj.4.desc': 'Moved a real company\'s Vue site to Next.js to fix search visibility. Led the team on schedule and UI.',
+    'r.proj.4.desc': 'Moved a real company\'s Vue site to Next.js to fix search visibility. Team project lead on the bootcamp.',
 
     'r.skills.title': 'Skills',
     'r.skills.frontend': 'Frontend',
