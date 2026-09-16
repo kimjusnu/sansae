@@ -46,7 +46,7 @@
   },
   "strengths": [
     "기획 → 디자인 → 구현 → 배포 → 운영까지 제품 전 과정 오너십",
-    "프론트/백엔드/인프라를 아우르는 풀스택 실행력",
+    "프론트엔드를 중심으로 화면에 필요한 API·배포까지 이어서 다루는 실행력",
     "현장 리서치 기반 문제 정의 (예: 농가 직접 방문)",
     "설득력 있는 커뮤니케이션, 논리적 사고"
   ],
@@ -63,8 +63,8 @@
       "role": "주임연구원 (정규직)",
       "period": "2025-07 ~ 현재",
       "highlights": [
-        "My Feed: 농가 주문 시스템 디지털화, SAM2 도입 제안으로 AI 분류 오류율 10%→3%",
-        "My Feed: 모니터링 상세 API N+1 제거 (3개월 조회 DB 왕복 2,400회→1회), admin 이미지 목록 172초→수 초",
+        "My Feed: 농가 주문 시스템 디지털화, 분할 실패 이미지 마스크 라벨링 기능 구현, SAM2 교체 조사·제안(적용은 AI 담당자)",
+        "My Feed: 모니터링 화면 요청 98건→50건, 서버 렌더 응답 크기 최대 −42%, 구간별 소요시간 로그로 병목 특정 (2026-02·07 커밋 근거)",
         "웹사이트 리뉴얼: 투자자 사이트를 B2B 플랫폼으로, 도입 문의 월 1건 남짓→월 유선 4건·온라인 5건",
         "3단계 RBAC 대시보드 설계, GitHub Actions CI/CD 구축"
       ]
@@ -85,7 +85,7 @@
     "gpa": "3.45 / 4.5 (전공 3.54)"
   },
   "projects": [
-    { "name": "My Feed", "desc": "전국 130여 농가·1,200여 사료빈을 모니터링하는 축산 IoT SaaS (실무, 커밋 38%)", "stack": ["FastAPI", "Jinja2", "vanilla JS", "Redis", "Celery", "MySQL", "Chart.js"], "link": null, "internal": true },
+    { "name": "My Feed", "desc": "전국 130여 농가·1,200여 사료빈을 모니터링하는 축산 IoT SaaS (실무 · 2026-07 기준)", "stack": ["FastAPI", "Jinja2", "vanilla JS", "Redis", "Celery", "MySQL", "Chart.js"], "link": null, "internal": true },
     { "name": "Componique", "desc": "오픈소스 디자인 시스템 UI 라이브러리 (30+ 컴포넌트)", "stack": ["React", "TypeScript", "Tailwind", "Storybook", "Rollup"], "link": "https://componique.vercel.app/" },
     { "name": "StartupQT", "desc": "퀴즈 저작·검수·관리 SaaS", "stack": ["Next.js", "TypeScript", "Zustand", "Tiptap", "MUI"], "link": "https://startupqt.com/start" },
     { "name": "Eat Fit", "desc": "AI 음식 사진 분석 식단관리 PWA (한국공학대전 우수상)", "stack": ["Next.js", "FastAPI", "AWS", "PWA"], "link": "https://expo.tukorea.ac.kr/2025/work/87" },

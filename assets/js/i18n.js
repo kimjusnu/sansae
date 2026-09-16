@@ -96,7 +96,7 @@
       'principles.title': 'Working principles',
       'principles.1.h': 'I write the planning doc and the deploy runbook too',
       'principles.1.p':
-        'On a two-person web team I authored 38% of the commits (355 of 941). Instead of stopping at the screens, I wrote the deployment steps down so the next person could pick them up.',
+        'As the web developer I owned the farm monitoring screens, the admin and the web notifications. Instead of stopping at the screens, I wrote the deployment steps down so the next person could pick them up.',
       'principles.2.h': 'I find problems on site',
       'principles.2.p':
         'I define problems by seeing the real environment. I visited farms, watched how orders actually flowed, then designed the screens.',
@@ -111,15 +111,15 @@
       'about.1.h': 'End-to-end ownership',
       'about.1.p':
         'Planning → design → implementation → deployment → operation. I take every step until the idea reaches the user.',
-      'about.2.h': 'Full-stack execution',
+      'about.2.h': 'From the screen to deployment',
       'about.2.p':
-        "From the frontend through a FastAPI backend to Docker and CI/CD. I don't hand the blocked part to someone else.",
+        "Frontend first, and I carry the work through the FastAPI endpoints a screen needs and the GitHub Actions deploy behind it. I don't hand the blocked part to someone else.",
       'about.3.h': 'Problems defined on the ground',
       'about.3.p':
         'I observe where the product is used and read behavioural data, so I define the real problem behind the request.',
       'about.4.h': 'AI built into the product',
       'about.4.p':
-        'I integrate LLMs and SAM2 into real screen flows. On My Feed I cut the AI classification error rate from 10% to 3%.',
+        'I turn AI estimates into screens people can read and judge. On My Feed I built a mask-labelling tool for images the segmentation model failed on, and researched and proposed the switch to SAM2.',
 
       /* ---------------- work ---------------- */
       'work.title': 'Things I built and <em>shipped</em>',
@@ -148,11 +148,11 @@
       'shot.wairi3': 'Wairi — the section explaining how it is free',
       'work.myfeed.tag': 'Professional · IoT SaaS',
       'work.myfeed.p1':
-        'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide. On a two-person web team I own about 38% of the commits, leading the farm monitoring screens, the admin, and the whole web notification system.',
+        'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide (as of July 2026). As the web developer I owned the farm monitoring screens, the admin, and the web notification system.',
       'work.myfeed.p2':
-        'Clearing an N+1 in the monitoring detail API cut database round trips from roughly 2,400 to one for a three-month query, and the admin image list went from a measured 172 seconds for 20 images to a few seconds. Dropping unused scripts that all 62 screens were loading saved 139KB per page.',
+        'Cut requests from the monitoring screen from 98 to 50 and trimmed server-rendered response size by up to 42% (22.95MB to 13.24MB), locating each bottleneck with per-stage timing logs before fixing it. Dropping unused scripts that all 62 screens were loading saved 139KB per page.',
       'work.myfeed.p3':
-        'I proposed adopting SAM2 myself, which took the feed-bin image classification error rate from 10% to 3%.',
+        'I researched and proposed the switch to SAM2 (the AI engineer applied it), and built a mask-labelling tool so images the model failed on could feed back into training data.',
       'work.myfeed.note': 'Internal service',
       'work.notify.tag': 'Professional · incident response · built solo',
       'work.notify.h': 'My Feed — web notifications',
@@ -214,7 +214,7 @@
       'exp.1.a':
         'My Feed: digitised farm orders scattered across paper ledgers and KakaoTalk.',
       'exp.1.b':
-        'Measured user behaviour with GA4 and Clarity to prioritise UX improvements.',
+        'Checked visit and engagement metrics in GA4 and Clarity to prioritise UX improvements.',
       'exp.1.c':
         'Website rebuild: reworked the structure for AEO/GEO and wired in an enquiry flow, turning around one enquiry a month into an average of 4 by phone and 5 online, collected automatically.',
       'exp.1.d':

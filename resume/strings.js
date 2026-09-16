@@ -21,17 +21,17 @@ window.i18nStrings = {
 
     'r.summary.title': 'Summary',
     'r.summary.body':
-      'A frontend engineer of 1 year 5 months running an admin back-office on jQuery legacy, with the module boundaries drawn by hand. I measure how the browser behaves before fixing it — a web push failure that raised no errors, traced and solved alone with a three-layer delivery structure. I proposed and shipped a SAM2 swap that cut AI classification error from 10% to 3%.',
+      'A frontend engineer of 1 year 5 months running an admin back-office on jQuery legacy, with the module boundaries drawn by hand. I measure how the browser behaves before fixing it — a web push failure that raised no errors, traced and solved alone with a three-layer delivery structure. I built a mask-labelling tool for images the AI model failed on, and researched and proposed the switch to SAM2.',
 
     'r.exp.title': 'Experience',
     'r.exp.1.company': 'AimBe Lab',
     'r.exp.1.role': 'Engineer, full-time · SaaS planning · Frontend · AI integration',
     'r.exp.1.when': '2025.07 — Present',
     'r.exp.1.a':
-      '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and removed an N+1 in the monitoring API, cutting DB round trips for a three-month range from about 2,400 to 1.',
+      '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and cut requests from the monitoring screen from 98 to 50 and server-rendered response size by up to 42%.',
     'r.exp.1.c':
       '<strong>Website rebuild</strong> — reworked the structure for AEO/GEO and added an enquiry flow, taking enquiries from around one a month to 4 calls and 5 online, collected automatically.',
-    'r.exp.1.d': 'Designed a three-tier RBAC dashboard, set up GitHub Actions CI/CD, and used GA4 and Clarity to prioritise the work.',
+    'r.exp.1.d': 'Designed a three-tier RBAC dashboard, set up GitHub Actions CI/CD, and checked visit and engagement metrics in GA4 and Clarity to prioritise the work.',
     'r.exp.2.company': 'The Innovators',
     'r.exp.2.role': 'Intern · Frontend · Deployment automation',
     'r.exp.2.when': '2025.03 — 2025.06',

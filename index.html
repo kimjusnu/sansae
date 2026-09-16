@@ -281,7 +281,7 @@
         <li class="principle">
           <span class="principle-mark">01</span>
           <h3 data-i18n="principles.1.h">기획서도, 배포 절차 문서도 제가 씁니다</h3>
-          <p data-i18n="principles.1.p">2인 개발 체제에서 커밋의 38%(355/941)를 맡았습니다. 화면을 만들고 끝내는 대신 배포 절차를 문서로 남겨, 다음 사람이 이어받게 했습니다.</p>
+          <p data-i18n="principles.1.p">웹 개발을 담당해 농장 모니터링 화면과 관리자, 웹 알림을 맡았습니다. 화면을 만들고 끝내는 대신 배포 절차를 문서로 남겨, 다음 사람이 이어받게 했습니다.</p>
         </li>
         <li class="principle">
           <span class="principle-mark">02</span>
@@ -325,8 +325,8 @@
                srcset="icons/icon-feature-fullstack-176.webp 176w, icons/icon-feature-fullstack.webp 264w"
                sizes="104px" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
-          <h3 data-i18n="about.2.h">풀스택 실행력</h3>
-          <p data-i18n="about.2.p">프론트엔드부터 FastAPI 백엔드, Docker와 CI/CD 인프라까지 이어서 다룹니다. 막히는 지점을 남에게 넘기지 않습니다.</p>
+          <h3 data-i18n="about.2.h">화면에서 배포까지 이어서</h3>
+          <p data-i18n="about.2.p">프론트엔드를 중심으로, 화면에 필요한 FastAPI API와 GitHub Actions 배포까지 직접 이어서 다룹니다. 막히는 지점을 남에게 넘기지 않습니다.</p>
         </article>
 
         <article class="feature-card reveal" data-delay="2">
@@ -348,7 +348,7 @@
                sizes="104px" alt="" aria-hidden="true" width="104" height="104" loading="lazy" decoding="async">
           </div>
           <h3 data-i18n="about.4.h">AI를 제품에 녹이기</h3>
-          <p data-i18n="about.4.p">LLM과 SAM2를 실제 화면 흐름에 통합합니다. My Feed에서는 AI 분류 오류율을 10%에서 3%로 낮췄습니다.</p>
+          <p data-i18n="about.4.p">AI가 추정한 결과를 사용자가 이해하고 판단할 수 있는 화면으로 만듭니다. My Feed에서는 분할에 실패한 이미지를 다시 쓸 수 있게 마스크 라벨링 기능을 만들고, SAM2 교체를 조사해 제안했습니다.</p>
         </article>
       </div>
     </div>
@@ -390,9 +390,9 @@
           </div>
           <div class="work-body">
             <h3>My Feed</h3>
-            <p data-i18n="work.myfeed.p1">전국 130여 농가·1,200여 사료빈을 모니터링하는 축산 IoT SaaS. 웹 개발 2인 체제에서 커밋 38%를 맡아 농장 모니터링 화면과 관리자, 웹 알림 시스템을 주도했습니다.</p>
-            <p data-i18n="work.myfeed.p2">모니터링 상세 API의 N+1을 걷어내 3개월 조회 기준 DB 왕복을 2,400회에서 1회로 줄였고, 관리자 이미지 목록은 실측 20장 172초에서 수 초로 내렸습니다. 62개 화면이 공통으로 받던 미사용 스크립트를 걷어내 페이지당 139KB를 줄였습니다.</p>
-            <p data-i18n="work.myfeed.p3">SAM2 도입을 직접 제안해 사료빈 이미지 분류 오류율은 10%에서 3%가 됐습니다.</p>
+            <p data-i18n="work.myfeed.p1">전국 130여 농가·1,200여 사료빈(2026년 7월 기준)을 모니터링하는 축산 IoT SaaS. 웹 개발을 담당해 농장 모니터링 화면과 관리자, 웹 알림 시스템을 맡았습니다.</p>
+            <p data-i18n="work.myfeed.p2">모니터링 화면이 보내는 요청 수를 98건에서 50건으로, 서버 렌더 응답 크기를 최대 42%(22.95MB→13.24MB) 줄였습니다. 구간별 소요시간 로그를 넣어 병목을 먼저 특정하고 고치는 방식이었습니다. 62개 화면이 공통으로 받던 미사용 스크립트를 걷어내 페이지당 139KB를 줄였습니다.</p>
+            <p data-i18n="work.myfeed.p3">SAM2 교체를 조사해 제안했고(적용은 AI 담당자), 분할에 실패한 이미지의 마스크 라벨링 기능을 만들어 모델 개선용 데이터를 제공했습니다.</p>
             <ul class="stack">
               <li>FastAPI</li><li>Jinja2</li><li>vanilla JS</li><li>Redis</li><li>Celery</li><li>MySQL</li><li>Chart.js</li>
             </ul>
@@ -708,7 +708,7 @@
             <p class="role" data-i18n="exp.1.role">주임연구원 (정규직) · SaaS 기획 · 프론트엔드 · AI 통합</p>
             <ul>
               <li data-i18n="exp.1.a">My Feed: 수기 장부·카카오톡으로 흩어져 있던 농가 주문을 디지털화했습니다.</li>
-              <li data-i18n="exp.1.b">GA4·Clarity로 사용자 행동을 계측해 UX 개선 우선순위를 정했습니다.</li>
+              <li data-i18n="exp.1.b">GA4·Clarity에서 방문·참여 지표를 확인해 UX 개선 우선순위를 정했습니다.</li>
               <li data-i18n="exp.1.c">홈페이지 리뉴얼: AEO·GEO 관점으로 구조를 다시 잡고 도입 문의 Flow를 붙여, 월 1건 남짓이던 문의를 월 평균 유선 4건·온라인 5건이 자동 수집되는 체계로 전환했습니다.</li>
               <li data-i18n="exp.1.d">3단계 RBAC 대시보드 설계, GitHub Actions CI/CD 구축.</li>
             </ul>
