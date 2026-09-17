@@ -8,35 +8,27 @@
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ----------------------------------------------------------
-     3D icon fallback — never show a broken image
-     ---------------------------------------------------------- */
-  function markFallback(img) {
-    var wrap = img.closest('.icon3d');
-    if (wrap) wrap.classList.add('is-fallback');
-  }
-
-  function initIconFallbacks() {
-    var images = document.querySelectorAll('.icon3d img');
-    Array.prototype.forEach.call(images, function (img) {
-      img.addEventListener('error', function () {
-        markFallback(img);
-      });
-      // Images that already failed before this script ran.
-      if (img.complete && img.naturalWidth === 0) markFallback(img);
-    });
-  }
-
-  /* ----------------------------------------------------------
-     Header — condensed state on scroll
+     Header — condensed state on scroll, dark while over the hero
      ---------------------------------------------------------- */
   function initHeaderScroll() {
     var header = document.querySelector('.site-header');
     if (!header) return;
 
+    var hero = document.querySelector('.hero');
+    var toggle = header.querySelector('.nav-toggle');
     var ticking = false;
     function update() {
+      // The open mobile menu uses the page theme, so the bar above it must too.
+      var menuOpen = toggle && toggle.getAttribute('aria-expanded') === 'true';
+      var overHero = hero && hero.getBoundingClientRect().bottom > header.offsetHeight;
       header.classList.toggle('is-scrolled', window.scrollY > 8);
+      header.classList.toggle('on-dark', Boolean(overHero && !menuOpen));
       ticking = false;
+    }
+    // The menu opens and closes from clicks, links and Escape; watching the
+    // attribute covers all three.
+    if (toggle && 'MutationObserver' in window) {
+      new MutationObserver(update).observe(toggle, { attributes: true, attributeFilter: ['aria-expanded'] });
     }
     window.addEventListener(
       'scroll',
@@ -140,50 +132,105 @@
   }
 
   /* ----------------------------------------------------------
-     Active section highlight in the desktop nav
+     Reading progress — a thin bar along the top of the header
      ---------------------------------------------------------- */
-  function initNavHighlight() {
-    var links = document.querySelectorAll('.nav-desktop a[href^="#"]');
-    if (!links.length || !('IntersectionObserver' in window)) return;
+  function initProgress() {
+    var bar = document.querySelector('.reading-progress');
+    if (!bar) return;
 
-    var byId = {};
-    var sections = [];
-    Array.prototype.forEach.call(links, function (link) {
-      var id = link.getAttribute('href').slice(1);
-      var section = document.getElementById(id);
-      if (!section) return;
-      byId[id] = link;
-      sections.push(section);
-    });
-    if (!sections.length) return;
+    var ticking = false;
+    function update() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      bar.style.setProperty('--progress', ratio.toFixed(4));
+      ticking = false;
+    }
+    function request() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request);
+    update();
+  }
 
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          var link = byId[entry.target.id];
-          if (!link) return;
-          if (entry.isIntersecting) {
-            Array.prototype.forEach.call(links, function (other) {
-              other.classList.remove('is-active');
-            });
-            link.classList.add('is-active');
-          }
+  /* ----------------------------------------------------------
+     Screenshot tabs — WAI-ARIA tabs with arrow-key movement
+     ---------------------------------------------------------- */
+  function initGalleries() {
+    var galleries = document.querySelectorAll('[data-gallery]');
+    Array.prototype.forEach.call(galleries, function (gallery) {
+      var tabs = Array.prototype.slice.call(gallery.querySelectorAll('[role="tab"]'));
+      if (!tabs.length) return;
+
+      function select(tab, focus) {
+        tabs.forEach(function (other) {
+          var selected = other === tab;
+          other.setAttribute('aria-selected', String(selected));
+          other.tabIndex = selected ? 0 : -1;
+          var panel = document.getElementById(other.getAttribute('aria-controls'));
+          if (panel) panel.hidden = !selected;
         });
-      },
-      { rootMargin: '-45% 0px -50% 0px' }
-    );
+        if (focus) tab.focus();
+      }
 
-    sections.forEach(function (section) {
-      observer.observe(section);
+      tabs.forEach(function (tab, index) {
+        tab.addEventListener('click', function () {
+          select(tab, false);
+        });
+        tab.addEventListener('keydown', function (event) {
+          var next = null;
+          if (event.key === 'ArrowRight') next = tabs[(index + 1) % tabs.length];
+          if (event.key === 'ArrowLeft') next = tabs[(index - 1 + tabs.length) % tabs.length];
+          if (event.key === 'Home') next = tabs[0];
+          if (event.key === 'End') next = tabs[tabs.length - 1];
+          if (!next) return;
+          event.preventDefault();
+          select(next, true);
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Copy the e-mail address
+     ---------------------------------------------------------- */
+  function initCopy() {
+    var buttons = document.querySelectorAll('[data-copy]');
+    Array.prototype.forEach.call(buttons, function (button) {
+      var label = button.querySelector('[data-copy-label]');
+      button.addEventListener('click', function () {
+        var text = button.getAttribute('data-copy');
+        var done = function (ok) {
+          if (!label) return;
+          var original = label.textContent;
+          var t = window.i18n ? window.i18n.t : function (k) { return k; };
+          label.textContent = ok ? t('page.copied') : t('page.copyFailed');
+          window.setTimeout(function () {
+            label.textContent = original;
+          }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            done(true);
+          }, function () {
+            done(false);
+          });
+        } else {
+          done(false);
+        }
+      });
     });
   }
 
   function init() {
-    initIconFallbacks();
     initHeaderScroll();
     initMobileNav();
     initReveal();
-    initNavHighlight();
+    initProgress();
+    initGalleries();
+    initCopy();
   }
 
   if (document.readyState === 'loading') {

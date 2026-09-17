@@ -58,193 +58,129 @@
   var DICT = {
     en: {
       /* ---------------- document ---------------- */
-      'meta.title': 'Junsu Kim · Frontend Engineer, AI integration',
+      'meta.title': 'Junsu Kim · Frontend Developer',
       'meta.description':
-        'Portfolio of Junsu Kim, a frontend and AI engineer who has personally owned planning, design, implementation, deployment and operation.',
+        'Portfolio of Junsu Kim, a frontend developer who builds and runs a service real customers use, and turns their friction into screen improvements.',
       'a11y.skip': 'Skip to content',
       'a11y.langGroup': 'Language',
 
-      /* ---------------- intro gate ---------------- */
-      'intro.label': 'Enter site',
-      'intro.name': 'Junsu Kim',
-      'intro.role': 'Frontend Engineer · AI integration',
-      'intro.hint': 'Press the button, or hit ESC to skip',
-
-      /* ---------------- header ---------------- */
+      /* ---------------- shared chrome ---------------- */
       'brand.name': 'Junsu Kim',
       'nav.label': 'Main menu',
-      'nav.about': 'Strengths',
+      'nav.home': 'Home',
       'nav.work': 'Work',
-      'nav.process': 'Process',
-      'nav.experience': 'Experience',
-      'nav.contact': 'Contact',
+      'nav.about': 'Career & contact',
       'nav.open': 'Open menu',
       'nav.close': 'Close menu',
-      'cta.email': 'Send email',
-      'cta.resume': 'View resume',
+      'crumb.label': 'You are here',
+      'page.role': 'My role',
+      'page.next': 'Keep reading',
+      'page.backHome': 'Portfolio home',
+      'page.backWork': 'All work',
+      'page.openSite': 'Open site',
+      'page.copied': 'Copied',
+      'page.copyFailed': 'Could not copy',
 
       /* ---------------- hero ---------------- */
-      'hero.badge': 'Employed · looking for a team to join',
-      'hero.title': 'I observe the problem,<br>then <em>ship the product</em>',
-      'hero.lede':
-        "I'm Junsu Kim, a frontend and AI engineer who has owned planning, design, implementation, deployment and operation. One year and five months in, building a livestock IoT SaaS that watches some 130 farms and 1,200 feed bins, on a two-person web team.",
-      'hero.cta1': 'See the work',
-      'hero.cta2': 'Get in touch',
-      'hero.meta1': 'Incheon · Seoul',
+      'hero.name': 'JUNSU KIM',
+      'hero.role': 'FRONTEND DEVELOPER',
+      'hero.title1': 'Services people actually use,',
+      'hero.title2': 'made easier to use.',
+      'hero.lede1': 'Web development and operation for a feed-management service used on farms.',
+      'hero.lede2': 'I turn customer enquiries into requirements, then into screens.',
+      'hero.cta1': 'See what I do',
+      'hero.cta2': 'Career & contact',
+      'hero.meta': 'Screen fixes · fewer requests · enquiries that arrive',
+      'hero.scroll': 'EXPLORE MY WORK',
 
-      /* ---------------- principles ---------------- */
-      'principles.title': 'Working principles',
-      'principles.1.h': 'I write the planning doc and the deploy runbook too',
-      'principles.1.p':
-        'As the web developer I owned the farm monitoring screens, the admin and the web notifications. Instead of stopping at the screens, I wrote the deployment steps down so the next person could pick them up.',
-      'principles.2.h': 'I find problems on site',
-      'principles.2.p':
-        'I define problems by seeing the real environment. I visited farms, watched how orders actually flowed, then designed the screens.',
-      'principles.3.h': 'I verify the improvement',
-      'principles.3.p':
-        'I read user behaviour with GA4 and Clarity, then check the numbers to see whether the change actually helped.',
+      /* ---------------- what I do ---------------- */
+      'what.label': 'What I do',
+      'what.title': 'I listen for the friction,<br>then fix the screen.',
+      'what.sub':
+        'I worked out requirements and screens with the app developer, then carried the build and the operation.',
+      'what.1.h': 'Enquiries into screens',
+      'what.1.p': 'Customers said menus were hard to find, so I reworked the paths to the main tasks.',
+      'what.1.link': 'See the screen fixes',
+      'what.2.h': 'Heavy screens, lighter',
+      'what.2.p': 'I found the bottleneck with per-stage timing logs and cut the requests.',
+      'what.2.link': 'See the request cuts',
+      'what.3.h': 'AI results people can read',
+      'what.3.p': 'The remaining-feed number alone was hard to judge, so I built a supporting view.',
+      'what.3.link': 'See the AI result screens',
+      'what.4.h': 'A homepage enquiries reach',
+      'what.4.p': 'I routed online enquiries straight to the sales team as notifications.',
+      'what.4.link': 'See the homepage rebuild',
 
-      /* ---------------- about ---------------- */
-      'about.title': 'The smaller the team, the <em>wider the ground</em> you cover',
-      'about.lede':
-        'I have worked on teams of two and three. I spent less time building a screen than making sure that screen actually got used.',
-      'about.1.h': 'End-to-end ownership',
-      'about.1.p':
-        'Planning → design → implementation → deployment → operation. I take every step until the idea reaches the user.',
-      'about.2.h': 'From the screen to deployment',
-      'about.2.p':
-        "Frontend first, and I carry the work through the FastAPI endpoints a screen needs and the GitHub Actions deploy behind it. I don't hand the blocked part to someone else.",
-      'about.3.h': 'Problems defined on the ground',
-      'about.3.p':
-        'I observe where the product is used and read behavioural data, so I define the real problem behind the request.',
-      'about.4.h': 'AI built into the product',
-      'about.4.p':
-        'I turn AI estimates into screens people can read and judge. On My Feed I built a mask-labelling tool for images the segmentation model failed on, and researched and proposed the switch to SAM2.',
+      'stats.label': 'What I cut on My Feed',
+      'stats.1': 'Requests on the monitoring screen',
+      'stats.2': 'Server-rendered response size (max)',
+      'stats.3': 'Unread-count checks per minute',
+      'stats.unit.count': '',
+      'stats.unit.times': '',
+      'stats.note': 'From the change commits, July 2026',
+      'stats.link': 'How I cut them',
 
-      /* ---------------- work ---------------- */
-      'work.title': 'Things I built and <em>shipped</em>',
-      'work.lede': 'Real, running products. Every demo link is live except the internal one.',
-      'work.open': 'Open site',
-      'work.code': 'View code',
+      /* ---------------- featured work ---------------- */
+      'work.label': 'Featured work',
+      'work.title': 'What I built,<br>and what was mine.',
+      'work.sub': "Services running at work. Where a part was someone else's, I say so.",
+      'work.more': 'Read the case',
+      'work.myfeed.tag': 'AimBe Lab · internal service',
+      'work.myfeed.h': 'A feed-management<br>service farms use.',
+      'work.myfeed.lede':
+        'On My Feed, used by some 130 farms as of July 2026, I have built and fixed the monitoring screens, the admin and the web notifications.',
+      'work.myfeed.caption': 'Farm monitoring · the live service',
+      'work.home.tag': 'AimBe Lab · company homepage',
+      'work.home.h': 'From an investor brochure<br>to a site for customers.',
+      'work.home.lede':
+        'I did the planning, design and web build to rebuild it for customers, and routed online enquiries straight to the sales team as notifications.',
+      'work.home.caption': 'The rebuilt first screen',
+      'work.moreText': 'Componique, StartupQT, Eat Fit and Wairi too.',
+      'work.all': 'All work',
+
+      /* ---------------- career ---------------- */
+      'career.label': 'Career',
+      'career.title': 'Where I have<br>worked so far.',
+      'career.sub': 'Full-time at AimBe Lab, intern at The Innovators.<br>Before that, the army signal corps and university.',
+      'career.1.when': '2025.07 — Present',
+      'career.1.org': 'AimBe Lab',
+      'career.1.role': 'Engineer · full-time',
+      'career.2.org': 'The Innovators',
+      'career.2.role': 'Frontend · intern',
+      'career.3.org': 'Republic of Korea Army',
+      'career.3.role': 'Signal corps · Sergeant, completed service',
+      'career.4.org': 'Tech University of Korea',
+      'career.4.role': 'Computer Engineering, Software major',
+      'career.more': 'Full career, awards and certifications',
+
+      'facts.awards': 'Awards',
+      'facts.certs': 'Certifications',
+      'cred.0': 'Veritas Alpha Education Article Contest, Excellence Award',
+      'cred.1': 'Korea Engineering Exhibition, Excellence Award — Eat Fit',
+      'cred.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi',
+      'cred.3': 'Woongjin ThinkBig × Udemy Bootcamp, 2nd place — Componique',
+      'cred.ga': 'Google Analytics certification',
+      'cred.opic': 'OPIc English IM1',
+      'skills.main': 'Use most',
+      'skills.used': 'Have used',
+      'skills.touched': 'Worked alongside',
+
+      /* ---------------- contact ---------------- */
+      'contact.label': 'Contact',
+      'contact.title': 'If there is a screen to fix,<br>get in touch.',
+      'contact.sub': "I'll send my resume and project notes by email.",
+
+      /* ---------------- screenshots ---------------- */
       'shot.myfeed':
         'My Feed farm monitoring — each silo with its latest interior photo, remaining tonnage, temperature, humidity and freshness',
-      'shot.notify':
-        'My Feed notification list — three unread alerts and the filter by alert type',
       'shot.myfeed2': 'My Feed dashboard — the share of bins needing an order, and the bin location map',
       'shot.myfeed3': 'My Feed ordering — picking a bin, a quantity and a delivery date',
+      'shot.notify': 'My Feed notification list — three unread alerts and the filter by alert type',
       'shot.notify2': 'My Feed notification settings — browser permission state and a toggle per alert type',
       'shot.notify3': 'My Feed per-bin alert settings — change the reference photo, snooze the order alert, or turn it off',
       'shot.aimbelab': 'The rebuilt AimBe Lab homepage, with its enquiry call to action',
       'shot.aimbelab2': 'AimBe Lab homepage — the before-and-after comparison table',
       'shot.aimbelab3': 'AimBe Lab homepage — the farmer interview video cards',
-      'shot.componique': 'Componique documentation site and its Form components',
-      'shot.componique2': 'Componique documentation — the Data display components',
-      'shot.componique3': 'Componique documentation — the Feedback and Navigation components',
-      'shot.startupqt': 'The StartupQT entry screen',
-      'shot.eatfit': 'Eat Fit on the Korea Engineering Exhibition site, previewing the app screens',
-      'shot.eatfit2': 'Eat Fit results — the system diagram and the metrics screens',
-      'shot.wairi': 'The Wairi landing screen — the hero video on agency commission costs',
-      'shot.wairi2': 'Wairi — meeting vetted influencers for free',
-      'shot.wairi3': 'Wairi — the section explaining how it is free',
-      'work.myfeed.tag': 'Professional · IoT SaaS',
-      'work.myfeed.p1':
-        'A livestock IoT SaaS monitoring some 130 farms and 1,200 feed bins nationwide (as of July 2026). As the web developer I owned the farm monitoring screens, the admin, and the web notification system.',
-      'work.myfeed.p2':
-        'Cut requests from the monitoring screen from 98 to 50 and trimmed server-rendered response size by up to 42% (22.95MB to 13.24MB), locating each bottleneck with per-stage timing logs before fixing it. Dropping unused scripts that all 62 screens were loading saved 139KB per page.',
-      'work.myfeed.p3':
-        'I researched and proposed the switch to SAM2 (the AI engineer applied it), and built a mask-labelling tool so images the model failed on could feed back into training data.',
-      'work.myfeed.note': 'Internal service',
-      'work.notify.tag': 'Professional · incident response · built solo',
-      'work.notify.h': 'My Feed — web notifications',
-      'work.notify.p1':
-        'On one browser, web push went quiet after a version update. No errors — the notifications simply stopped arriving.',
-      'work.notify.p2':
-        'I followed the push path hop by hop through the OS event log and pinned down that it reached the network, left the server and was received by the OS, then vanished inside the browser. That layer was not mine to fix.',
-      'work.notify.p3':
-        'So instead of fixing the cause I built for delivery: push, a polling fallback, and a refresh on tab return — three ways in. Hidden tabs have their timers throttled, which I measured at 65 seconds with zero requests after the five-minute mark, so I claimed an exemption with a Web Lock. When the browser is patched, push takes priority back on its own. Nine files and eight commits over four days, on my own.',
-      'work.geo.tag': 'Professional · rebuild · SEO/AEO/GEO',
-      'work.geo.h': 'AimBe Lab website',
-      'work.geo.p1':
-        'Before this work nobody arrived via ChatGPT; it is now over ten visits a month, counted in Clarity.',
-      'work.geo.p2':
-        'First the rebuild: an investor-facing brochure became a site for customers, with an enquiry flow wired in, so enquiries that had only ever come by phone could arrive online too. The video on the front page is mine as well — I made it with AI.',
-      'work.geo.p3':
-        'Then the part about getting AI to cite us. Adjectives do not get cited, so instead of writing new copy I pulled some 40 verified sentences out of a 12-slide ordering guide the company already had and moved them into HTML text — uploading those slides as images would have been worth nothing. I added a four-step HowTo and a 12-question FAQ, and fixed a sitemap that was stamping build time as lastmod on all 12 pages, replacing it with each page\'s real change date from git history.',
-      'work.geo.p4':
-        'Google retired HowTo rich results in 2023 and I knew that when I added them: the target is not search ranking, it is being cited.',
-      'work.1.tag': 'Open source · team of 4',
-      'work.1.p':
-        'An open-source design system of 30+ components published to npm. A team of four, where my part was designing and building the UI components, alongside Storybook docs and a Rollup build. 2nd place at the Woongjin ThinkBig x Udemy bootcamp.',
-      'work.2.tag': 'SaaS',
-      'work.2.p1':
-        'A SaaS for authoring, reviewing and managing quizzes. I designed the modular editor and the review workflow, and automated deployment with GitHub Actions on a self-hosted EC2 runner. The multi-stage Dockerfile kept failing because the instance ran out of disk, so I moved it to PM2 and shipped.',
-      'work.2.p2':
-        'Before measuring performance I wrote the audit down first: five target screens, with the conditions pinned to an incognito window on Slow 4G. The first pass gave the main page LCP 2.7s, CLS 0.103 and a Performance score of 82; after the fixes I re-ran it under the same conditions and compared the reports.',
-      'work.2.p3':
-        'I also found that the delete-attachment API let you delete other people\'s files, and wrote up owner verification and per-user API separation as the fix.',
-      'work.3.tag': 'Graduation project · team of 3',
-      'work.3.p':
-        'A diet-tracking PWA that works out your target intake from the Korean Dietary Reference Intakes and classifies food photos with EfficientNet. On a team of three I did the planning, the frontend and the final presentation. A nightly batch sends the previous day\'s meals to the ChatGPT API for feedback. Classification wobbles when several dishes share a plate, and we never got to estimating portion mass. Excellence Award at the Korea Engineering Exhibition.',
-      'work.3.link': 'Exhibition page',
-      'work.4.tag': 'Migration · team lead',
-      'work.4.p':
-        'Moved a real company\'s Vue service, which search engines struggled with, onto Next.js, redesigning server rendering and the metadata structure. I led the team on schedule and UI, and it won an Excellence Award at the Sniper Factory bootcamp.',
-
-      /* ---------------- process ---------------- */
-      'process.title': 'I do not <em>open the tools first</em>',
-      'process.lede':
-        'Most failures come from touching the code before deciding what to solve. Four steps, one loop — I check the numbers, then start again at step one.',
-      'process.1.h': 'Define',
-      'process.1.p':
-        'Narrowing down what to solve comes first. I look at the site of use and the data together.',
-      'process.2.h': 'Design',
-      'process.2.p':
-        'Screen flow, data structure and permission scope all get drawn in the same place. Whatever gets missed here comes back twice as expensive in the build.',
-      'process.3.h': 'Build',
-      'process.3.p':
-        'Frontend, API and deployment pipeline as one continuous piece.',
-      'process.4.h': 'Operate',
-      'process.4.p':
-        'I read real usage metrics and decide what to fix next. Usually that is where step one begins again.',
-
-      /* ---------------- experience ---------------- */
-      'exp.title': 'The path <em>so far</em>',
-      'exp.1.when': '2025.07 — Present',
-      'exp.1.role': 'Engineer, full-time · SaaS planning · Frontend · AI integration',
-      'exp.1.a':
-        'My Feed: digitised farm orders scattered across paper ledgers and KakaoTalk.',
-      'exp.1.b':
-        'Checked visit and engagement metrics in GA4 and Clarity to prioritise UX improvements.',
-      'exp.1.c':
-        'Website rebuild: reworked the structure for AEO/GEO and wired in an enquiry flow, turning around one enquiry a month into an average of 4 by phone and 5 online, collected automatically.',
-      'exp.1.d':
-        'Designed a three-tier RBAC dashboard and set up GitHub Actions CI/CD.',
-      'exp.2.role': 'Intern · Frontend · Deployment automation',
-      'exp.2.a':
-        'Implemented the modular editor and review workflow for the StartupQT quiz-authoring SaaS.',
-      'exp.2.b': 'Built the GitHub Actions, Docker and PM2 pipeline single-handedly, with an Nginx reverse proxy and HTTPS.',
-      'exp.mil.org': 'Republic of Korea Army — completed service, Sergeant',
-      'exp.mil.role':
-        'Signal corps — network maintenance for an intelligence-analysis unit.',
-      'exp.3.school': 'Tech University of Korea',
-      'exp.3.role':
-        'B.S. Computer Engineering, Software major · GPA 3.45 / 4.5 (major 3.54)',
-      'skills.title': 'Core skills',
-      'skills.llm': 'LLM integration',
-      'skills.data': 'Data · Other',
-      'cred.title': 'Awards',
-      'certs.title': 'Certifications',
-      'cred.0': 'Veritas Alpha Journalism Contest, Excellence Award — data analysis',
-      'cred.1': 'Korea Engineering Exhibition, Excellence Award — Eat Fit',
-      'cred.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi, team lead',
-      'cred.3': 'Woongjin ThinkBig × Udemy Bootcamp, 2nd place — Componique',
-      'cred.ga4': 'GA4 Certification',
-
-      /* ---------------- final CTA ---------------- */
-      'final.title': 'Looking for a problem to solve together',
-      'final.p':
-        "If you need someone to own a product from start to finish, please get in touch. I'll send my resume and detailed case studies by email.",
-      'final.github': 'View GitHub',
 
       /* ---------------- chat ---------------- */
       'chat.toggle': 'Ask the AI',
@@ -267,14 +203,11 @@
       'chat.errGeneric': "Couldn't fetch an answer. Please email —",
 
       /* ---------------- footer ---------------- */
-      'footer.tagline':
-        'A frontend and AI engineer who observes problems and turns them into shipped products.',
       'footer.label': 'Footer menu',
-      'footer.explore': 'Explore',
-      'footer.contact': 'Contact',
       'footer.resume': 'Resume',
-      'footer.blog': 'Tech blog',
-      'footer.bottom': '© 2026 Junsu Kim. Designed & built by Junsu Kim.',
+      'footer.blog': 'Blog',
+      'footer.mail': 'Send email',
+      'footer.bottom': '© 2026 Junsu Kim · Frontend Developer',
     },
 
     /* Korean normally comes from the markup. These are the exceptions: strings
@@ -282,6 +215,8 @@
     ko: {
       'nav.open': '메뉴 열기',
       'nav.close': '메뉴 닫기',
+      'page.copied': '복사했습니다',
+      'page.copyFailed': '복사하지 못했습니다',
       'chat.greeting':
         '안녕하세요. 김준수의 이력과 프로젝트에 대해 답해드립니다. 무엇이 궁금하신가요?',
       'chat.errRate': '질문이 잠시 몰렸습니다. 조금 뒤에 다시 시도하시거나 메일로 문의해 주세요 —',

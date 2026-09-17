@@ -17,11 +17,6 @@
   display: none;
 }
 
-body.intro-active .chat-dock {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .chat-toggle {
   display: inline-flex;
   align-items: center;
@@ -100,8 +95,8 @@ body.intro-active .chat-dock {
   border-bottom: 1px solid var(--border-default);
 }
 
-.chat-header .icon3d {
-  --icon-size: 44px;
+.chat-header .glyph {
+  --glyph-size: 44px;
 }
 
 .chat-header h2 {

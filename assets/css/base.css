@@ -1,77 +1,63 @@
 /* =========================================================
-   Blue Glass Intelligence — design tokens, reset, primitives
-   Load order: base.css → layout.css → sections.css
+   Editorial — design tokens, reset, primitives
+   Load order: base.css → layout.css → sections.css → hero.css
+
+   White and near-white surfaces, one near-black for text and buttons, and
+   blue kept for links only. The hero is the one dark block (hero.css).
    ========================================================= */
 :root {
-  /* surface — the two base colours also ship as raw channels, because a dozen
-     rules build their own translucency out of them (headers, glass panels, the
-     scroll scrims). Channels let those follow the theme without each rule
-     needing a dark twin. */
-  --page-bg: #f7faff;
-  --page-bg-rgb: 247, 250, 255;
-  --page-bg-secondary: #f1f6ff;
+  /* surface — the base colours also ship as raw channels, because headers
+     and panels build their own translucency out of them. */
+  --page-bg: #ffffff;
+  --page-bg-rgb: 255, 255, 255;
+  --page-bg-secondary: #f5f5f7;
   --surface: #ffffff;
   --surface-rgb: 255, 255, 255;
-  --surface-soft: rgba(var(--surface-rgb), 0.78);
-  --surface-blue: #eef5ff;
+  --surface-soft: rgba(var(--surface-rgb), 0.82);
+  --surface-blue: #f5f5f7;
 
-  /* text */
-  --text-primary: #0f1b2d;
-  --text-secondary: #4f6078;
-  /* 4.90:1 on the tinted chip background, 5.33:1 on white. The previous
-     #64748c came in at 4.37:1 once measured against the actual chip rather
-     than the page, which misses AA for the 12px labels that use it. */
-  --text-tertiary: #5e6c82;
+  /* text — #6e6e73 is 5.07:1 on white and 4.61:1 on #f5f5f7 */
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #6e6e73;
   --text-inverse: #ffffff;
-  /* The hero sits over moving glass, so its text is darkened past the ordinary
-     secondary greys to hold 4.5:1 while a panel slides underneath. */
-  --text-scrim-strong: #1e2c42;
-  --text-scrim: #2a374d;
+  --text-scrim-strong: #1d1d1f;
+  --text-scrim: #424245;
 
-  /* brand */
-  --primary-700: #1d4ed8;
-  --primary-600: #2563eb;
-  --primary-500: #3182f6;
-  --primary-400: #4b96ff;
-  --primary-300: #78b4ff;
-  --primary-200: #b9d8ff;
-  --primary-100: #dcecff;
-  --primary-50: #eff6ff;
+  /* ink — the filled button and other solid dark elements */
+  --ink: #1d1d1f;
+  --ink-hover: #3a3a3c;
+  --on-ink: #ffffff;
+
+  /* brand — links and small accents only. Kept as a ramp because the resume
+     page and the chat panel read these names. */
+  --primary-700: #0058b0;
+  --primary-600: #0066cc;
+  --primary-500: #0071e3;
+  --primary-400: #2997ff;
+  --primary-300: #6cb4ff;
+  --primary-200: #b9dcff;
+  --primary-100: #e3f0ff;
+  --primary-50: #f2f8ff;
 
   --cyan-500: #06b6d4;
   --cyan-400: #22d3ee;
   --cyan-300: #67e8f9;
 
-  --border-default: rgba(37, 99, 235, 0.11);
-  --border-strong: rgba(37, 99, 235, 0.2);
+  --border-default: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
 
-  --success: #18a874;
+  --success: #1f9d55;
   --warning: #e89b21;
   --danger: #e65c6a;
   --danger-text: #8f2f3b;
 
-  /* Split out from --primary-700 because this one is a *background* carrying
-     white text. In dark mode --primary-700 becomes a light blue for text, and
-     white on light blue would be unreadable. */
-  --skip-bg: var(--primary-700);
-  --badge-bg: rgba(239, 246, 255, 0.8);
+  --skip-bg: #1d1d1f;
+  --badge-bg: #f5f5f7;
 
-  /* Three gradients, split by what sits on top of them.
-
-     --grad-cta carries white 14px labels, so every point along it has to clear
-     4.5:1. The old blue→cyan ramp measured 2.51:1 where the label crosses the
-     cyan end — Lighthouse never caught it because it does not evaluate
-     background-image. Deepening the far stop to teal keeps the blue→cyan read
-     and puts the whole ramp at 5.17:1 or better.
-
-     --grad-mark keeps the original vivid ramp for the 22px wordmark tile and
-     the cursor dot, which carry no text.
-
-     --grad-head is clipped to the hero heading, so it is text itself and flips
-     in dark mode. */
-  --grad-cta: linear-gradient(135deg, #1d4ed8 0%, #2563eb 55%, #0e7490 100%);
+  --grad-cta: linear-gradient(#1d1d1f, #1d1d1f);
   --grad-mark: linear-gradient(135deg, #1d4ed8 0%, #3182f6 55%, #22d3ee 100%);
-  --grad-head: linear-gradient(120deg, #1d4ed8 0%, #2563eb 55%, #3182f6 100%);
+  --grad-head: linear-gradient(120deg, #1d1d1f 0%, #1d1d1f 100%);
 
   /* spacing */
   --space-1: 4px;
@@ -94,82 +80,73 @@
   --radius-md: 16px;
   --radius-lg: 22px;
   --radius-xl: 28px;
-  --radius-2xl: 36px;
+  --radius-2xl: 40px;
   --radius-pill: 999px;
 
-  /* shadow */
-  --shadow-xs: 0 2px 8px rgba(29, 78, 216, 0.04);
-  --shadow-sm: 0 8px 24px rgba(29, 78, 216, 0.07);
-  --shadow-md: 0 18px 48px rgba(29, 78, 216, 0.1);
-  --shadow-lg: 0 30px 80px rgba(29, 78, 216, 0.14);
-  --shadow-glow: 0 18px 50px rgba(49, 130, 246, 0.24);
+  /* shadow — used sparingly; most separation comes from background steps */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 12px 30px rgba(0, 0, 0, 0.12);
 
   /* layout */
   --header-h: 72px;
-  --section-y: clamp(64px, 9vw, 120px);
+  --section-y: clamp(88px, 11vw, 140px);
   --gutter: clamp(20px, 4vw, 32px);
 
-  --font-sans: "Pretendard Variable", Pretendard, Inter, "Noto Sans KR",
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
-    "Malgun Gothic", sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", "Malgun Gothic", sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
 
   --ease: cubic-bezier(0.22, 0.7, 0.24, 1);
 }
 
 /* =========================================================
-   Dark mode
-
-   Everything below only re-points the tokens above, so no component
-   carries a dark branch of its own. Two deliberate exceptions:
-
-   - --text-inverse stays white. It labels the blue gradient buttons and
-     the chat bubble, and that gradient does not flip.
-   - The blue ramp splits by role. 700/600/300 are read as *text* on this
-     page, so they get lighter; 100/50 are read as *fills*, so they get
-     darker. Flipping the whole ramp one way would break the other half.
+   Dark mode — the same layout with the steps inverted
    ========================================================= */
 @media (prefers-color-scheme: dark) {
   :root {
-    --page-bg: #0b1220;
-    --page-bg-rgb: 11, 18, 32;
-    --page-bg-secondary: #0e1526;
-    --surface: #151d2e;
-    --surface-rgb: 21, 29, 46;
-    --surface-blue: #14203a;
+    --page-bg: #000000;
+    --page-bg-rgb: 0, 0, 0;
+    --page-bg-secondary: #101012;
+    --surface: #1c1c1e;
+    --surface-rgb: 28, 28, 30;
+    --surface-blue: #1c1c1e;
 
-    --text-primary: #e9eefb;
-    --text-secondary: #aab9d6;
-    --text-tertiary: #93a3bf;
-    --text-scrim-strong: #e3eaf9;
-    --text-scrim: #cbd6ec;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --text-tertiary: #a1a1a6;
+    --text-scrim-strong: #f5f5f7;
+    --text-scrim: #d2d2d7;
 
-    /* text-weight blues */
-    --primary-700: #a8c6ff;
-    --primary-600: #8db4ff;
-    --primary-300: #6ea4ff;
-    /* fill-weight blues */
-    --primary-100: #1d2b48;
-    --primary-50: #16223c;
+    --ink: #f5f5f7;
+    --ink-hover: #d2d2d7;
+    --on-ink: #1d1d1f;
 
-    --border-default: rgba(125, 170, 255, 0.14);
-    --border-strong: rgba(125, 170, 255, 0.3);
+    --primary-700: #6cb4ff;
+    --primary-600: #2997ff;
+    --primary-500: #2997ff;
+    --primary-300: #6cb4ff;
+    --primary-100: #1a2a3f;
+    --primary-50: #111a26;
+
+    --border-default: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.2);
 
     --success: #34d399;
     --danger-text: #ff9aa5;
 
-    --skip-bg: #1d4ed8;
-    --badge-bg: rgba(37, 99, 235, 0.18);
+    --skip-bg: #f5f5f7;
+    --badge-bg: #1c1c1e;
+    --text-inverse: #1d1d1f;
+    --grad-cta: linear-gradient(#f5f5f7, #f5f5f7);
+    --grad-head: linear-gradient(120deg, #f5f5f7 0%, #f5f5f7 100%);
 
-    /* The heading gradient is the text, so it inverts. Its darkest stop
-       measured 2.79:1 against the dark page — under the 3:1 large-text floor. */
-    --grad-head: linear-gradient(120deg, #7fb0ff 0%, #9cc3ff 55%, #7fe8f8 100%);
-
-    /* Blue-tinted shadows vanish against a dark page; these carry depth. */
-    --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.36);
-    --shadow-md: 0 18px 48px rgba(0, 0, 0, 0.44);
-    --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.5);
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -243,7 +220,7 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(49, 130, 246, 0.36);
+  outline: 3px solid rgba(0, 113, 227, 0.45);
   outline-offset: 3px;
   border-radius: var(--radius-xs);
 }
@@ -281,75 +258,62 @@ button {
   top: 16px;
 }
 
-/* decorative page wash — kept subtle and behind everything */
+/* Kept as a fixed backdrop so overscroll never shows a different colour. */
 .page-wash {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(circle at 78% 6%, rgba(49, 130, 246, 0.13), transparent 34%),
-    radial-gradient(circle at 12% 40%, rgba(34, 211, 238, 0.08), transparent 28%),
-    radial-gradient(circle at 88% 78%, rgba(79, 70, 229, 0.06), transparent 30%),
-    var(--page-bg);
+  background: var(--page-bg);
 }
 
 /* =========================================================
    Layout primitives
    ========================================================= */
 .site-container {
-  width: min(100% - (var(--gutter) * 2), 1200px);
+  width: min(100% - (var(--gutter) * 2), 1120px);
   margin-inline: auto;
 }
 
-/* 인접 섹션의 상하 패딩이 겹쳐 커지지 않도록 위쪽에만 준다 */
 .section {
-  padding-block: var(--section-y) 0;
+  padding-block: var(--section-y);
 }
 
-.section--tight {
-  padding-block: clamp(48px, 6vw, 72px) 0;
+.section--alt {
+  background: var(--page-bg-secondary);
 }
 
-main > .section:last-child {
-  padding-bottom: var(--section-y);
+/* Centred label → two-line title → one-line subtitle */
+.section-head {
+  max-width: 850px;
+  margin: 0 auto clamp(56px, 7vw, 88px);
+  text-align: center;
 }
 
-.section-header {
-  max-width: 680px;
-  margin-bottom: clamp(40px, 5vw, 64px);
+.section-label {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.035em;
 }
 
-.section-header h2 {
-  font-size: clamp(31px, 4.2vw, 40px);
+.section-title {
+  margin-top: var(--space-5);
+  font-size: clamp(38px, 5.6vw, 64px);
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+  line-height: 1.17;
+  letter-spacing: -0.05em;
   text-wrap: balance;
 }
 
-.section-header h2 em {
-  font-style: normal;
-  color: var(--primary-600);
-}
-
-.section-header p {
-  max-width: 62ch;
-  margin-top: var(--space-4);
+.section-sub {
+  max-width: 40em;
+  margin: var(--space-6) auto 0;
   color: var(--text-secondary);
-  font-size: 17px;
+  font-size: clamp(17px, 1.6vw, 19px);
   line-height: 1.7;
-}
-
-.eyebrow {
-  display: block;
-  margin-bottom: var(--space-4);
-  color: var(--primary-600);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  text-wrap: pretty;
 }
 
 .eyebrow-badge {
@@ -358,11 +322,11 @@ main > .section:last-child {
   gap: var(--space-2);
   min-height: 34px;
   padding: 0 14px;
-  border: 1px solid rgba(37, 99, 235, 0.13);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-pill);
-  color: var(--primary-700);
+  color: var(--text-secondary);
   font-size: 13px;
-  font-weight: 650;
+  font-weight: 600;
   background: var(--badge-bg);
 }
 
@@ -371,31 +335,53 @@ main > .section:last-child {
   height: 7px;
   border-radius: 50%;
   background: var(--success);
-  box-shadow: 0 0 0 3px rgba(24, 168, 116, 0.16);
+  box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.18);
+}
+
+/* Blue text link with a trailing chevron or arrow */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-600);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.text-link svg {
+  flex: none;
+  transition: transform 180ms var(--ease);
+}
+
+.text-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.text-link:hover svg {
+  transform: translateX(2px);
 }
 
 /* =========================================================
-   Buttons
+   Buttons — solid ink pill and outlined pill
    ========================================================= */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  min-height: 50px;
-  padding: 0 23px;
-  border: 0;
-  border-radius: 15px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
   font-size: 15px;
-  font-weight: 650;
-  letter-spacing: -0.005em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   white-space: nowrap;
   transition:
-    transform 180ms var(--ease),
-    box-shadow 180ms var(--ease),
+    background 180ms var(--ease),
     border-color 180ms var(--ease),
-    color 180ms var(--ease),
-    filter 180ms var(--ease);
+    color 180ms var(--ease);
 }
 
 .button svg {
@@ -403,42 +389,27 @@ main > .section:last-child {
 }
 
 .button-primary {
-  color: var(--text-inverse);
-  background: var(--grad-cta);
-  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.24);
+  color: var(--on-ink);
+  background: var(--ink);
 }
 
 .button-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 38px rgba(37, 99, 235, 0.3);
-  filter: saturate(1.05);
-}
-
-.button-primary:active {
-  transform: translateY(0);
+  background: var(--ink-hover);
 }
 
 .button-secondary {
-  border: 1px solid rgba(37, 99, 235, 0.16);
-  color: var(--primary-700);
-  background: rgba(var(--surface-rgb), 0.82);
-  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.06);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  background: transparent;
 }
 
 .button-secondary:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-strong);
-  box-shadow: 0 12px 28px rgba(29, 78, 216, 0.09);
-}
-
-.button-secondary:active {
-  transform: translateY(0);
+  border-color: var(--text-secondary);
 }
 
 .button--sm {
-  min-height: 42px;
+  min-height: 38px;
   padding: 0 16px;
-  border-radius: 12px;
   font-size: 14px;
 }
 
@@ -504,7 +475,6 @@ main > .section:last-child {
 @media print {
   .site-header,
   .page-wash,
-  .hero-visual,
   .skip-link {
     display: none;
   }

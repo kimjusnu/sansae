@@ -9,10 +9,10 @@ window.i18nStrings = {
   en: {
     'meta.title': 'Junsu Kim — Resume',
     'meta.description':
-      'Resume of Junsu Kim, a frontend and AI engineer who owns products from planning through operation.',
+      'Resume of Junsu Kim, a frontend developer who builds and runs a service real customers use.',
 
     'r.name': 'Junsu Kim',
-    'r.role': 'Frontend Engineer · AI integration',
+    'r.role': 'Frontend Developer',
     'r.print': 'Download PDF',
     'r.pdfHref': 'resume-en.pdf',
     'r.pdfName': 'Junsu-Kim-Resume.pdf',
@@ -21,36 +21,35 @@ window.i18nStrings = {
 
     'r.summary.title': 'Summary',
     'r.summary.body':
-      'A frontend engineer of 1 year 5 months running an admin back-office on jQuery legacy, with the module boundaries drawn by hand. I measure how the browser behaves before fixing it — a web push failure that raised no errors, traced and solved alone with a three-layer delivery structure. I built a mask-labelling tool for images the AI model failed on, and researched and proposed the switch to SAM2.',
+      'Frontend developer running web development and operation for My Feed, a feed-management service used on farms. I turn customer enquiries into screen fixes, and cut the monitoring screen from 98 requests to 50 after finding the bottleneck with timing logs.',
 
     'r.exp.title': 'Experience',
     'r.exp.1.company': 'AimBe Lab',
-    'r.exp.1.role': 'Engineer, full-time · SaaS planning · Frontend · AI integration',
+    'r.exp.1.role': 'Engineer, full-time · web development and operation',
     'r.exp.1.when': '2025.07 — Present',
     'r.exp.1.a':
-      '<strong>My Feed</strong> — digitised farm orders kept on paper and KakaoTalk, and cut requests from the monitoring screen from 98 to 50 and server-rendered response size by up to 42%.',
+      '<strong>My Feed</strong> — monitoring screens, admin and web notifications; requests cut from 98 to 50, server-rendered response size by up to 42%.',
     'r.exp.1.c':
-      '<strong>Website rebuild</strong> — reworked the structure for AEO/GEO and added an enquiry flow, taking enquiries from around one a month to 4 calls and 5 online, collected automatically.',
-    'r.exp.1.d': 'Designed a three-tier RBAC dashboard, set up GitHub Actions CI/CD, and checked visit and engagement metrics in GA4 and Clarity to prioritise the work.',
+      '<strong>Homepage rebuild</strong> — rebuilt for customers, with online enquiries routed to the sales team; contributed to a deal with a feed company.',
+    'r.exp.1.d': 'Built a mask-labelling tool for failed segmentations; proposed SAM2, which the AI engineer applied.',
     'r.exp.2.company': 'The Innovators',
     'r.exp.2.role': 'Intern · Frontend · Deployment automation',
     'r.exp.2.when': '2025.03 — 2025.06',
     'r.exp.2.a':
-      '<strong>StartupQT</strong> — built the modular editor and review workflow for a quiz-authoring SaaS.',
-    'r.exp.2.b': 'Built the GitHub Actions / Docker / PM2 pipeline alone, with Nginx reverse proxy and HTTPS.',
+      '<strong>StartupQT</strong> — frontend for a quiz authoring and review SaaS.',
+    'r.exp.2.b': 'Deploys on GitHub Actions with a self-hosted EC2 runner; moved to PM2 when the Docker build ran out of disk.',
 
     'r.proj.title': 'Projects',
-    'r.proj.1.desc': 'Open-source design system of 30+ components, published to npm. Team of four; my part was the UI components.',
-    'r.proj.2.desc': 'Quiz authoring and review SaaS. Set up deployment alone; swapped Docker for PM2 when the build ran out of disk.',
-    'r.proj.3.desc': 'Nutrition PWA driven by AI food-photo analysis. Team of three; planning, frontend and presenting.',
-    'r.proj.4.desc': 'Moved a real company\'s Vue site to Next.js to fix search visibility. Team project lead on the bootcamp.',
+    'r.proj.1.desc': 'UI component library on npm. Team of four; my part was the components. 807 weekly peak, 1,477 total (2026.08.11).',
+    'r.proj.2.desc': 'Quiz authoring and review SaaS. Frontend and deployment automation.',
+    'r.proj.3.desc': 'Diet-tracking PWA. Team of three; planning, UX, API design, frontend, presenting.',
+    'r.proj.4.desc': 'Moved a Vue service with poor search visibility to Next.js. Team lead.',
 
     'r.skills.title': 'Skills',
-    'r.skills.frontend': 'Frontend',
-    'r.skills.ai': 'AI',
-    'r.skills.devops': 'DevOps',
-    'r.skills.data': 'Data',
-    'r.skills.aiList': 'LLM integration, SAM2, FastAPI',
+    'r.skills.main': 'Use most',
+    'r.skills.used': 'Have used',
+    'r.skills.touched': 'Worked alongside',
+    'r.skills.data': 'Analytics',
 
     'r.edu.title': 'Education',
     'r.edu.school': 'Tech University of Korea',
@@ -60,11 +59,11 @@ window.i18nStrings = {
     'r.edu.military': 'ROK Army, sergeant, completed (2021.06 — 2022.12)',
 
     'r.awards.title': 'Awards · Certifications',
-    'r.awards.0': 'Veritas Alpha Journalism Contest, Excellence Award — data analysis',
+    'r.awards.0': 'Veritas Alpha Education Article Contest, Excellence Award',
     'r.awards.1': 'Korea Engineering Exhibition, Excellence Award — Eat Fit',
     'r.awards.2': 'Sniper Factory Bootcamp, Excellence Award — Wairi',
     'r.awards.3': 'Woongjin × Udemy Bootcamp, 2nd — Componique',
     'r.certs.label': 'Certified',
-    'r.certs.list': 'ADsP (2026.06) · GA4 (2025.09) · OPIc IM1 (2025.02)',
+    'r.certs.list': 'ADsP (2026.06) · Google Analytics (2025.09) · OPIc English IM1 (2025.02)',
   },
 };
